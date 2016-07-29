@@ -138,6 +138,12 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.accountText.text = @"";
+    self.passwordText.text = @"";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -180,8 +186,9 @@
     [manager POST:[kApiUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"User/register.html"]] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.view hideToastActivity];
         if ([responseObject[@"status"] integerValue] == 200) {
-//            [[User sharedUser].user setObject:responseObject[@"data"][@"token"] forKey:@"token"];
+            [[User sharedUser].user setObject:responseObject[@"data"][@"token"] forKey:@"token"];
             [self.view makeToast:@"注册成功"];
+            [NSThread sleepForTimeInterval:2];
             [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:nil];
         } else {
             [self.view makeToast:responseObject[@"errorMsg"]];

@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIColor+Utils.h"
+#import <UIKit/UIKit.h>
 #import "UIView+Toast.h"
+#import "UIColor+Utils.h"
+#import "UIImageView+Utils.h"
 #import "UIViewController+Utils.h"
 
 @interface Util : NSObject
+
++ (NSString *)getFilePathWithFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;
++ (BOOL)removeFileByFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;
++ (UIImage *)getPhotoImageWithPhotoName:(NSString *)photoName;
 
 @end

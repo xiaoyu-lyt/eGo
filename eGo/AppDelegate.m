@@ -7,10 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "User.h"
 
-#import "BaseViewController.h"
-#import "LoginViewController.h"
+#import "AdViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,13 +24,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     // 设置UIWindow的rootViewController
-    if ([[User sharedUser] isLoggedIn]) {
-        NSLog(@"Logged in");
-        self.window.rootViewController = [[BaseViewController alloc] init];
-    } else {
-        NSLog(@"Not logged in");
-        self.window.rootViewController = [[LoginViewController alloc] init];
-    }
+    self.window.rootViewController = [[AdViewController alloc] init];
     
     // 设置UIWindow可见
     [self.window makeKeyAndVisible];

@@ -14,7 +14,8 @@
 
 + (User *)sharedUser;
 
-- (void)saveData;
 - (BOOL)isLoggedIn;
+- (void)updateUserInfo;
+- (void)saveData;
 
 @end

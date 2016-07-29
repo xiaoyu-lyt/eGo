@@ -132,6 +132,12 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.accountText.text = @"";
+    self.passwordText.text = @"";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -163,11 +169,14 @@
     [self.view makeToastActivity:CSToastPositionCenter];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:[kApiUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"User/login.html"]] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:[kApiUrl stringByAppendingPathComponent:@"User/login.html"] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.view hideToastActivity];
         if ([responseObject[@"status"] integerValue] == 200) {
-//            [[User sharedUser].user setObject:responseObject[@"data"][@"token"] forKey:@"token"];
-            [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:nil];
+            [[User sharedUser].user setObject:responseObject[@"data"][@"token"] forKey:@"token"];
+            [[User sharedUser].user setObject:self.accountText.text forKey:@"tel"];
+            [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:^{
+                [[User sharedUser] updateUserInfo];
+            }];
         } else {
             [self.view makeToast:responseObject[@"errorMsg"]];
         }
