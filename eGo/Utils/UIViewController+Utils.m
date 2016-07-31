@@ -7,14 +7,38 @@
 //
 
 #import "UIViewController+Utils.h"
+#import "PersonalViewController.h"
 #import "MessageCenterViewController.h"
+
+#import "User.h"
+#import "Util.h"
 
 @implementation UIViewController (Utils)
 
 // 设置NavigationBarButton
 - (void)setNavigationBarButton {
+    UIImage *userPhotoImage = [Util getPhotoImageWithPhotoName:[NSString stringWithFormat:@"%@.jpg", [[User sharedUser].user objectForKey:@"photoName"]]];
+    userPhotoImage = [self setImage:userPhotoImage withWidth:32 andHeight:32];
+    UIImageView *userPhotoImageView = [[UIImageView alloc] initWithImage:userPhotoImage];
+    userPhotoImageView.layer.cornerRadius = userPhotoImage.size.width / 2;
+    [userPhotoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(enterPersonalSetting)]];
+    UIBarButtonItem *userPhoto = [[UIBarButtonItem alloc] initWithCustomView:userPhotoImageView];
+    self.navigationItem.leftBarButtonItem = userPhoto;
     UIBarButtonItem *message = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Notice"] style:UIBarButtonItemStyleDone target:self action:@selector(enterMessageCenter)];
     self.navigationItem.rightBarButtonItem = message;
+}
+// 设置图片大小
+- (UIImage *)setImage:(UIImage *)image withWidth:(float)width andHeight:(float)height {
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    [image drawInRect:CGRectMake(0, 0, width, height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+// 点击左上角BarButton触发事件
+- (void)enterPersonalSetting {
+    PersonalViewController *personalVC = [[PersonalViewController alloc] init];
+    [self showViewController:personalVC sender:nil];
 }
 // 点击右上角BarButton触发事件
 - (void)enterMessageCenter {

@@ -7,7 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80CD8191D4B803300D0CD20 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD8171D4B803300D0CD20 /* PersonalViewController.m */; };
+		B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD8181D4B803300D0CD20 /* PersonalViewController.xib */; };
+		B80CD81E1D4B875C00D0CD20 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD81C1D4B875C00D0CD20 /* FriendsViewController.m */; };
+		B80CD81F1D4B875C00D0CD20 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD81D1D4B875C00D0CD20 /* FriendsViewController.xib */; };
+		B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD8211D4B876F00D0CD20 /* HistoryViewController.m */; };
+		B80CD8241D4B876F00D0CD20 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD8221D4B876F00D0CD20 /* HistoryViewController.xib */; };
+		B80CD8281D4B877A00D0CD20 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD8261D4B877A00D0CD20 /* FeedbackViewController.m */; };
+		B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD8271D4B877A00D0CD20 /* FeedbackViewController.xib */; };
+		B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD82B1D4B878800D0CD20 /* AboutUsViewController.m */; };
+		B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */; };
 		B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842EA361D4B57DB005C1ADC /* AdViewController.m */; };
+		B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */; };
+		B89DB5BD1D4CA71300D17E5E /* FriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B89DB5BB1D4CA71300D17E5E /* FriendsTableViewCell.m */; };
+		B89DB5BE1D4CA71300D17E5E /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5BC1D4CA71300D17E5E /* FriendsTableViewCell.xib */; };
 		B8D6FDBD1D4707FA00E0863D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDBC1D4707FA00E0863D /* main.m */; };
 		B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDBF1D4707FA00E0863D /* AppDelegate.m */; };
 		B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FDC71D4707FA00E0863D /* Assets.xcassets */; };
@@ -29,7 +42,6 @@
 		B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE061D470BC900E0863D /* MessageCenterViewController.m */; };
 		B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */; };
 		B8D6FE0D1D473E0400E0863D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */; };
-		B8D6FE0E1D473E0400E0863D /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FE0C1D473E0400E0863D /* RegisterViewController.xib */; };
 		B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB66201D483BF3002AC1F4 /* CampusTrafficViewController.m */; };
 		B8EB66231D483BF3002AC1F4 /* CampusTrafficViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EB66211D483BF3002AC1F4 /* CampusTrafficViewController.xib */; };
 		B8EB66271D483C0D002AC1F4 /* CampusBikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB66251D483C0D002AC1F4 /* CampusBikeViewController.m */; };
@@ -42,8 +54,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B80CD8161D4B803300D0CD20 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
+		B80CD8171D4B803300D0CD20 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
+		B80CD8181D4B803300D0CD20 /* PersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalViewController.xib; sourceTree = "<group>"; };
+		B80CD81B1D4B875C00D0CD20 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		B80CD81C1D4B875C00D0CD20 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		B80CD81D1D4B875C00D0CD20 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
+		B80CD8201D4B876F00D0CD20 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		B80CD8211D4B876F00D0CD20 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		B80CD8221D4B876F00D0CD20 /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
+		B80CD8251D4B877A00D0CD20 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		B80CD8261D4B877A00D0CD20 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		B80CD8271D4B877A00D0CD20 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		B80CD82A1D4B878800D0CD20 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		B80CD82B1D4B878800D0CD20 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		B842EA351D4B57DB005C1ADC /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
 		B842EA361D4B57DB005C1ADC /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
+		B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		B89DB5BA1D4CA71300D17E5E /* FriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewCell.h; sourceTree = "<group>"; };
+		B89DB5BB1D4CA71300D17E5E /* FriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewCell.m; sourceTree = "<group>"; };
+		B89DB5BC1D4CA71300D17E5E /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		B8D6FDB81D4707FA00E0863D /* eGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D6FDBC1D4707FA00E0863D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B8D6FDBE1D4707FA00E0863D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,7 +115,6 @@
 		B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
 		B8D6FE0A1D473E0400E0863D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		B8D6FE0C1D473E0400E0863D /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		B8EB661F1D483BF3002AC1F4 /* CampusTrafficViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusTrafficViewController.h; sourceTree = "<group>"; };
 		B8EB66201D483BF3002AC1F4 /* CampusTrafficViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusTrafficViewController.m; sourceTree = "<group>"; };
 		B8EB66211D483BF3002AC1F4 /* CampusTrafficViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CampusTrafficViewController.xib; sourceTree = "<group>"; };
@@ -112,6 +142,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B89DB5B91D4CA6F300D17E5E /* TVCell */ = {
+			isa = PBXGroup;
+			children = (
+				B89DB5BA1D4CA71300D17E5E /* FriendsTableViewCell.h */,
+				B89DB5BB1D4CA71300D17E5E /* FriendsTableViewCell.m */,
+				B89DB5BC1D4CA71300D17E5E /* FriendsTableViewCell.xib */,
+			);
+			path = TVCell;
+			sourceTree = "<group>";
+		};
 		B8D6FDAF1D4707FA00E0863D = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +179,7 @@
 				B8D6FDE41D470ACA00E0863D /* MessageCenter */,
 				B8D6FDE51D470ACA00E0863D /* Models */,
 				B8D6FDE81D470ACA00E0863D /* Settings */,
+				B89DB5B91D4CA6F300D17E5E /* TVCell */,
 				B8D6FDE91D470ACA00E0863D /* Utils */,
 				B8D6FDBB1D4707FA00E0863D /* Supporting Files */,
 			);
@@ -220,7 +261,7 @@
 				B8D6FE021D470B1800E0863D /* LoginViewController.xib */,
 				B8D6FE0A1D473E0400E0863D /* RegisterViewController.h */,
 				B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */,
-				B8D6FE0C1D473E0400E0863D /* RegisterViewController.xib */,
+				B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -250,6 +291,21 @@
 				B8EB66291D483C20002AC1F4 /* SettingsViewController.h */,
 				B8EB662A1D483C20002AC1F4 /* SettingsViewController.m */,
 				B8EB662B1D483C20002AC1F4 /* SettingsViewController.xib */,
+				B80CD8161D4B803300D0CD20 /* PersonalViewController.h */,
+				B80CD8171D4B803300D0CD20 /* PersonalViewController.m */,
+				B80CD8181D4B803300D0CD20 /* PersonalViewController.xib */,
+				B80CD81B1D4B875C00D0CD20 /* FriendsViewController.h */,
+				B80CD81C1D4B875C00D0CD20 /* FriendsViewController.m */,
+				B80CD81D1D4B875C00D0CD20 /* FriendsViewController.xib */,
+				B80CD8201D4B876F00D0CD20 /* HistoryViewController.h */,
+				B80CD8211D4B876F00D0CD20 /* HistoryViewController.m */,
+				B80CD8221D4B876F00D0CD20 /* HistoryViewController.xib */,
+				B80CD8251D4B877A00D0CD20 /* FeedbackViewController.h */,
+				B80CD8261D4B877A00D0CD20 /* FeedbackViewController.m */,
+				B80CD8271D4B877A00D0CD20 /* FeedbackViewController.xib */,
+				B80CD82A1D4B878800D0CD20 /* AboutUsViewController.h */,
+				B80CD82B1D4B878800D0CD20 /* AboutUsViewController.m */,
+				B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -330,14 +386,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
-				B8D6FE0E1D473E0400E0863D /* RegisterViewController.xib in Resources */,
 				B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */,
+				B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */,
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
 				B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */,
 				B8D6FE041D470B1800E0863D /* LoginViewController.xib in Resources */,
 				B8EB66231D483BF3002AC1F4 /* CampusTrafficViewController.xib in Resources */,
+				B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */,
 				B8EB66321D483C2B002AC1F4 /* ChatCenterViewController.xib in Resources */,
+				B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */,
+				B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */,
+				B89DB5BE1D4CA71300D17E5E /* FriendsTableViewCell.xib in Resources */,
 				B8EB66281D483C0D002AC1F4 /* CampusBikeViewController.xib in Resources */,
+				B80CD81F1D4B875C00D0CD20 /* FriendsViewController.xib in Resources */,
+				B80CD8241D4B876F00D0CD20 /* HistoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +415,11 @@
 				B8D6FDF21D470ACA00E0863D /* AFHTTPSessionManager.m in Sources */,
 				B8EB66271D483C0D002AC1F4 /* CampusBikeViewController.m in Sources */,
 				B8D6FDF71D470ACA00E0863D /* AFURLSessionManager.m in Sources */,
+				B89DB5BD1D4CA71300D17E5E /* FriendsTableViewCell.m in Sources */,
+				B80CD81E1D4B875C00D0CD20 /* FriendsViewController.m in Sources */,
 				B8D6FDF81D470ACA00E0863D /* User.m in Sources */,
+				B80CD8191D4B803300D0CD20 /* PersonalViewController.m in Sources */,
+				B80CD8281D4B877A00D0CD20 /* FeedbackViewController.m in Sources */,
 				B8D6FDF41D470ACA00E0863D /* AFSecurityPolicy.m in Sources */,
 				B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */,
 				B8EB662C1D483C20002AC1F4 /* SettingsViewController.m in Sources */,
@@ -361,10 +427,12 @@
 				B8D6FDFB1D470ACA00E0863D /* UIViewController+Utils.m in Sources */,
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,
 				B8D6FDFA1D470ACA00E0863D /* UIView+Toast.m in Sources */,
+				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
 				B8D6FDF51D470ACA00E0863D /* AFURLRequestSerialization.m in Sources */,
 				B8EB66351D48B32A002AC1F4 /* UIImageView+Utils.m in Sources */,
 				B8D6FDF31D470ACA00E0863D /* AFNetworkReachabilityManager.m in Sources */,
+				B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */,
 				B8D6FDF61D470ACA00E0863D /* AFURLResponseSerialization.m in Sources */,
 				B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */,
 				B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */,

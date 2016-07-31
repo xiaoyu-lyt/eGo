@@ -66,4 +66,52 @@
     }
 }
 
+- (NSString *)tel {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"tel"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"tel"]];
+}
+
+- (NSString *)token {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"token"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"token"]];
+}
+
+- (NSString *)stuId {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"stuId"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"stuId"]];
+}
+
+- (NSString *)name {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"name"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"name"]];
+}
+
+- (NSString *)nickname {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"nickname"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"nickname"]];
+}
+
+- (NSString *)gender {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"gender"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"gender"]];
+}
+
+- (NSString *)email {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"email"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"email"]];
+}
+
+- (NSString *)signature {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"signature"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"signature"]];
+}
+
+- (NSString *)photoName {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"photoName"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"photoName"]];
+}
+
+- (NSString *)school {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"school"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"school"]];
+}
+
+- (NSString *)college {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"college"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"college"]];
+}
+
+- (NSString *)major {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"major"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"major"]];
+}
+
 @end

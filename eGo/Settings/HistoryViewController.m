@@ -1,25 +1,22 @@
 //
-//  CampusTrafficViewController.m
+//  HistoryViewController.m
 //  eGo
 //
-//  Created by 萧宇 on 7/27/16.
+//  Created by 萧宇 on 7/29/16.
 //  Copyright © 2016 萧宇. All rights reserved.
 //
 
-#import "CampusTrafficViewController.h"
+#import "HistoryViewController.h"
 
-#import "Util.h"
-
-@interface CampusTrafficViewController ()
+@interface HistoryViewController ()
 
 @end
 
-@implementation CampusTrafficViewController
+@implementation HistoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setNavigationBarButton];
 }
 
 - (void)didReceiveMemoryWarning {

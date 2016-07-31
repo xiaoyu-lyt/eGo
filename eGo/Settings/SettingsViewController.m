@@ -8,6 +8,12 @@
 
 #import "SettingsViewController.h"
 #import "LoginViewController.h"
+#import "PersonalViewController.h"
+#import "FriendsViewController.h"
+#import "HistoryViewController.h"
+#import "MessageCenterViewController.h"
+#import "FeedbackViewController.h"
+#import "AboutUsViewController.h"
 
 #import "User.h"
 #import "Util.h"
@@ -42,11 +48,10 @@
     
     self.userPhotoImg.layer.masksToBounds = YES;
     self.userPhotoImg.layer.cornerRadius = self.userPhotoImg.frame.size.width / 2;
-    self.userPhotoImg.image = [Util getPhotoImageWithPhotoName:[[User sharedUser].user objectForKey:@"photoName"]];
-    self.genderImg.image = ([[[User sharedUser].user objectForKey:@"gender"] integerValue] == 1) ? [UIImage imageNamed:@"Male"] : [UIImage imageNamed:@"Female"];
-    self.nameLbl.text = [[User sharedUser].user objectForKey:@"name"];
-    NSString *signature = [[User sharedUser].user objectForKey:@"signature"];
-    self.signatureLbl.text = (signature.length > 15) ? [NSString stringWithFormat:@"%@...", [signature substringToIndex:15]] : signature;
+    self.userPhotoImg.image = [Util getPhotoImageWithPhotoName:[User sharedUser].photoName];
+    self.genderImg.image = ([[User sharedUser].gender integerValue] == 1) ? [UIImage imageNamed:@"Male"] : [UIImage imageNamed:@"Female"];
+    self.nameLbl.text = ([User sharedUser].name.length == 0) ? @"某同学" : [User sharedUser].name;
+    self.signatureLbl.text = ([User sharedUser].signature.length > 15) ? [NSString stringWithFormat:@"%@...", [[User sharedUser].signature substringToIndex:15]] : [User sharedUser].signature;
     
     self.settingsTV.delegate = self;
     self.settingsTV.dataSource = self;
@@ -66,9 +71,9 @@
 
 - (void)cleanCache {
     [self alertConfirmMessage:@"是否清楚本地缓存" withTitle1:@"取消" style1:UIAlertActionStyleCancel handler1:^{
-        NSLog(@"cancel");
+        
     } andTitle2:@"清除" style2:UIAlertActionStyleDefault handler2:^{
-        NSLog(@"clean");
+        
     }];
 }
 
@@ -150,16 +155,16 @@
         case 0:
             switch (indexPath.row) {
                 case 0:
-                    NSLog(@"个人信息");
+                    [self showViewController:[[PersonalViewController alloc] init] sender:nil];
                     break;
                 case 1:
-                    NSLog(@"好友列表");
+                    [self showViewController:[[FriendsViewController alloc] init] sender:nil];
                     break;
                 case 2:
-                    NSLog(@"出行记录");
+                    [self showViewController:[[HistoryViewController alloc] init] sender:nil];
                     break;
                 case 3:
-                    NSLog(@"消息中心");
+                    [self showViewController:[[MessageCenterViewController alloc] init] sender:nil];
                     break;
                 default:
                     break;
@@ -171,17 +176,16 @@
                     [self cleanCache];
                     break;
                 case 1:
-                    NSLog(@"意见反馈");
+                    [self showViewController:[[FeedbackViewController alloc] init] sender:nil];
                     break;
                 case 2:
-                    NSLog(@"关于eGo");
+                    [self showViewController:[[AboutUsViewController alloc] init] sender:nil];
                     break;
                 default:
                     break;
             }
             break;
         case 2:
-            NSLog(@"注销");
             [self logout];
             break;
         default:

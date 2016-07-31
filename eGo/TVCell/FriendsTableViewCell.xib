@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="FriendsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="rvK-zJ-doz">
+                        <rect key="frame" x="8" y="8" width="63.5" height="63.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="rvK-zJ-doz" secondAttribute="height" id="Mc8-vS-PE1"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acU-5N-O6b">
+                        <rect key="frame" x="79" y="10" width="64" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="This is a message between you and me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50v-eJ-qd3">
+                        <rect key="frame" x="79" y="48.5" width="300" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95j-lo-95S">
+                        <rect key="frame" x="280" y="17" width="32" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="acU-5N-O6b" firstAttribute="leading" secondItem="rvK-zJ-doz" secondAttribute="trailing" constant="7.5" id="2yn-BF-XbY"/>
+                    <constraint firstItem="rvK-zJ-doz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3Sp-aq-tj1"/>
+                    <constraint firstItem="95j-lo-95S" firstAttribute="centerY" secondItem="acU-5N-O6b" secondAttribute="centerY" id="8GS-2F-t66"/>
+                    <constraint firstItem="acU-5N-O6b" firstAttribute="top" secondItem="rvK-zJ-doz" secondAttribute="top" constant="2" id="MQp-ch-JDa"/>
+                    <constraint firstItem="rvK-zJ-doz" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="V8W-1Y-ZvW"/>
+                    <constraint firstItem="50v-eJ-qd3" firstAttribute="bottom" secondItem="rvK-zJ-doz" secondAttribute="bottom" constant="-2" id="VUS-rl-3XT"/>
+                    <constraint firstItem="rvK-zJ-doz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ish-Pf-Fzp"/>
+                    <constraint firstItem="50v-eJ-qd3" firstAttribute="leading" secondItem="rvK-zJ-doz" secondAttribute="trailing" constant="7.5" id="q17-gF-IPC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="95j-lo-95S" secondAttribute="trailing" id="r1k-1y-dWt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="messageLbl" destination="50v-eJ-qd3" id="th2-9V-YiO"/>
+                <outlet property="nameLbl" destination="acU-5N-O6b" id="b8Q-XH-cdQ"/>
+                <outlet property="timeLbl" destination="95j-lo-95S" id="7nK-iC-BZY"/>
+                <outlet property="userPhotoImgView" destination="rvK-zJ-doz" id="JGM-Xv-sHF"/>
+            </connections>
+            <point key="canvasLocation" x="428" y="303"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="DefaultImage" width="60" height="60"/>
+    </resources>
+</document>

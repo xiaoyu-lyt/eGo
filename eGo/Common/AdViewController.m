@@ -33,6 +33,8 @@
     
     self.interAppBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 96.0, [UIScreen mainScreen].bounds.size.height - 64.0, 64.0, 36.0)];
     self.interAppBtn.backgroundColor = [UIColor grayColor];
+    self.interAppBtn.layer.masksToBounds = YES;
+    self.interAppBtn.layer.cornerRadius = 2.56;
     [self.interAppBtn setTitle:@"3s 跳过" forState:UIControlStateNormal];
     [self.interAppBtn addTarget:self action:@selector(skipBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.interAppBtn];
