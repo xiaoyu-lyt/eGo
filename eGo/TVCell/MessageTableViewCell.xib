@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="MessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="v65-6O-QbM">
+                        <rect key="frame" x="8" y="8" width="63.5" height="63.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="v65-6O-QbM" secondAttribute="height" id="ffy-X9-zvK"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H04-cK-XHA">
+                        <rect key="frame" x="79" y="16" width="59" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a message.Just a test message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSc-ue-qIE">
+                        <rect key="frame" x="79" y="48" width="233" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1V-Zh-WWs">
+                        <rect key="frame" x="275.5" y="21" width="36.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="MSc-ue-qIE" secondAttribute="trailing" id="1bP-Xd-Tp3"/>
+                    <constraint firstItem="H04-cK-XHA" firstAttribute="leading" secondItem="v65-6O-QbM" secondAttribute="trailing" constant="7.5" id="BI2-eg-nzH"/>
+                    <constraint firstItem="H04-cK-XHA" firstAttribute="top" secondItem="v65-6O-QbM" secondAttribute="top" constant="8" id="F6Z-d1-G3m"/>
+                    <constraint firstItem="MSc-ue-qIE" firstAttribute="bottom" secondItem="v65-6O-QbM" secondAttribute="bottom" constant="-4" id="IZc-MU-bzL"/>
+                    <constraint firstItem="v65-6O-QbM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ija-Mb-jLL"/>
+                    <constraint firstItem="MSc-ue-qIE" firstAttribute="leading" secondItem="v65-6O-QbM" secondAttribute="trailing" constant="7.5" id="PcK-Uv-gLz"/>
+                    <constraint firstItem="v65-6O-QbM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="UnO-Ad-lBq"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="v65-6O-QbM" secondAttribute="bottom" id="erX-iA-HIJ"/>
+                    <constraint firstItem="d1V-Zh-WWs" firstAttribute="centerY" secondItem="H04-cK-XHA" secondAttribute="centerY" id="qWu-sa-dzl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="d1V-Zh-WWs" secondAttribute="trailing" id="wDf-Zs-JWG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="messageLbl" destination="MSc-ue-qIE" id="jBf-qb-tBG"/>
+                <outlet property="nameLbl" destination="H04-cK-XHA" id="A91-13-cc8"/>
+                <outlet property="timeLbl" destination="d1V-Zh-WWs" id="gY7-vX-kqy"/>
+                <outlet property="userPhotoImgView" destination="v65-6O-QbM" id="SUS-TO-lOf"/>
+            </connections>
+            <point key="canvasLocation" x="278" y="297"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="DefaultImage" width="60" height="60"/>
+    </resources>
+</document>

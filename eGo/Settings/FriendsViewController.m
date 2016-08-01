@@ -7,14 +7,13 @@
 //
 
 #import "FriendsViewController.h"
-#import "FriendsTableViewCell.h"
 
 @interface FriendsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *friendsTV;
 
 @property (nonatomic, strong) NSArray *friendsArray;
-@property (strong, nonatomic) IBOutlet UITableView *friendsTV;
 
 @end
 
@@ -28,7 +27,7 @@
     UIBarButtonItem *addBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend:)];
     self.navigationItem.rightBarButtonItem = addBarBtn;
     
-    self.friendsArray = [@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Lam", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Jerome", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Jim", @"message" : @"Hello", @"time" : @"12:23"}] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+    self.friendsArray = [@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"Hello", @"time" : @"12:23"}] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1[@"name"] compare:obj2[@"name"]];
     }];
 }
@@ -67,7 +66,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80.0;
+    return 40.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -76,15 +75,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"FriendsTVCell";
-    FriendsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"FriendsTableViewCell" owner:nil options:nil] lastObject];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    cell.userPhotoImgView.image = [UIImage imageNamed:self.friendsArray[indexPath.row][@"photo_name"]];
-    cell.nameLbl.text = self.friendsArray[indexPath.row][@"name"];
-    cell.messageLbl.text = self.friendsArray[indexPath.row][@"message"];
-    cell.timeLbl.text = self.friendsArray[indexPath.row][@"time"];
+    cell.imageView.image = [UIImage imageNamed:self.friendsArray[indexPath.row][@"photo_name"]];
+    cell.textLabel.text = self.friendsArray[indexPath.row][@"name"];
     return cell;
 }
 

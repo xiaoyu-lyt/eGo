@@ -1,14 +1,14 @@
 //
-//  FriendsTableViewCell.m
+//  MessageTableViewCell.m
 //  eGo
 //
-//  Created by 萧宇 on 7/30/16.
+//  Created by 萧宇 on 8/1/16.
 //  Copyright © 2016 萧宇. All rights reserved.
 //
 
-#import "FriendsTableViewCell.h"
+#import "MessageTableViewCell.h"
 
-@implementation FriendsTableViewCell
+@implementation MessageTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

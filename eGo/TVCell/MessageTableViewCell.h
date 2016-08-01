@@ -1,14 +1,14 @@
 //
-//  FriendsTableViewCell.h
+//  MessageTableViewCell.h
 //  eGo
 //
-//  Created by 萧宇 on 7/30/16.
+//  Created by 萧宇 on 8/1/16.
 //  Copyright © 2016 萧宇. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface FriendsTableViewCell : UITableViewCell
+@interface MessageTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *userPhotoImgView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLbl;

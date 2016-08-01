@@ -19,8 +19,8 @@
 		B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */; };
 		B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842EA361D4B57DB005C1ADC /* AdViewController.m */; };
 		B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */; };
-		B89DB5BD1D4CA71300D17E5E /* FriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B89DB5BB1D4CA71300D17E5E /* FriendsTableViewCell.m */; };
-		B89DB5BE1D4CA71300D17E5E /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5BC1D4CA71300D17E5E /* FriendsTableViewCell.xib */; };
+		B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */; };
+		B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */; };
 		B8D6FDBD1D4707FA00E0863D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDBC1D4707FA00E0863D /* main.m */; };
 		B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDBF1D4707FA00E0863D /* AppDelegate.m */; };
 		B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FDC71D4707FA00E0863D /* Assets.xcassets */; };
@@ -72,9 +72,9 @@
 		B842EA351D4B57DB005C1ADC /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
 		B842EA361D4B57DB005C1ADC /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
 		B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
-		B89DB5BA1D4CA71300D17E5E /* FriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewCell.h; sourceTree = "<group>"; };
-		B89DB5BB1D4CA71300D17E5E /* FriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewCell.m; sourceTree = "<group>"; };
-		B89DB5BC1D4CA71300D17E5E /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
+		B8B660EB1D4F6C01007CE65A /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		B8D6FDB81D4707FA00E0863D /* eGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D6FDBC1D4707FA00E0863D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B8D6FDBE1D4707FA00E0863D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -145,9 +145,9 @@
 		B89DB5B91D4CA6F300D17E5E /* TVCell */ = {
 			isa = PBXGroup;
 			children = (
-				B89DB5BA1D4CA71300D17E5E /* FriendsTableViewCell.h */,
-				B89DB5BB1D4CA71300D17E5E /* FriendsTableViewCell.m */,
-				B89DB5BC1D4CA71300D17E5E /* FriendsTableViewCell.xib */,
+				B8B660EB1D4F6C01007CE65A /* MessageTableViewCell.h */,
+				B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */,
+				B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */,
 			);
 			path = TVCell;
 			sourceTree = "<group>";
@@ -386,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
+				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
 				B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */,
 				B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */,
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
@@ -396,7 +397,6 @@
 				B8EB66321D483C2B002AC1F4 /* ChatCenterViewController.xib in Resources */,
 				B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */,
 				B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */,
-				B89DB5BE1D4CA71300D17E5E /* FriendsTableViewCell.xib in Resources */,
 				B8EB66281D483C0D002AC1F4 /* CampusBikeViewController.xib in Resources */,
 				B80CD81F1D4B875C00D0CD20 /* FriendsViewController.xib in Resources */,
 				B80CD8241D4B876F00D0CD20 /* HistoryViewController.xib in Resources */,
@@ -415,7 +415,6 @@
 				B8D6FDF21D470ACA00E0863D /* AFHTTPSessionManager.m in Sources */,
 				B8EB66271D483C0D002AC1F4 /* CampusBikeViewController.m in Sources */,
 				B8D6FDF71D470ACA00E0863D /* AFURLSessionManager.m in Sources */,
-				B89DB5BD1D4CA71300D17E5E /* FriendsTableViewCell.m in Sources */,
 				B80CD81E1D4B875C00D0CD20 /* FriendsViewController.m in Sources */,
 				B8D6FDF81D470ACA00E0863D /* User.m in Sources */,
 				B80CD8191D4B803300D0CD20 /* PersonalViewController.m in Sources */,
@@ -427,6 +426,7 @@
 				B8D6FDFB1D470ACA00E0863D /* UIViewController+Utils.m in Sources */,
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,
 				B8D6FDFA1D470ACA00E0863D /* UIView+Toast.m in Sources */,
+				B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */,
 				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
 				B8D6FDF51D470ACA00E0863D /* AFURLRequestSerialization.m in Sources */,
