@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *messageTV;
 
-@property (nonatomic, strong) NSArray *messageArray;
+@property (nonatomic, strong) NSArray<NSArray *> *messageArray;
 
 @end
 
@@ -27,9 +27,7 @@
     self.messageTV.delegate = self;
     self.messageTV.dataSource = self;
     
-    self.messageArray = [@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"Hello", @"time" : @"12:23"}] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        return [obj1[@"name"] compare:obj2[@"name"]];
-    }];
+    self.messageArray = @[@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"},], @[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"Hello", @"time" : @"12:23"}]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,11 +37,11 @@
 
 #pragma mark - TableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.messageArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.messageArray.count;
+    return self.messageArray[section].count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,7 +49,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,10 +60,10 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MessageTableViewCell" owner:nil options:nil] lastObject];
     }
     
-    cell.imageView.image = [UIImage imageNamed:self.messageArray[indexPath.row][@"photo_name"]];
-    cell.nameLbl.text = self.messageArray[indexPath.row][@"name"];
-    cell.messageLbl.text = self.messageArray[indexPath.row][@"message"];
-    cell.timeLbl.text = self.messageArray[indexPath.row][@"time"];
+    cell.imageView.image = [UIImage imageNamed:self.messageArray[indexPath.section][indexPath.row][@"photo_name"]];
+    cell.nameLbl.text = self.messageArray[indexPath.section][indexPath.row][@"name"];
+    cell.messageLbl.text = self.messageArray[indexPath.section][indexPath.row][@"message"];
+    cell.timeLbl.text = self.messageArray[indexPath.section][indexPath.row][@"time"];
     
     return cell;
 }

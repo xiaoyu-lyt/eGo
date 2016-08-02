@@ -60,10 +60,10 @@
     [self.view makeToast:@"save"];
 }
 
-- (UIImageView *)getUserPhotoImgView:(CGRect)frame {
+- (UIImageView *)getUserPhotoImgView {
     static UIImageView *userPhotoImgView = nil;
     if (userPhotoImgView == nil) {
-        userPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width - 80.0, (frame.size.height - 12.0) / 2, 48.0, 48.0)];
+        userPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 84.0, 16, 48.0, 48.0)];
         userPhotoImgView.image = [UIImage imageNamed:@"DefaultImage"];
         userPhotoImgView.layer.masksToBounds = YES;
         userPhotoImgView.layer.cornerRadius = 24.0;
@@ -91,7 +91,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     switch (indexPath.row) {
         case 0:
-            [cell.contentView addSubview:[self getUserPhotoImgView:cell.contentView.frame]];
+            [cell.contentView addSubview:[self getUserPhotoImgView]];
             break;
         case 1:
             cell.detailTextLabel.text = [User sharedUser].nickname;
