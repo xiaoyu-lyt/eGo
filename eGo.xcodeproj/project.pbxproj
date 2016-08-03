@@ -21,6 +21,8 @@
 		B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */; };
 		B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */; };
 		B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */; };
+		B8BBF72B1D51EF2A0089D89C /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF7291D51EF2A0089D89C /* ChatTableViewCell.m */; };
+		B8BBF72C1D51EF2A0089D89C /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8BBF72A1D51EF2A0089D89C /* ChatTableViewCell.xib */; };
 		B8D6FDBD1D4707FA00E0863D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDBC1D4707FA00E0863D /* main.m */; };
 		B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDBF1D4707FA00E0863D /* AppDelegate.m */; };
 		B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FDC71D4707FA00E0863D /* Assets.xcassets */; };
@@ -75,6 +77,9 @@
 		B8B660EB1D4F6C01007CE65A /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		B8BBF7281D51EF2A0089D89C /* ChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewCell.h; sourceTree = "<group>"; };
+		B8BBF7291D51EF2A0089D89C /* ChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewCell.m; sourceTree = "<group>"; };
+		B8BBF72A1D51EF2A0089D89C /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		B8D6FDB81D4707FA00E0863D /* eGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D6FDBC1D4707FA00E0863D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B8D6FDBE1D4707FA00E0863D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -148,6 +153,9 @@
 				B8B660EB1D4F6C01007CE65A /* MessageTableViewCell.h */,
 				B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */,
 				B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */,
+				B8BBF7281D51EF2A0089D89C /* ChatTableViewCell.h */,
+				B8BBF7291D51EF2A0089D89C /* ChatTableViewCell.m */,
+				B8BBF72A1D51EF2A0089D89C /* ChatTableViewCell.xib */,
 			);
 			path = TVCell;
 			sourceTree = "<group>";
@@ -394,6 +402,7 @@
 				B8D6FE041D470B1800E0863D /* LoginViewController.xib in Resources */,
 				B8EB66231D483BF3002AC1F4 /* CampusTrafficViewController.xib in Resources */,
 				B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */,
+				B8BBF72C1D51EF2A0089D89C /* ChatTableViewCell.xib in Resources */,
 				B8EB66321D483C2B002AC1F4 /* ChatCenterViewController.xib in Resources */,
 				B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */,
 				B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */,
@@ -427,6 +436,7 @@
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,
 				B8D6FDFA1D470ACA00E0863D /* UIView+Toast.m in Sources */,
 				B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */,
+				B8BBF72B1D51EF2A0089D89C /* ChatTableViewCell.m in Sources */,
 				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
 				B8D6FDF51D470ACA00E0863D /* AFURLRequestSerialization.m in Sources */,

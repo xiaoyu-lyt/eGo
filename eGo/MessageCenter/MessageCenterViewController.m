@@ -8,6 +8,7 @@
 
 #import "MessageCenterViewController.h"
 #import "MessageTableViewCell.h"
+#import "FriendsViewController.h"
 
 @interface MessageCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -24,15 +25,22 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"消息中心";
     
+    UIBarButtonItem *friendsBarBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Settings"] style:UIBarButtonItemStyleDone target:self action:@selector(friends:)];
+    self.navigationItem.rightBarButtonItem = friendsBarBtn;
+    
     self.messageTV.delegate = self;
     self.messageTV.dataSource = self;
     
-    self.messageArray = @[@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"},], @[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"Hello", @"time" : @"12:23"}]];
+    self.messageArray = @[@[@{@"photo_name" : @"AppLogo", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"AppLogo", @"name" : @"Jerome", @"message" : @"Hello", @"time" : @"12:23"},], @[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Lam", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"This is just a long test message, hello long message", @"time" : @"16/08/03"}]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)friends:(UIBarButtonItem *)btn {
+    [self showViewController:[[FriendsViewController alloc] init] sender:nil];
 }
 
 #pragma mark - TableView
