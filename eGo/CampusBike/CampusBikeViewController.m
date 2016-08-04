@@ -8,6 +8,10 @@
 
 #import "CampusBikeViewController.h"
 
+#include "User.h"
+#include "Util.h"
+#include "AFNetworking.h"
+
 @interface CampusBikeViewController ()
 
 @end
@@ -17,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setNavigationBarButton];
 }
 
 - (void)didReceiveMemoryWarning {

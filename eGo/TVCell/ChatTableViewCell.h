@@ -16,5 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeLbl;
 @property (strong, nonatomic) IBOutlet UILabel *placeLbl;
 @property (strong, nonatomic) IBOutlet UILabel *contentLbl;
+@property (strong, nonatomic) IBOutlet UIButton *likeBtn;
+@property (strong, nonatomic) IBOutlet UIButton *commentBtn;
+@property (strong, nonatomic) IBOutlet UIButton *shareBtn;
 
 @end

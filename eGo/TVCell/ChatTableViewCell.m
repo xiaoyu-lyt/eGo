@@ -10,10 +10,6 @@
 
 @interface ChatTableViewCell ()
 
-@property (strong, nonatomic) IBOutlet UIButton *likeBtn;
-@property (strong, nonatomic) IBOutlet UIButton *commentBtn;
-@property (strong, nonatomic) IBOutlet UIButton *shareBtn;
-
 @end
 
 @implementation ChatTableViewCell
