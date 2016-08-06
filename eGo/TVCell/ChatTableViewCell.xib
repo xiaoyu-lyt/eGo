@@ -24,8 +24,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDr-lF-C17">
-                        <rect key="frame" x="64" y="8" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="64" y="8" width="49" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -77,8 +77,8 @@
                             <color key="titleColor" red="0.039215686270000001" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v2A-dg-aQK">
-                        <rect key="frame" x="110" y="8" width="8" height="8"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Female" translatesAutoresizingMaskIntoConstraints="NO" id="v2A-dg-aQK">
+                        <rect key="frame" x="117" y="8" width="8" height="8"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="8" id="CeU-85-74G"/>
                             <constraint firstAttribute="width" secondItem="v2A-dg-aQK" secondAttribute="height" multiplier="1:1" id="WyJ-ra-vCf"/>
@@ -126,12 +126,13 @@
                 <outlet property="shareBtn" destination="9xr-tj-u2j" id="ZS5-iT-w8c"/>
                 <outlet property="timeLbl" destination="46i-9a-97M" id="7hR-AQ-eHL"/>
             </connections>
-            <point key="canvasLocation" x="168" y="318.5"/>
+            <point key="canvasLocation" x="210" y="311.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="About" width="25" height="25"/>
         <image name="Contacts" width="24" height="20"/>
+        <image name="Female" width="16" height="20"/>
         <image name="History" width="25" height="25"/>
     </resources>
 </document>

@@ -44,6 +44,8 @@
 		B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE061D470BC900E0863D /* MessageCenterViewController.m */; };
 		B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */; };
 		B8D6FE0D1D473E0400E0863D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */; };
+		B8EA649F1D55CCBF004BDDB3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EA649D1D55CCBF004BDDB3 /* DetailViewController.m */; };
+		B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EA649E1D55CCBF004BDDB3 /* DetailViewController.xib */; };
 		B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB66201D483BF3002AC1F4 /* CampusTrafficViewController.m */; };
 		B8EB66231D483BF3002AC1F4 /* CampusTrafficViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EB66211D483BF3002AC1F4 /* CampusTrafficViewController.xib */; };
 		B8EB66271D483C0D002AC1F4 /* CampusBikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB66251D483C0D002AC1F4 /* CampusBikeViewController.m */; };
@@ -120,6 +122,9 @@
 		B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
 		B8D6FE0A1D473E0400E0863D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		B8EA649C1D55CCBF004BDDB3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B8EA649D1D55CCBF004BDDB3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B8EA649E1D55CCBF004BDDB3 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B8EB661F1D483BF3002AC1F4 /* CampusTrafficViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusTrafficViewController.h; sourceTree = "<group>"; };
 		B8EB66201D483BF3002AC1F4 /* CampusTrafficViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusTrafficViewController.m; sourceTree = "<group>"; };
 		B8EB66211D483BF3002AC1F4 /* CampusTrafficViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CampusTrafficViewController.xib; sourceTree = "<group>"; };
@@ -253,6 +258,9 @@
 				B8EB662E1D483C2B002AC1F4 /* ChatCenterViewController.h */,
 				B8EB662F1D483C2B002AC1F4 /* ChatCenterViewController.m */,
 				B8EB66301D483C2B002AC1F4 /* ChatCenterViewController.xib */,
+				B8EA649C1D55CCBF004BDDB3 /* DetailViewController.h */,
+				B8EA649D1D55CCBF004BDDB3 /* DetailViewController.m */,
+				B8EA649E1D55CCBF004BDDB3 /* DetailViewController.xib */,
 			);
 			path = ChatCenter;
 			sourceTree = "<group>";
@@ -395,6 +403,7 @@
 			files = (
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
 				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
+				B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */,
 				B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */,
 				B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */,
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
@@ -428,6 +437,7 @@
 				B8D6FDF81D470ACA00E0863D /* User.m in Sources */,
 				B80CD8191D4B803300D0CD20 /* PersonalViewController.m in Sources */,
 				B80CD8281D4B877A00D0CD20 /* FeedbackViewController.m in Sources */,
+				B8EA649F1D55CCBF004BDDB3 /* DetailViewController.m in Sources */,
 				B8D6FDF41D470ACA00E0863D /* AFSecurityPolicy.m in Sources */,
 				B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */,
 				B8EB662C1D483C20002AC1F4 /* SettingsViewController.m in Sources */,
