@@ -66,8 +66,7 @@
     static NSString *CellIdentifier = @"ChatTableViewCell";
     ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ChatTableViewCell" owner:nil options:nil] lastObject];
+        cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:nil options:nil] lastObject];
     }
     
     cell.avatarImgView.layer.masksToBounds = YES;

@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "ChatTableViewCell.h"
+#import "CommentsTableViewCell.h"
 
 #import "User.h"
 #import "Util.h"
@@ -28,10 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"详情";
-    
-    self.commentsArray = @[@{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}];
-    
     self.cellList = @[@"DetailTVCell", @"CommentsTVCell"];
+    
+    self.commentsArray = @[@{@"content" : @"啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊", @"superFloor" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,13 +85,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellList[indexPath.section]];
-    if (cell == nil) {
-        //        cell = ;
-        cell = (indexPath.section == 0) ? [[[NSBundle mainBundle] loadNibNamed:@"ChatTableViewCell" owner:nil options:nil] lastObject] : [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:self.cellList[indexPath.section]];
-    }
     switch (indexPath.section) {
-        case 0:
+        case 0:{
+            static NSString *CellIdentifier1 = @"ChatTableViewCell";
+            ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier1 owner:nil options:nil] lastObject];
+            }
             cell.avatarImgView.image = [UIImage imageNamed:self.chatInfo[@"avatar"]];
             cell.nameLbl.text = self.chatInfo[@"name"];
             cell.genderImgView.image = [UIImage imageNamed:([self.chatInfo[@"gender"] integerValue] == 1) ? @"Male" : @"Female"];
@@ -99,14 +99,46 @@
             cell.placeLbl.text = self.chatInfo[@"place"];
             cell.contentLbl.text = self.chatInfo[@"content"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
             break;
-        case 1:
-            cell.textLabel.text = @"1";
+        case 1:{
+            static NSString *CellIdentifier2 = @"CommentsTableViewCell";
+            CommentsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier2 owner:nil options:nil] lastObject];
+            }
+            NSString *superFloor = [NSString stringWithFormat:@"%@", self.commentsArray[indexPath.row][@"superFloor"]];
+            cell.contentLbl.text = ([superFloor isEqual:@"(null)"]) ? self.commentsArray[indexPath.row][@"content"] : [NSString stringWithFormat:@"@%@L：%@", superFloor, self.commentsArray[indexPath.row][@"content"]];
+            return cell;
+        }
             break;
         default:
+            return nil;
             break;
     }
-    return cell;
+//    ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellList[indexPath.section]];
+//    if (cell == nil) {
+//        //        cell = ;
+//        cell = (indexPath.section == 0) ? [[[NSBundle mainBundle] loadNibNamed:@"ChatTableViewCell" owner:nil options:nil] lastObject] : [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:self.cellList[indexPath.section]];
+//    }
+//    switch (indexPath.section) {
+//        case 0:
+//            cell.avatarImgView.image = [UIImage imageNamed:self.chatInfo[@"avatar"]];
+//            cell.nameLbl.text = self.chatInfo[@"name"];
+//            cell.genderImgView.image = [UIImage imageNamed:([self.chatInfo[@"gender"] integerValue] == 1) ? @"Male" : @"Female"];
+//            cell.timeLbl.text = self.chatInfo[@"time"];
+//            cell.placeLbl.text = self.chatInfo[@"place"];
+//            cell.contentLbl.text = self.chatInfo[@"content"];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            break;
+//        case 1:
+//            cell.textLabel.text = @"1";
+//            break;
+//        default:
+//            break;
+//    }
+//    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
