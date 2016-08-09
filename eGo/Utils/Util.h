@@ -18,5 +18,6 @@
 + (NSString *)getFilePathWithFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;
 + (BOOL)removeFileByFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;
 + (UIImage *)getPhotoImageWithPhotoName:(NSString *)photoName;
++ (UIImage *)setImage:(UIImage *)image withWidth:(float)width andHeight:(float)height;
 
 @end

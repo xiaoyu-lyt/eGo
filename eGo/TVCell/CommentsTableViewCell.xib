@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="Zn8-Hl-2dJ">
@@ -60,15 +60,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhQ-lM-Yfp">
-                        <rect key="frame" x="212" y="93" width="46" height="25"/>
-                        <state key="normal" image="About"/>
+                        <rect key="frame" x="256" y="93" width="24" height="25"/>
+                        <state key="normal" image="Like"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-4P-IY1">
-                        <rect key="frame" x="266" y="93" width="46" height="22"/>
+                        <rect key="frame" x="288" y="93" width="24" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="46" id="JtA-2n-tN8"/>
+                            <constraint firstAttribute="width" constant="24" id="JtA-2n-tN8"/>
                         </constraints>
-                        <state key="normal" image="Contacts"/>
+                        <state key="normal" image="Comment"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -110,8 +110,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="About" width="25" height="25"/>
-        <image name="Contacts" width="24" height="20"/>
+        <image name="Comment" width="12" height="12"/>
         <image name="DefaultImage" width="60" height="60"/>
+        <image name="Like" width="12" height="12"/>
     </resources>
 </document>

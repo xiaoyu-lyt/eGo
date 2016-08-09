@@ -140,6 +140,7 @@
             }
             break;
         case 2:
+            cell.textLabel.textColor = [UIColor redColor];
             cell.imageView.image = [UIImage imageNamed:@"Exit"];
             break;
         default:

@@ -2,28 +2,31 @@
 //  CampusBikeViewController.m
 //  eGo
 //
-//  Created by 萧宇 on 8/7/16.
+//  Created by 萧宇 on 8/8/16.
 //  Copyright © 2016 萧宇. All rights reserved.
 //
 
 #import "CampusBikeViewController.h"
-#import "AdCollectionViewCell.h"
+#import "DLPageView.h"
 
 #import "User.h"
 #import "Util.h"
 #import "AFNetworking.h"
 
-@interface CampusBikeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface CampusBikeViewController ()<DLPageViewDelegate, DLPageViewDatasource, UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UICollectionView *adCV;
-@property (strong, nonatomic) IBOutlet UIImageView *img1;
-@property (strong, nonatomic) IBOutlet UIImageView *img2;
-@property (strong, nonatomic) IBOutlet UIImageView *img3;
+@property (strong, nonatomic) IBOutlet UITableView *inputTV;
+@property (strong, nonatomic) IBOutlet UITableView *historyTV;
+@property (strong, nonatomic) IBOutlet UIButton *cleanBtn;
+
+@property (nonatomic, strong) NSArray *bannerImgArray;
+@property (nonatomic, strong) DLPageView *adBannerView;
+@property (nonatomic, strong) NSArray<NSDictionary *> *historyArray;
 
 @end
 
-@implementation CampusBikeViewController{
-    NSArray *_image;
+@implementation CampusBikeViewController {
+    NSArray *_imgArray;
 }
 
 - (void)viewDidLoad {
@@ -31,30 +34,30 @@
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
     
-    UISwipeGestureRecognizer *preViewSwip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(preView:)];
-    [preViewSwip setDirection:UISwipeGestureRecognizerDirectionRight];
-    [self.adCV addGestureRecognizer:preViewSwip];
-    UISwipeGestureRecognizer *nextViewSwip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(nextView:)];
-    [nextViewSwip setDirection:UISwipeGestureRecognizerDirectionLeft];
-    [self.adCV addGestureRecognizer:nextViewSwip];
+    self.bannerImgArray = @[@"Background", @"DefaultImage"];
+    [self addAdBannerView];
     
-    self.adCV.scrollEnabled = NO;
-    _image = @[@"DefaultImage", @"Background", @"AppLogo"];
-    self.img1.image = [UIImage imageNamed:@"Male"];
+    _imgArray = @[@"Origin", @"Destination"];
+    self.historyArray = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.adCV.delegate = self;
-    self.adCV.dataSource = self;
+    self.inputTV.delegate = self;
+    self.inputTV.dataSource = self;
+    self.historyTV.delegate = self;
+    self.historyTV.dataSource = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.adCV.delegate = nil;
-    self.adCV.dataSource = nil;
+    self.inputTV.delegate = nil;
+    self.inputTV.dataSource = nil;
+    self.historyTV.delegate = nil;
+    self.historyTV.dataSource = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,94 +65,72 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)preView:(UISwipeGestureRecognizer *)sender {
-    NSIndexPath *current = self.adCV.indexPathsForVisibleItems.firstObject;
-    NSLog(@"%ld", (long)current.row);
-    long nextRow = current.row - 1;
-    long nextSection = current.section;
-    if (nextRow == -1) {
-        nextRow = 2;
-    }
-    
-    switch (nextRow) {
-        case 0:
-            self.img1.image = [UIImage imageNamed:@"Male"];
-            self.img2.image = [UIImage imageNamed:@"Female"];
-            self.img3.image = [UIImage imageNamed:@"Female"];
-            break;
-        case 1:
-            self.img1.image = [UIImage imageNamed:@"Female"];
-            self.img2.image = [UIImage imageNamed:@"Male"];
-            self.img3.image = [UIImage imageNamed:@"Female"];
-            break;
-        case 2:
-            self.img1.image = [UIImage imageNamed:@"Female"];
-            self.img2.image = [UIImage imageNamed:@"Female"];
-            self.img3.image = [UIImage imageNamed:@"Male"];
-            break;
-        default:
-            break;
-    }
-    NSIndexPath *next = [NSIndexPath indexPathForRow:nextRow inSection:nextSection];
-    [self.adCV scrollToItemAtIndexPath:next atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
+- (void)addAdBannerView {
+    self.adBannerView = [[DLPageView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width * 2 / 5)];
+    self.adBannerView.delegate = self;
+    self.adBannerView.datasource = self;
+    // 消除因NavigationController引起的顶部空白
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view addSubview:self.adBannerView];
 }
 
-- (void)nextView:(UISwipeGestureRecognizer *)sender {
-    NSIndexPath *current = self.adCV.indexPathsForVisibleItems.firstObject;
-    NSLog(@"%ld", (long)current.row);
-    long nextRow = current.row + 1;
-    long nextSection = current.section;
-    if (nextRow == 3) {
-        nextRow = 0;
-    }
-    
-    switch (nextRow) {
-        case 0:
-            self.img1.image = [UIImage imageNamed:@"Male"];
-            self.img2.image = [UIImage imageNamed:@"Female"];
-            self.img3.image = [UIImage imageNamed:@"Female"];
-            break;
-        case 1:
-            self.img1.image = [UIImage imageNamed:@"Female"];
-            self.img2.image = [UIImage imageNamed:@"Male"];
-            self.img3.image = [UIImage imageNamed:@"Female"];
-            break;
-        case 2:
-            self.img1.image = [UIImage imageNamed:@"Female"];
-            self.img2.image = [UIImage imageNamed:@"Female"];
-            self.img3.image = [UIImage imageNamed:@"Male"];
-            break;
-        default:
-            break;
-    }
-    NSIndexPath *next = [NSIndexPath indexPathForRow:nextRow inSection:nextSection];
-    [self.adCV scrollToItemAtIndexPath:next atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+- (IBAction)searchBtnClicked:(id)sender {
+    NSLog(@"searching");
 }
 
-#pragma mark - CollectionView
+#pragma mark - DLPageViewDatasource
+- (NSInteger)numberOfPagesInPageView:(DLPageView *)pageView {
+    return self.bannerImgArray.count;
+}
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (UIView *)pageView:(DLPageView *)pageView viewForPageAtIndexPath:(NSIndexPath *)indexPath {
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.adBannerView.frame.size.width, self.adBannerView.frame.size.height)];
+    imgView.image = [UIImage imageNamed:self.bannerImgArray[indexPath.row]];
+    return imgView;
+}
+
+#pragma mark - UITableViewDatasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return (tableView == self.inputTV) ? 2 : self.historyArray.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"AdCollectionViewCell";
-    [collectionView registerClass:[AdCollectionViewCell class] forCellWithReuseIdentifier:CellIdentifier];
-    AdCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.adImgView.image = [UIImage imageNamed:_image[indexPath.row]];
-    return cell;
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width / 3);
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.inputTV) {
+        static NSString *CellIdentifier = @"InputTCCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        cell.imageView.image = [UIImage imageNamed:_imgArray[indexPath.row]];
+        cell.textLabel.text = (indexPath.row == 0) ? @"我的位置" : @"";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    } else if (tableView == self.historyTV) {
+        static NSString *CellIdentifier = @"HistoryTVCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        cell.imageView.image = [Util setImage:[UIImage imageNamed:@"History"] withWidth:12.0 andHeight:12.0];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", self.historyArray[indexPath.row][@"origin"], self.historyArray[indexPath.row][@"destination"]];
+        return cell;
+    }
+    return nil;
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(-15.0, 0.0, 0.0, 0.0);
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

@@ -48,32 +48,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZZ-JU-Zqa">
-                        <rect key="frame" x="8" y="64" width="304" height="21"/>
+                        <rect key="frame" x="8" y="64" width="304" height="26"/>
+                        <color key="backgroundColor" white="0.98999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9G-J5-Ywc">
-                        <rect key="frame" x="16" y="93" width="96" height="32"/>
+                        <rect key="frame" x="16" y="98" width="96" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" image="About">
+                        <state key="normal" image="Like">
                             <color key="titleColor" red="0.039215686270000001" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xr-tj-u2j">
-                        <rect key="frame" x="209" y="93" width="95" height="32"/>
+                        <rect key="frame" x="209" y="98" width="95" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" image="History">
-                            <color key="titleColor" red="0.039215686270000001" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P77-h1-AYA">
-                        <rect key="frame" x="113" y="93" width="95" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="P77-h1-AYA" secondAttribute="height" multiplier="3:1" id="vlZ-IY-ue8"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" image="Contacts">
+                        <state key="normal" image="Share">
                             <color key="titleColor" red="0.039215686270000001" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -84,6 +75,16 @@
                             <constraint firstAttribute="width" secondItem="v2A-dg-aQK" secondAttribute="height" multiplier="1:1" id="WyJ-ra-vCf"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P77-h1-AYA">
+                        <rect key="frame" x="113" y="98" width="95" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="P77-h1-AYA" secondAttribute="height" multiplier="7:2" id="vlZ-IY-ue8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" image="Comment">
+                            <color key="titleColor" red="0.039215686270000001" green="0.37647058820000001" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="N9G-J5-Ywc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Dkq-bk-kgG"/>
@@ -114,6 +115,11 @@
                     <constraint firstAttribute="bottomMargin" secondItem="9xr-tj-u2j" secondAttribute="bottom" constant="8" id="yau-IA-tUd"/>
                     <constraint firstItem="N9G-J5-Ywc" firstAttribute="height" secondItem="P77-h1-AYA" secondAttribute="height" id="ze7-qc-DTk"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                        <real key="value" value="7.5"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImgView" destination="IBw-8g-7L1" id="QXE-Wc-kiF"/>
@@ -130,9 +136,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="About" width="25" height="25"/>
-        <image name="Contacts" width="24" height="20"/>
+        <image name="Comment" width="12" height="12"/>
         <image name="Female" width="16" height="20"/>
-        <image name="History" width="25" height="25"/>
+        <image name="Like" width="12" height="12"/>
+        <image name="Share" width="12" height="12"/>
     </resources>
 </document>

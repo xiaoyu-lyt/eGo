@@ -70,4 +70,21 @@
     }
 }
 
+/**
+ *  设置图片大小
+ *
+ *  @param image  要设置的图片
+ *  @param width  宽度
+ *  @param height 高度
+ *
+ *  @return 设置后的图片
+ */
++ (UIImage *)setImage:(UIImage *)image withWidth:(float)width andHeight:(float)height {
+    UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    [image drawInRect:CGRectMake(0, 0, width, height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
 @end
