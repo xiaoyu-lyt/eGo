@@ -19,6 +19,8 @@
 		B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */; };
 		B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */; };
 		B830651A1D56139C00A97ED3 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */; };
+		B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */; };
+		B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */; };
 		B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842EA361D4B57DB005C1ADC /* AdViewController.m */; };
 		B87F8CB01D587832006D875E /* DLPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CAF1D587832006D875E /* DLPageView.m */; };
 		B87F8CB41D58788B006D875E /* CampusBikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CB21D58788B006D875E /* CampusBikeViewController.m */; };
@@ -79,6 +81,9 @@
 		B83065161D56139C00A97ED3 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
 		B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
 		B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		B83728EE1D5ADDFC00FE77E8 /* SelectSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSiteViewController.h; sourceTree = "<group>"; };
+		B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSiteViewController.m; sourceTree = "<group>"; };
+		B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSiteViewController.xib; sourceTree = "<group>"; };
 		B842EA351D4B57DB005C1ADC /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
 		B842EA361D4B57DB005C1ADC /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
 		B87F8CAE1D587832006D875E /* DLPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLPageView.h; sourceTree = "<group>"; };
@@ -249,6 +254,9 @@
 				B87F8CB11D58788B006D875E /* CampusBikeViewController.h */,
 				B87F8CB21D58788B006D875E /* CampusBikeViewController.m */,
 				B87F8CB31D58788B006D875E /* CampusBikeViewController.xib */,
+				B83728EE1D5ADDFC00FE77E8 /* SelectSiteViewController.h */,
+				B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */,
+				B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */,
 			);
 			path = CampusBike;
 			sourceTree = "<group>";
@@ -417,6 +425,7 @@
 				B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */,
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
 				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
+				B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */,
 				B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */,
 				B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */,
 				B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */,
@@ -473,6 +482,7 @@
 				B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */,
 				B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */,
 				B8D6FDBD1D4707FA00E0863D /* main.m in Sources */,
+				B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */,
 				B8EB66311D483C2B002AC1F4 /* ChatCenterViewController.m in Sources */,
 				B8D6FE031D470B1800E0863D /* LoginViewController.m in Sources */,
 			);

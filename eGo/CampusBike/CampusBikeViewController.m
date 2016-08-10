@@ -7,13 +7,14 @@
 //
 
 #import "CampusBikeViewController.h"
+#import "SelectSiteViewController.h"
 #import "DLPageView.h"
 
 #import "User.h"
 #import "Util.h"
 #import "AFNetworking.h"
 
-@interface CampusBikeViewController ()<DLPageViewDelegate, DLPageViewDatasource, UITableViewDelegate, UITableViewDataSource>
+@interface CampusBikeViewController ()<DLPageViewDelegate, DLPageViewDatasource, SelectSiteDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *inputTV;
 @property (strong, nonatomic) IBOutlet UITableView *historyTV;
@@ -38,7 +39,7 @@
     [self addAdBannerView];
     
     _imgArray = @[@"Origin", @"Destination"];
-    self.historyArray = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
+    self.historyArray = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
     
 }
 
@@ -54,8 +55,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.inputTV.delegate = nil;
-    self.inputTV.dataSource = nil;
+//    self.inputTV.delegate = nil;
+//    self.inputTV.dataSource = nil;
     self.historyTV.delegate = nil;
     self.historyTV.dataSource = nil;
 }
@@ -87,6 +88,25 @@
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.adBannerView.frame.size.width, self.adBannerView.frame.size.height)];
     imgView.image = [UIImage imageNamed:self.bannerImgArray[indexPath.row]];
     return imgView;
+}
+
+#pragma mark - SelectSiteDelegate
+
+- (void)site:(NSString *)site selectedForType:(SiteType)type {
+    switch (type) {
+        case SiteTypeOrigin:{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site;
+        }
+            break;
+        case SiteTypeDestination:{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site;
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - UITableViewDatasource
@@ -131,6 +151,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SelectSiteViewController *selectSiteVC = [[SelectSiteViewController alloc] init];
+    selectSiteVC.site = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    switch (indexPath.row) {
+        case 0:
+            selectSiteVC.siteType = SiteTypeOrigin;
+            break;
+        case 1:
+            selectSiteVC.siteType = SiteTypeDestination;
+        default:
+            break;
+    }
+    selectSiteVC.delegate = self;
+    [self showViewController:selectSiteVC sender:nil];
 }
 
 /*

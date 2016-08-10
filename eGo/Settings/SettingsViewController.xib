@@ -32,19 +32,19 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXB-5n-gIl">
-                            <rect key="frame" x="156" y="117" width="63.5" height="29"/>
+                            <rect key="frame" x="156" y="117" width="64" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-zv-msh">
-                            <rect key="frame" x="157" y="154" width="60.5" height="17"/>
+                            <rect key="frame" x="157" y="154" width="61" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Male" translatesAutoresizingMaskIntoConstraints="NO" id="yYJ-Qe-8fz">
-                            <rect key="frame" x="219.5" y="117" width="8" height="10.5"/>
+                            <rect key="frame" x="220" y="117" width="8" height="11"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="yYJ-Qe-8fz" secondAttribute="height" multiplier="4:5" id="KaE-vs-uII"/>
                                 <constraint firstAttribute="width" constant="8" id="WvD-Fl-tB3"/>

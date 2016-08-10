@@ -8,6 +8,9 @@
 
 #import "FriendsViewController.h"
 
+#import "Util.h"
+#import "AFNetworking.h"
+
 @interface FriendsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -27,7 +30,7 @@
     UIBarButtonItem *addBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend:)];
     self.navigationItem.rightBarButtonItem = addBarBtn;
     
-    self.friendsArray = [@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"颜晨倩", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"Hello", @"time" : @"12:23"}] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+    self.friendsArray = [@[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"萧宇", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"Hello", @"time" : @"12:23"}] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1[@"name"] compare:obj2[@"name"]];
     }];
 }
@@ -79,7 +82,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    cell.imageView.image = [UIImage imageNamed:self.friendsArray[indexPath.row][@"photo_name"]];
+    cell.imageView.image = [Util setImage:[UIImage imageNamed:self.friendsArray[indexPath.row][@"photo_name"]] withWidth:36.0 andHeight:36.0];
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 18.0;
     cell.textLabel.text = self.friendsArray[indexPath.row][@"name"];
     return cell;
 }

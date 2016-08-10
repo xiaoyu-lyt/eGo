@@ -38,7 +38,7 @@
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
     
-    self.operations = @[@[@"个人信息", @"好友列表", @"出行记录", @"消息中心"], @[@"清空缓存", @"意见反馈", @"关于eGo"], @[@"注销"]];
+    self.operations = @[@[@"个人信息", @"好友列表", @"消息中心", @"车辆管理", @"出行记录"], @[@"清空缓存", @"意见反馈", @"关于eGo"], @[@"注销"]];
     [self.userPhotoImg tapToShow];
     
 }
@@ -49,7 +49,7 @@
     self.userPhotoImg.layer.masksToBounds = YES;
     self.userPhotoImg.layer.cornerRadius = self.userPhotoImg.frame.size.width / 2;
     self.userPhotoImg.image = [Util getPhotoImageWithPhotoName:[User sharedUser].photoName];
-    self.genderImg.image = ([[User sharedUser].gender integerValue] == 1) ? [UIImage imageNamed:@"Male"] : [UIImage imageNamed:@"Female"];
+    self.genderImg.image = ([[User sharedUser].gender integerValue] == 0) ? [UIImage imageNamed:@"Male"] : [UIImage imageNamed:@"Female"];
     self.nameLbl.text = ([User sharedUser].name.length == 0) ? @"某同学" : [User sharedUser].name;
     self.signatureLbl.text = ([User sharedUser].signature.length > 15) ? [NSString stringWithFormat:@"%@...", [[User sharedUser].signature substringToIndex:15]] : [User sharedUser].signature;
     
@@ -95,6 +95,10 @@
     return self.operations[section].count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 12.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"SettingsTVCell";
@@ -114,10 +118,13 @@
                     cell.imageView.image = [UIImage imageNamed:@"Contacts"];
                     break;
                 case 2:
-                    cell.imageView.image = [UIImage imageNamed:@"History"];
+                    cell.imageView.image = [UIImage imageNamed:@"Message"];
                     break;
                 case 3:
-                    cell.imageView.image = [UIImage imageNamed:@"Message"];
+                    cell.imageView.image = [UIImage imageNamed:@"BikeManage"];
+                    break;
+                case 4:
+                    cell.imageView.image = [UIImage imageNamed:@"History"];
                     break;
                 default:
                     break;
@@ -162,10 +169,12 @@
                     [self showViewController:[[FriendsViewController alloc] init] sender:nil];
                     break;
                 case 2:
-                    [self showViewController:[[HistoryViewController alloc] init] sender:nil];
+                    [self showViewController:[[MessageCenterViewController alloc] init] sender:nil];
                     break;
                 case 3:
-                    [self showViewController:[[MessageCenterViewController alloc] init] sender:nil];
+                    break;
+                case 4:
+                    [self showViewController:[[HistoryViewController alloc] init] sender:nil];
                     break;
                 default:
                     break;
@@ -194,8 +203,10 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 20.0;
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 防止滑动过程中其他cell也变成红色，因为目前没找到其他解决办法，就先这样吧
+    cell.detailTextLabel.text = @"";
+    cell.textLabel.textColor = [UIColor blackColor];
 }
 
 /*

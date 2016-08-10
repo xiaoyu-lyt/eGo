@@ -10,6 +10,9 @@
 #import "MessageTableViewCell.h"
 #import "FriendsViewController.h"
 
+#import "Util.h"
+#import "AFNetworking.h"
+
 @interface MessageCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *messageTV;
@@ -25,7 +28,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"消息中心";
     
-    UIBarButtonItem *friendsBarBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Settings"] style:UIBarButtonItemStyleDone target:self action:@selector(friends:)];
+    UIBarButtonItem *friendsBarBtn = [[UIBarButtonItem alloc] initWithImage:[Util setImage:[UIImage imageNamed:@"Contacts"] withWidth:18.0 andHeight:18.0] style:UIBarButtonItemStyleDone target:self action:@selector(friends:)];
     self.navigationItem.rightBarButtonItem = friendsBarBtn;
     
     self.messageTV.delegate = self;
@@ -68,7 +71,9 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MessageTableViewCell" owner:nil options:nil] lastObject];
     }
     
-    cell.imageView.image = [UIImage imageNamed:self.messageArray[indexPath.section][indexPath.row][@"photo_name"]];
+    cell.imageView.image = [Util setImage:[UIImage imageNamed:self.messageArray[indexPath.section][indexPath.row][@"photo_name"]] withWidth:56.0 andHeight:56.0];
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.cornerRadius = 28.0;
     cell.nameLbl.text = self.messageArray[indexPath.section][indexPath.row][@"name"];
     cell.messageLbl.text = self.messageArray[indexPath.section][indexPath.row][@"message"];
     cell.timeLbl.text = self.messageArray[indexPath.section][indexPath.row][@"time"];

@@ -81,6 +81,17 @@
     return self.userInfoArray.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 80;
+    }
+    return 50;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"UserInfoTVCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -97,7 +108,7 @@
             cell.detailTextLabel.text = [User sharedUser].nickname;
             break;
         case 2:
-            cell.detailTextLabel.text = ([[[User sharedUser].user objectForKey:@"gender"] integerValue] == 1) ? @"男" : @"女";
+            cell.detailTextLabel.text = ([[[User sharedUser].user objectForKey:@"gender"] integerValue] == 0) ? @"男" : @"女";
             break;
         case 3:
             cell.detailTextLabel.text = [User sharedUser].tel;
@@ -158,15 +169,10 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 80;
-    }
-    return 50;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 防止滑动过程中其他cell也变成红色，因为目前没找到其他解决办法，就先这样吧
+    cell.detailTextLabel.text = @"";
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 /*
