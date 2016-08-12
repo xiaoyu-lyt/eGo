@@ -26,6 +26,8 @@
 		B87F8CB41D58788B006D875E /* CampusBikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CB21D58788B006D875E /* CampusBikeViewController.m */; };
 		B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87F8CB31D58788B006D875E /* CampusBikeViewController.xib */; };
 		B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */; };
+		B8ABA4E81D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8ABA4E61D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m */; };
+		B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8ABA4E71D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib */; };
 		B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */; };
 		B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */; };
 		B8BBF72B1D51EF2A0089D89C /* ChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BBF7291D51EF2A0089D89C /* ChatTableViewCell.m */; };
@@ -92,6 +94,9 @@
 		B87F8CB21D58788B006D875E /* CampusBikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusBikeViewController.m; sourceTree = "<group>"; };
 		B87F8CB31D58788B006D875E /* CampusBikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CampusBikeViewController.xib; sourceTree = "<group>"; };
 		B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		B8ABA4E51D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableBikeTableViewCell.h; sourceTree = "<group>"; };
+		B8ABA4E61D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableBikeTableViewCell.m; sourceTree = "<group>"; };
+		B8ABA4E71D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvailableBikeTableViewCell.xib; sourceTree = "<group>"; };
 		B8B660EB1D4F6C01007CE65A /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		B8B660EC1D4F6C01007CE65A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		B8B660ED1D4F6C01007CE65A /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
@@ -177,6 +182,9 @@
 				B83065161D56139C00A97ED3 /* CommentsTableViewCell.h */,
 				B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */,
 				B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */,
+				B8ABA4E51D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.h */,
+				B8ABA4E61D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m */,
+				B8ABA4E71D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib */,
 			);
 			path = TVCell;
 			sourceTree = "<group>";
@@ -424,6 +432,7 @@
 			files = (
 				B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */,
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
+				B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */,
 				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
 				B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */,
 				B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */,
@@ -474,6 +483,7 @@
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
 				B8D6FDF51D470ACA00E0863D /* AFURLRequestSerialization.m in Sources */,
 				B8EB66351D48B32A002AC1F4 /* UIImageView+Utils.m in Sources */,
+				B8ABA4E81D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m in Sources */,
 				B8D6FDF31D470ACA00E0863D /* AFNetworkReachabilityManager.m in Sources */,
 				B87F8CB01D587832006D875E /* DLPageView.m in Sources */,
 				B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */,
