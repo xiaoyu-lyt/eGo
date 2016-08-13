@@ -13,6 +13,9 @@
 #import "UIImageView+Utils.h"
 #import "UIViewController+Utils.h"
 
+// API路由前缀，用于拼接完整的API路由
+static NSString* const kApiUrl = @"http://localhost/coding/API/eGoServer/index.php/Api/";
+
 @interface Util : NSObject
 
 + (NSString *)getFilePathWithFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;
