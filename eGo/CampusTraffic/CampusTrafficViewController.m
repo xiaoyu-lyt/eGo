@@ -8,9 +8,14 @@
 
 #import "CampusTrafficViewController.h"
 
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <MAMapKit/MAMapKit.h>
+
 #import "Util.h"
 
-@interface CampusTrafficViewController ()
+@interface CampusTrafficViewController ()<MAMapViewDelegate>
+
+@property (nonatomic, strong) MAMapView *mapView;
 
 @end
 
@@ -20,6 +25,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
+    
+    self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 90)];
+    [self.view addSubview:self.mapView];
 }
 
 - (void)didReceiveMemoryWarning {
