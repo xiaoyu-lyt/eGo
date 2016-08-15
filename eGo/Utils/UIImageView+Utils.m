@@ -114,7 +114,7 @@
     NSArray *handlers = @[^{
         UIImageWriteToSavedPhotosAlbum(self.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }];
-    [[self getViewController] alertSheetMessage:@"" withTitles:titles andHandlers:handlers];
+    [[Util getViewController:self] alertSheetMessage:@"" withTitles:titles andHandlers:handlers];
 }
 
 /**
@@ -199,21 +199,6 @@
             break;
     }
     
-}
-
-/**
- *  获取当前图片所属Controller，用于弹出菜单
- *
- *  @return 当前图片所属Controller
- */
--(UIViewController*)getViewController {
-    for (UIView* next = [self superview]; next; next = next.superview) {
-        UIResponder* nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            return (UIViewController*)nextResponder;
-        }
-    }
-    return nil;
 }
 
 /**

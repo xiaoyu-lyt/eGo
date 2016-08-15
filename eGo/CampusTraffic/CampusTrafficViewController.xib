@@ -1,19 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CampusTrafficViewController">
             <connections>
+                <outlet property="searchBar" destination="e9P-bK-9T1" id="3H0-cQ-Oex"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar alpha="0.75" contentMode="redraw" placeholder="校园导游" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-bK-9T1">
+                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
+                </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGY-hK-Nhv">
+                    <rect key="frame" x="328" y="591" width="39" height="22"/>
+                    <state key="normal" image="ZoomLevelUp"/>
+                    <connections>
+                        <action selector="zoomLevelUpBtnClicked:" destination="-1" eventType="touchUpInside" id="a6g-eE-9VT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-Im-aTc">
+                    <rect key="frame" x="294" y="591" width="34" height="22"/>
+                    <state key="normal" image="ZoomLevelDown"/>
+                    <connections>
+                        <action selector="zoomLevelDownBtnClicked:" destination="-1" eventType="touchUpInside" id="FTm-X3-ttE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTo-fH-RGu">
+                    <rect key="frame" x="12" y="576" width="35" height="35"/>
+                    <state key="normal" image="Locate"/>
+                    <connections>
+                        <action selector="locateBtnClicked:" destination="-1" eventType="touchUpInside" id="0RS-zl-1QQ"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="uTo-fH-RGu" secondAttribute="bottom" constant="56" id="5gQ-D4-frB"/>
+                <constraint firstItem="VGY-hK-Nhv" firstAttribute="leading" secondItem="yJi-Im-aTc" secondAttribute="trailing" id="9Cc-6c-hWB"/>
+                <constraint firstItem="yJi-Im-aTc" firstAttribute="centerY" secondItem="VGY-hK-Nhv" secondAttribute="centerY" id="Cqo-KE-3nf"/>
+                <constraint firstItem="e9P-bK-9T1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IcP-Iy-EO4"/>
+                <constraint firstItem="VGY-hK-Nhv" firstAttribute="centerY" secondItem="uTo-fH-RGu" secondAttribute="centerY" constant="8" id="Vyw-Sm-P9A"/>
+                <constraint firstItem="uTo-fH-RGu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="b5i-fl-QRN"/>
+                <constraint firstAttribute="trailing" secondItem="e9P-bK-9T1" secondAttribute="trailing" id="jnU-ci-uJK"/>
+                <constraint firstAttribute="trailing" secondItem="VGY-hK-Nhv" secondAttribute="trailing" constant="8" id="krt-KH-Ko9"/>
+                <constraint firstItem="e9P-bK-9T1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="wU9-ey-RzW"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="211.5" y="30.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Locate" width="35" height="35"/>
+        <image name="ZoomLevelDown" width="34" height="17"/>
+        <image name="ZoomLevelUp" width="39" height="17"/>
+    </resources>
 </document>

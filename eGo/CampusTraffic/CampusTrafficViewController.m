@@ -7,15 +7,16 @@
 //
 
 #import "CampusTrafficViewController.h"
-
-#import <AMapFoundationKit/AMapFoundationKit.h>
-#import <MAMapKit/MAMapKit.h>
+#import "CampusGuideViewController.h"
 
 #import "Util.h"
+#import "AMapManager.h"
 
-@interface CampusTrafficViewController ()<MAMapViewDelegate>
+@interface CampusTrafficViewController ()<UISearchBarDelegate>
 
-@property (nonatomic, strong) MAMapView *mapView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (nonatomic, strong) NSArray *busesLocationArray;
 
 @end
 
@@ -26,13 +27,54 @@
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
     
-    self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 90)];
-    [self.view addSubview:self.mapView];
+    AMapManager *manager = [AMapManager manager];
+    manager.mapView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view insertSubview:manager.mapView atIndex:0];
+    
+    self.searchBar.delegate = self;
+    
+    // 注册循环，每隔5秒获取一次小白位置
+    NSTimer *addAnimatedAnnotationTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(getBusesLocation) userInfo:nil repeats:YES];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:addAnimatedAnnotationTimer forMode:NSRunLoopCommonModes];
+    [self getBusesLocation];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[AMapManager manager] resetMapView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)getBusesLocation {
+    static float latitude = 26.059522, longitude = 119.194197;
+    latitude += 0.0001;
+    longitude += 0.0001;
+    self.busesLocationArray = @[@{@"latitude" : [NSString stringWithFormat:@"%f", latitude], @"longitude" : [NSString stringWithFormat:@"%f", longitude]}];
+    [[AMapManager manager] addAnnotationsWithLocations:self.busesLocationArray];
+}
+
+#pragma mark - ButtonClicked
+
+- (IBAction)locateBtnClicked:(id)sender {
+    [[AMapManager manager] locate];
+}
+- (IBAction)zoomLevelUpBtnClicked:(id)sender {
+    [[AMapManager manager].mapView setZoomLevel:[AMapManager manager].mapView.zoomLevel + 0.3 animated:YES];
+}
+- (IBAction)zoomLevelDownBtnClicked:(id)sender {
+    [[AMapManager manager].mapView setZoomLevel:[AMapManager manager].mapView.zoomLevel - 0.3 animated:YES];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    [self showViewController:[[CampusGuideViewController alloc] init] sender:nil];
+    return NO;
 }
 
 /*

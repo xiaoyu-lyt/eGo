@@ -87,4 +87,19 @@
     return scaledImage;
 }
 
+/**
+ *  获取当前图片所属Controller
+ *
+ *  @return 当前图片所属Controller
+ */
++ (UIViewController*)getViewController:(UIView *)view {
+    for (UIView* next = [view superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
 @end
