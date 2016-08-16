@@ -29,6 +29,7 @@
                 <constraint firstItem="TFx-E4-jRn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nWo-EB-otZ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="270.5" y="217.5"/>
         </view>
     </objects>
 </document>

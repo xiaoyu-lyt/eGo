@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UIView *coverView;
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) NSMutableArray<NSDictionary *> *searchResult;
+@property (nonatomic, strong) NSArray<NSDictionary *> *searchResult;
 @property (nonatomic, strong) NSArray<NSDictionary *> *sitesList;
 
 @end
@@ -56,6 +56,7 @@
 - (void)initSearchBar {
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
+    [self.searchBar becomeFirstResponder];
     self.navigationItem.titleView = self.searchBar;
     self.coverView = [[UIView alloc] initWithFrame:self.view.frame];
     self.coverView.hidden = YES;
@@ -79,6 +80,14 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     searchBar.text = @"";
     [searchBar resignFirstResponder];
+    [self searchBar:searchBar textDidChange:searchBar.text];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSString *string = searchText;
+    NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS %@", @"name", string];
+    self.searchResult = [self.sitesList filteredArrayUsingPredicate:searchPredicate];
+    [self.searchResultTV reloadData];
 }
 
 #pragma mark - UITableViewDelegate
