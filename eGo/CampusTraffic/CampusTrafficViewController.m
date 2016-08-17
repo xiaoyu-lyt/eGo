@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, strong) NSArray *busesLocationArray;
+@property (nonatomic, strong) NSTimer *addAnimatedAnnotationTimer;
 
 @end
 
@@ -27,22 +28,26 @@
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
     
+    self.searchBar.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     AMapManager *manager = [AMapManager manager];
     manager.mapView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view insertSubview:manager.mapView atIndex:0];
     
-    self.searchBar.delegate = self;
-    
     // 注册循环，每隔5秒获取一次小白位置
-    NSTimer *addAnimatedAnnotationTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(getBusesLocation) userInfo:nil repeats:YES];
+    self.addAnimatedAnnotationTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(getBusesLocation) userInfo:nil repeats:YES];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-    [runLoop addTimer:addAnimatedAnnotationTimer forMode:NSRunLoopCommonModes];
+    [runLoop addTimer:self.addAnimatedAnnotationTimer forMode:NSRunLoopCommonModes];
     [self getBusesLocation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[AMapManager manager] resetMapView];
+    [self.addAnimatedAnnotationTimer invalidate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +60,7 @@
     latitude += 0.0001;
     longitude += 0.0001;
     self.busesLocationArray = @[@{@"latitude" : [NSString stringWithFormat:@"%f", latitude], @"longitude" : [NSString stringWithFormat:@"%f", longitude]}];
-    [[AMapManager manager] addAnnotationsWithLocations:self.busesLocationArray];
+    [[AMapManager manager] addBusAnnotationsWithLocations:self.busesLocationArray];
 }
 
 #pragma mark - ButtonClicked

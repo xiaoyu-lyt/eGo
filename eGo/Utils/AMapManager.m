@@ -16,9 +16,12 @@ static const double kRadius = 6371004;
 
 @interface AMapManager()<MAMapViewDelegate, AMapSearchDelegate>
 
-@property (nonatomic) MAUserLocation *userLocation;
+@property (nonatomic, strong) MAUserLocation *userLocation;
+@property (nonatomic, strong) AMapSearchAPI *search;
+
 @property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, strong) NSMutableArray *overlays;
+@property (nonatomic, strong) NSArray<NSDictionary *> *poiSearchResult;
 
 @end
 
@@ -41,6 +44,9 @@ static const double kRadius = 6371004;
         self.mapView.compassOrigin = CGPointMake(self.mapView.compassOrigin.x, 108);
         // 设置地图中心点
         self.mapView.centerCoordinate = CLLocationCoordinate2DMake(26.057000, 119.196000);
+        
+        self.search = [[AMapSearchAPI alloc] init];
+        self.search.delegate = self;
     }
     return self;
 }
@@ -57,9 +63,11 @@ static const double kRadius = 6371004;
 - (void)resetMapView {
     if (self.annotations != nil) {
         [self.mapView removeAnnotations:self.annotations];
+        self.annotations = nil;
     }
     if (self.overlays != nil) {
         [self.mapView removeOverlays:self.overlays];
+        self.overlays = nil;
     }
 }
 
@@ -76,7 +84,13 @@ static const double kRadius = 6371004;
     self.mapView.showsUserLocation = YES;
 }
 
-- (void)addAnnotationsWithLocations:(NSArray *)locations {
+- (void)removeAnnotations {
+    if (self.annotations != nil) {
+        [self.mapView removeAnnotations:self.annotations];
+    }
+}
+
+- (void)addBusAnnotationsWithLocations:(NSArray *)locations {
     [self removeAnnotations];
     self.annotations = [[NSMutableArray alloc] init];
     for (NSDictionary *location in locations) {
@@ -93,10 +107,34 @@ static const double kRadius = 6371004;
     [self.mapView addAnnotations:self.annotations];
 }
 
-- (void)removeAnnotations {
-    if (self.annotations != nil) {
-        [self.mapView removeAnnotations:self.annotations];
+- (void)addSiteAnnotationsWithLocations:(NSArray *)locations {
+    [self removeAnnotations];
+    self.annotations = [[NSMutableArray alloc] init];
+    for (NSDictionary *location in locations) {
+        MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+        pointAnnotation.coordinate = CLLocationCoordinate2DMake([location[@"latitude"] doubleValue], [location[@"longitude"] doubleValue]);
+        pointAnnotation.title = location[@"name"];
+        
+        [self.annotations addObject:pointAnnotation];
     }
+    [self.mapView addAnnotations:self.annotations];
+}
+
+- (void)searchWithPOIKeywords:(NSString *)keywords {
+    AMapPOIAroundSearchRequest *request = [[AMapPOIAroundSearchRequest alloc] init];
+    request.location = [AMapGeoPoint locationWithLatitude:self.userLocation.coordinate.latitude longitude:self.userLocation.coordinate.longitude];
+    request.keywords = keywords;
+    // types属性表示限定搜索POI的类别，默认为：餐饮服务|商务住宅|生活服务
+    // POI的类型共分为20种大类别，分别为：
+    // 汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|
+    // 医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|
+    // 交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施
+    request.types = @"餐饮服务|购物服务|生活服务|体育休闲服务|风景名胜|地名地址信息";
+    request.sortrule = 0;
+    request.requireExtension = YES;
+    
+    //发起周边搜索
+    [_search AMapPOIAroundSearch: request];
 }
 
 // 根据经纬度计算距离
@@ -132,10 +170,19 @@ updatingLocation:(BOOL)updatingLocation
         annotationView.animatesDrop = NO;        //设置标注动画显示，默认为NO
         annotationView.draggable = NO;        //设置标注可以拖动，默认为NO
 //        annotationView.pinColor = MAPinAnnotationColorPurple;
-        annotationView.image = [UIImage imageNamed:@"CampusBus"];
+        UIViewController *currentVC = [Util getViewController:self.mapView];
+        if ([[currentVC class] isEqual:[CampusTrafficViewController class]]) {
+            annotationView.image = [UIImage imageNamed:@"CampusBus"];
+        } else {
+            annotationView.pinColor = MAPinAnnotationColorRed;
+        }
         return annotationView;
     }
     return nil;
+}
+
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view {
+    NSLog(@"a");
 }
 
 // 点击气泡触发事件
@@ -145,6 +192,19 @@ updatingLocation:(BOOL)updatingLocation
     if ([[currentVC class] isEqual:[CampusTrafficViewController class]] && ![view.annotation.title isEqualToString:@"当前位置"]) {
         [currentVC showViewController:[[BusInfoViewController alloc] init] sender:nil];
     }
+}
+
+- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response {
+    if(response.pois.count == 0) {
+        [[Util getViewController:self.mapView].view makeToast:@"未找到相关信息"];
+        return;
+    }
+    
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:response.pois.count];
+    for (AMapPOI *poi in response.pois) {
+        [result addObject:@{@"name" : poi.name, @"latitude" : @(poi.location.latitude), @"longitude" : @(poi.location.longitude)}];
+    }
+    [self addSiteAnnotationsWithLocations:result];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "SiteInfoViewController.h"
 
 @interface SearchViewController ()<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -41,7 +42,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"行政北楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"行政南楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"数计学院", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"风雨操场", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}];
+    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.054522", @"longitude" : @"119.190197"}, @{@"name" : @"行政北楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"行政南楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"数计学院", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"风雨操场", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -77,17 +78,25 @@
     return YES;
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    searchBar.text = @"";
-    [searchBar resignFirstResponder];
-    [self searchBar:searchBar textDidChange:searchBar.text];
-}
-
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     NSString *string = searchText;
     NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"%K CONTAINS %@", @"name", string];
     self.searchResult = [self.sitesList filteredArrayUsingPredicate:searchPredicate];
     [self.searchResultTV reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    SiteInfoViewController *siteInfoVC = [[SiteInfoViewController alloc] init];
+    siteInfoVC.keywords = searchBar.text;
+    [self presentViewController:siteInfoVC animated:YES completion:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    [self searchBar:searchBar textDidChange:searchBar.text];
 }
 
 #pragma mark - UITableViewDelegate
@@ -98,6 +107,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    SiteInfoViewController *siteInfoVC = [[SiteInfoViewController alloc] init];
+    siteInfoVC.site = self.searchResult[indexPath.row];
+    [self presentViewController:siteInfoVC animated:YES completion:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 #pragma mark - UITableViewDatasource

@@ -20,7 +20,9 @@
 
 - (void)resetMapView;
 - (void)locate;
-- (void)addAnnotationsWithLocations:(NSArray *)locations;
 - (void)removeAnnotations;
+- (void)addBusAnnotationsWithLocations:(NSArray *)locations;
+- (void)addSiteAnnotationsWithLocations:(NSArray *)locations;
+- (void)searchWithPOIKeywords:(NSString *)keywords;
 
 @end
