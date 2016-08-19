@@ -29,9 +29,18 @@
 		B86436141D6150EC00BC4E1E /* BusInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86436121D6150EC00BC4E1E /* BusInfoViewController.xib */; };
 		B86436181D616F6B00BC4E1E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B86436161D616F6B00BC4E1E /* SearchViewController.m */; };
 		B86436191D616F6B00BC4E1E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86436171D616F6B00BC4E1E /* SearchViewController.xib */; };
+		B87725451D66A4E40066A52F /* GoHereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87725431D66A4E40066A52F /* GoHereViewController.m */; };
+		B87725461D66A4E40066A52F /* GoHereViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87725441D66A4E40066A52F /* GoHereViewController.xib */; };
 		B87F8CB01D587832006D875E /* DLPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CAF1D587832006D875E /* DLPageView.m */; };
 		B87F8CB41D58788B006D875E /* CampusBikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CB21D58788B006D875E /* CampusBikeViewController.m */; };
 		B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87F8CB31D58788B006D875E /* CampusBikeViewController.xib */; };
+		B89453711D65556F00047708 /* AvailableBikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B894536F1D65556F00047708 /* AvailableBikeViewController.m */; };
+		B89453721D65556F00047708 /* AvailableBikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89453701D65556F00047708 /* AvailableBikeViewController.xib */; };
+		B89453751D6557A100047708 /* DLSlideTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B89453741D6557A100047708 /* DLSlideTabView.m */; };
+		B89453791D655E5B00047708 /* TabOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B89453771D655E5B00047708 /* TabOneViewController.m */; };
+		B894537A1D655E5B00047708 /* TabOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89453781D655E5B00047708 /* TabOneViewController.xib */; };
+		B894537E1D655E6300047708 /* TabTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B894537C1D655E6300047708 /* TabTwoViewController.m */; };
+		B894537F1D655E6300047708 /* TabTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B894537D1D655E6300047708 /* TabTwoViewController.xib */; };
 		B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */; };
 		B8A6547B1D63E726000F9C24 /* SiteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A654791D63E726000F9C24 /* SiteInfoViewController.m */; };
 		B8A6547C1D63E726000F9C24 /* SiteInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A6547A1D63E726000F9C24 /* SiteInfoViewController.xib */; };
@@ -104,11 +113,25 @@
 		B86436151D616F6B00BC4E1E /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		B86436161D616F6B00BC4E1E /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		B86436171D616F6B00BC4E1E /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		B87725421D66A4E40066A52F /* GoHereViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoHereViewController.h; sourceTree = "<group>"; };
+		B87725431D66A4E40066A52F /* GoHereViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoHereViewController.m; sourceTree = "<group>"; };
+		B87725441D66A4E40066A52F /* GoHereViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoHereViewController.xib; sourceTree = "<group>"; };
 		B87F8CAE1D587832006D875E /* DLPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLPageView.h; sourceTree = "<group>"; };
 		B87F8CAF1D587832006D875E /* DLPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLPageView.m; sourceTree = "<group>"; };
 		B87F8CB11D58788B006D875E /* CampusBikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusBikeViewController.h; sourceTree = "<group>"; };
 		B87F8CB21D58788B006D875E /* CampusBikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusBikeViewController.m; sourceTree = "<group>"; };
 		B87F8CB31D58788B006D875E /* CampusBikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CampusBikeViewController.xib; sourceTree = "<group>"; };
+		B894536E1D65556F00047708 /* AvailableBikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableBikeViewController.h; sourceTree = "<group>"; };
+		B894536F1D65556F00047708 /* AvailableBikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableBikeViewController.m; sourceTree = "<group>"; };
+		B89453701D65556F00047708 /* AvailableBikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvailableBikeViewController.xib; sourceTree = "<group>"; };
+		B89453731D6557A100047708 /* DLSlideTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSlideTabView.h; sourceTree = "<group>"; };
+		B89453741D6557A100047708 /* DLSlideTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSlideTabView.m; sourceTree = "<group>"; };
+		B89453761D655E5B00047708 /* TabOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabOneViewController.h; sourceTree = "<group>"; };
+		B89453771D655E5B00047708 /* TabOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabOneViewController.m; sourceTree = "<group>"; };
+		B89453781D655E5B00047708 /* TabOneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabOneViewController.xib; sourceTree = "<group>"; };
+		B894537B1D655E6300047708 /* TabTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabTwoViewController.h; sourceTree = "<group>"; };
+		B894537C1D655E6300047708 /* TabTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabTwoViewController.m; sourceTree = "<group>"; };
+		B894537D1D655E6300047708 /* TabTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabTwoViewController.xib; sourceTree = "<group>"; };
 		B89DB5B71D4C9DB700D17E5E /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		B8A654781D63E726000F9C24 /* SiteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteInfoViewController.h; sourceTree = "<group>"; };
 		B8A654791D63E726000F9C24 /* SiteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteInfoViewController.m; sourceTree = "<group>"; };
@@ -272,6 +295,15 @@
 				B83728EE1D5ADDFC00FE77E8 /* SelectSiteViewController.h */,
 				B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */,
 				B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */,
+				B894536E1D65556F00047708 /* AvailableBikeViewController.h */,
+				B894536F1D65556F00047708 /* AvailableBikeViewController.m */,
+				B89453701D65556F00047708 /* AvailableBikeViewController.xib */,
+				B89453761D655E5B00047708 /* TabOneViewController.h */,
+				B89453771D655E5B00047708 /* TabOneViewController.m */,
+				B89453781D655E5B00047708 /* TabOneViewController.xib */,
+				B894537B1D655E6300047708 /* TabTwoViewController.h */,
+				B894537C1D655E6300047708 /* TabTwoViewController.m */,
+				B894537D1D655E6300047708 /* TabTwoViewController.xib */,
 			);
 			path = CampusBike;
 			sourceTree = "<group>";
@@ -282,6 +314,9 @@
 				B8EB661F1D483BF3002AC1F4 /* CampusTrafficViewController.h */,
 				B8EB66201D483BF3002AC1F4 /* CampusTrafficViewController.m */,
 				B8EB66211D483BF3002AC1F4 /* CampusTrafficViewController.xib */,
+				B86436101D6150EC00BC4E1E /* BusInfoViewController.h */,
+				B86436111D6150EC00BC4E1E /* BusInfoViewController.m */,
+				B86436121D6150EC00BC4E1E /* BusInfoViewController.xib */,
 				B864360B1D61411300BC4E1E /* CampusGuideViewController.h */,
 				B864360C1D61411300BC4E1E /* CampusGuideViewController.m */,
 				B864360D1D61411300BC4E1E /* CampusGuideViewController.xib */,
@@ -291,9 +326,9 @@
 				B8A654781D63E726000F9C24 /* SiteInfoViewController.h */,
 				B8A654791D63E726000F9C24 /* SiteInfoViewController.m */,
 				B8A6547A1D63E726000F9C24 /* SiteInfoViewController.xib */,
-				B86436101D6150EC00BC4E1E /* BusInfoViewController.h */,
-				B86436111D6150EC00BC4E1E /* BusInfoViewController.m */,
-				B86436121D6150EC00BC4E1E /* BusInfoViewController.xib */,
+				B87725421D66A4E40066A52F /* GoHereViewController.h */,
+				B87725431D66A4E40066A52F /* GoHereViewController.m */,
+				B87725441D66A4E40066A52F /* GoHereViewController.xib */,
 			);
 			path = CampusTraffic;
 			sourceTree = "<group>";
@@ -385,6 +420,8 @@
 				B8D6FDED1D470ACA00E0863D /* UIView+Toast.m */,
 				B8F35ABE1D60F1A800D2BD32 /* AMapManager.h */,
 				B8F35ABF1D60F1A800D2BD32 /* AMapManager.m */,
+				B89453731D6557A100047708 /* DLSlideTabView.h */,
+				B89453741D6557A100047708 /* DLSlideTabView.m */,
 				B8EB66331D48B32A002AC1F4 /* UIImageView+Utils.h */,
 				B8EB66341D48B32A002AC1F4 /* UIImageView+Utils.m */,
 				B8D6FDEE1D470ACA00E0863D /* UIViewController+Utils.h */,
@@ -459,14 +496,18 @@
 				B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */,
 				B8A6547C1D63E726000F9C24 /* SiteInfoViewController.xib in Resources */,
 				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
+				B894537A1D655E5B00047708 /* TabOneViewController.xib in Resources */,
 				B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */,
 				B86436141D6150EC00BC4E1E /* BusInfoViewController.xib in Resources */,
 				B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */,
 				B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */,
+				B87725461D66A4E40066A52F /* GoHereViewController.xib in Resources */,
 				B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */,
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
 				B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */,
+				B894537F1D655E6300047708 /* TabTwoViewController.xib in Resources */,
 				B8D6FE041D470B1800E0863D /* LoginViewController.xib in Resources */,
+				B89453721D65556F00047708 /* AvailableBikeViewController.xib in Resources */,
 				B864360F1D61411300BC4E1E /* CampusGuideViewController.xib in Resources */,
 				B8EB66231D483BF3002AC1F4 /* CampusTrafficViewController.xib in Resources */,
 				B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */,
@@ -557,18 +598,23 @@
 				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
 				B86436181D616F6B00BC4E1E /* SearchViewController.m in Sources */,
+				B894537E1D655E6300047708 /* TabTwoViewController.m in Sources */,
 				B8F35AC01D60F1A800D2BD32 /* AMapManager.m in Sources */,
+				B89453751D6557A100047708 /* DLSlideTabView.m in Sources */,
 				B8EB66351D48B32A002AC1F4 /* UIImageView+Utils.m in Sources */,
 				B8ABA4E81D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m in Sources */,
 				B87F8CB01D587832006D875E /* DLPageView.m in Sources */,
+				B89453791D655E5B00047708 /* TabOneViewController.m in Sources */,
 				B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */,
 				B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */,
 				B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */,
+				B89453711D65556F00047708 /* AvailableBikeViewController.m in Sources */,
 				B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */,
 				B8D6FDBD1D4707FA00E0863D /* main.m in Sources */,
 				B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */,
 				B8EB66311D483C2B002AC1F4 /* ChatCenterViewController.m in Sources */,
 				B8D6FE031D470B1800E0863D /* LoginViewController.m in Sources */,
+				B87725451D66A4E40066A52F /* GoHereViewController.m in Sources */,
 				B864360E1D61411300BC4E1E /* CampusGuideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

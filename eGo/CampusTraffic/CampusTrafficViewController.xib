@@ -31,18 +31,18 @@
                         <action selector="zoomLevelUpBtnClicked:" destination="-1" eventType="touchUpInside" id="a6g-eE-9VT"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-Im-aTc">
-                    <rect key="frame" x="294" y="593" width="34" height="22"/>
-                    <state key="normal" image="ZoomLevelDown"/>
-                    <connections>
-                        <action selector="zoomLevelDownBtnClicked:" destination="-1" eventType="touchUpInside" id="FTm-X3-ttE"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTo-fH-RGu">
                     <rect key="frame" x="12" y="581" width="30" height="30"/>
                     <state key="normal" image="Locate"/>
                     <connections>
                         <action selector="locateBtnClicked:" destination="-1" eventType="touchUpInside" id="0RS-zl-1QQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-Im-aTc">
+                    <rect key="frame" x="294" y="593" width="34" height="22"/>
+                    <state key="normal" image="ZoomLevelDown"/>
+                    <connections>
+                        <action selector="zoomLevelDownBtnClicked:" destination="-1" eventType="touchUpInside" id="FTm-X3-ttE"/>
                     </connections>
                 </button>
             </subviews>

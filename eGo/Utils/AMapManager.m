@@ -11,6 +11,8 @@
 
 #import "CampusTrafficViewController.h"
 #import "BusInfoViewController.h"
+#import "SiteInfoViewController.h"
+#import "GoHereViewController.h"
 
 static const double kRadius = 6371004;
 
@@ -173,8 +175,11 @@ updatingLocation:(BOOL)updatingLocation
         UIViewController *currentVC = [Util getViewController:self.mapView];
         if ([[currentVC class] isEqual:[CampusTrafficViewController class]]) {
             annotationView.image = [UIImage imageNamed:@"CampusBus"];
-        } else {
-            annotationView.pinColor = MAPinAnnotationColorRed;
+        } else if ([[currentVC class] isEqual:[SiteInfoViewController class]]) {
+            annotationView.image = [UIImage imageNamed:@"Site"];
+            UIImageView *rightCallOutView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 12.0, 16.0)];
+            rightCallOutView.image = [UIImage imageNamed:@"GoHere"];
+            annotationView.rightCalloutAccessoryView = rightCallOutView;
         }
         return annotationView;
     }
@@ -191,6 +196,10 @@ updatingLocation:(BOOL)updatingLocation
     UIViewController *currentVC = [Util getViewController:self.mapView];
     if ([[currentVC class] isEqual:[CampusTrafficViewController class]] && ![view.annotation.title isEqualToString:@"当前位置"]) {
         [currentVC showViewController:[[BusInfoViewController alloc] init] sender:nil];
+    } else if ([[currentVC class] isEqual:[SiteInfoViewController class]]) {
+        GoHereViewController *goHereVC = [[GoHereViewController alloc] init];
+        goHereVC.destination = @{@"name" : view.annotation.title, @"latitude" : @(view.annotation.coordinate.latitude), @"longitude" : @(view.annotation.coordinate.longitude)};
+        [currentVC showViewController:goHereVC sender:nil];
     }
 }
 

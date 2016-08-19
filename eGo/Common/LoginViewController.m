@@ -169,20 +169,25 @@
     [self.view makeToastActivity:CSToastPositionCenter];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:[kApiUrl stringByAppendingPathComponent:@"User/login.html"] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:[kApiUrl stringByAppendingPathComponent:@"login.html"] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.view hideToastActivity];
-        if ([responseObject[@"status"] integerValue] == 200) {
-            [[User sharedUser].user setObject:responseObject[@"data"][@"token"] forKey:@"token"];
-            [[User sharedUser].user setObject:self.accountText.text forKey:@"tel"];
-            [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:^{
-                [[User sharedUser] updateUserInfo];
-            }];
-        } else {
-            [self.view makeToast:responseObject[@"errorMsg"]];
-        }
+        [[User sharedUser].user setObject:responseObject[@"token"] forKey:@"token"];
+        [[User sharedUser].user setObject:self.accountText.text forKey:@"tel"];
+        [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:^{
+            [[User sharedUser] updateUserInfo];
+        }];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.view hideToastActivity];
-        NSLog(@"Faild:%@", [error localizedDescription]);
+        switch (((NSHTTPURLResponse *)task.response).statusCode) {
+            case 400:
+                [self.view makeToast:@"账号或密码错误"];
+                break;
+            case 404:
+                [self.view makeToast:@"该账号未注册"];
+                break;
+            default:
+                break;
+        }
     }];
 }
 

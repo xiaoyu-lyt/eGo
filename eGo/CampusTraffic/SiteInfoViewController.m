@@ -7,6 +7,7 @@
 //
 
 #import "SiteInfoViewController.h"
+#import "GoHereViewController.h"
 
 #import "AMapManager.h"
 
@@ -21,8 +22,12 @@
     // Do any additional setup after loading the view from its nib.
     
     AMapManager *manager = [AMapManager manager];
-    manager.mapView.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    manager.mapView.frame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     [self.view insertSubview:manager.mapView atIndex:0];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
     
     if (self.keywords.length == 0) {
         [self showSites:@[self.site]];
@@ -33,6 +38,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
     [[AMapManager manager] resetMapView];
 }
 

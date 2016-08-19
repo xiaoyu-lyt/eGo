@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *sitesTV;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) NSArray *sitesArray;
+@property (nonatomic, strong) NSArray *sitesList;
 
 @end
 
@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view from its nib.
     [self initSearchBar];
     
-    self.sitesArray = @[@{@"name" : @"a"}, @{@"name" : @"b"}];
+    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.054522", @"longitude" : @"119.190197"}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,7 +87,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sitesArray.count;
+    return self.sitesList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,7 +96,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = @"q";
+    cell.textLabel.text = _sitesList[indexPath.row][@"name"];
     return cell;
 }
 

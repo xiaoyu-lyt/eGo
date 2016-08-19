@@ -8,6 +8,8 @@
 
 #import "CampusBikeViewController.h"
 #import "SelectSiteViewController.h"
+#import "AvailableBikeViewController.h"
+
 #import "DLPageView.h"
 
 #import "User.h"
@@ -72,21 +74,32 @@
     self.adBannerView.datasource = self;
     // 消除因NavigationController引起的顶部空白
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.view addSubview:self.adBannerView];
+    [self.view addSubview:_adBannerView];
 }
 
 - (IBAction)searchBtnClicked:(id)sender {
-    NSLog(@"searching");
+    if ([_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].textLabel.text.length == 0) {
+        [self.view makeToast:@"起点不能为空"];
+        return;
+    } else if ([_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text.length == 0) {
+        [self.view makeToast:@"终点不能为空"];
+        return;
+    }
+    AvailableBikeViewController *availableBikeVC = [[AvailableBikeViewController alloc] init];
+    availableBikeVC.origin = [_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].textLabel.text;
+    availableBikeVC.destination = [_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text;
+    [self showViewController:availableBikeVC sender:nil];
+//    [self presentViewController:availableBikeVC animated:YES completion:nil];
 }
 
 #pragma mark - DLPageViewDatasource
 - (NSInteger)numberOfPagesInPageView:(DLPageView *)pageView {
-    return self.bannerImgArray.count;
+    return _bannerImgArray.count;
 }
 
 - (UIView *)pageView:(DLPageView *)pageView viewForPageAtIndexPath:(NSIndexPath *)indexPath {
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.adBannerView.frame.size.width, self.adBannerView.frame.size.height)];
-    imgView.image = [UIImage imageNamed:self.bannerImgArray[indexPath.row]];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, _adBannerView.frame.size.width, _adBannerView.frame.size.height)];
+    imgView.image = [UIImage imageNamed:_bannerImgArray[indexPath.row]];
     return imgView;
 }
 
@@ -116,7 +129,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (tableView == self.inputTV) ? 2 : self.historyArray.count;
+    return (tableView == _inputTV) ? 2 : _historyArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -124,7 +137,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.inputTV) {
+    if (tableView == _inputTV) {
         static NSString *CellIdentifier = @"InputTCCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
@@ -134,14 +147,14 @@
         cell.textLabel.text = (indexPath.row == 0) ? @"我的位置" : @"";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    } else if (tableView == self.historyTV) {
+    } else if (tableView == _historyTV) {
         static NSString *CellIdentifier = @"HistoryTVCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }
         cell.imageView.image = [Util setImage:[UIImage imageNamed:@"History"] withWidth:12.0 andHeight:12.0];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", self.historyArray[indexPath.row][@"origin"], self.historyArray[indexPath.row][@"destination"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", _historyArray[indexPath.row][@"origin"], _historyArray[indexPath.row][@"destination"]];
         return cell;
     }
     return nil;
@@ -152,19 +165,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SelectSiteViewController *selectSiteVC = [[SelectSiteViewController alloc] init];
-    selectSiteVC.site = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    switch (indexPath.row) {
-        case 0:
-            selectSiteVC.siteType = SiteTypeOrigin;
-            break;
-        case 1:
-            selectSiteVC.siteType = SiteTypeDestination;
-        default:
-            break;
+    if (tableView == _inputTV) {
+        SelectSiteViewController *selectSiteVC = [[SelectSiteViewController alloc] init];
+        selectSiteVC.site = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+        switch (indexPath.row) {
+            case 0:
+                selectSiteVC.siteType = SiteTypeOrigin;
+                break;
+            case 1:
+                selectSiteVC.siteType = SiteTypeDestination;
+            default:
+                break;
+        }
+        selectSiteVC.delegate = self;
+        [self showViewController:selectSiteVC sender:nil];
     }
-    selectSiteVC.delegate = self;
-    [self showViewController:selectSiteVC sender:nil];
 }
 
 /*

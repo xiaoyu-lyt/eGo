@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SiteInfoViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabTwoViewController">
             <connections>
+                <outlet property="availableBikeTblView" destination="ii7-mR-518" id="7oa-Yz-i9h"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,24 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKO-xD-H7G">
-                    <rect key="frame" x="331" y="40" width="24" height="24"/>
-                    <state key="normal" image="Close"/>
-                    <connections>
-                        <action selector="closeBtnClicked:" destination="-1" eventType="touchUpInside" id="vip-0Y-pAF"/>
-                    </connections>
-                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ii7-mR-518">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="LKO-xD-H7G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="Q8O-1R-ywo"/>
-                <constraint firstAttribute="trailing" secondItem="LKO-xD-H7G" secondAttribute="trailing" constant="20" id="Vy4-CO-9ED"/>
+                <constraint firstAttribute="bottom" secondItem="ii7-mR-518" secondAttribute="bottom" id="AIW-aM-uvo"/>
+                <constraint firstItem="ii7-mR-518" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XOp-FI-hKI"/>
+                <constraint firstAttribute="trailing" secondItem="ii7-mR-518" secondAttribute="trailing" id="agy-CW-gxQ"/>
+                <constraint firstItem="ii7-mR-518" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h1W-RF-Fsu"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="248.5" y="287.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="Close" width="24" height="24"/>
-    </resources>
 </document>

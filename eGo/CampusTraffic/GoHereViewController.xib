@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoHereViewController">
+            <connections>
+                <outlet property="cleanBtn" destination="RYq-r1-Mbg" id="TyZ-ZM-O52"/>
+                <outlet property="historyTblView" destination="OMq-Vt-qVF" id="ZDs-xO-qXR"/>
+                <outlet property="inputTblView" destination="02n-nw-2zN" id="bCE-ft-pPv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOh-1g-Rqr">
+                    <rect key="frame" x="319" y="64" width="48" height="88"/>
+                    <state key="normal" image="Search"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoAndBack" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-tT-YeG">
+                    <rect key="frame" x="16" y="100" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="dtI-Ef-A0g"/>
+                        <constraint firstAttribute="width" secondItem="yXc-tT-YeG" secondAttribute="height" multiplier="1:1" id="pbP-wq-sbi"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OMq-Vt-qVF">
+                    <rect key="frame" x="0.0" y="201" width="375" height="420"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYq-r1-Mbg">
+                    <rect key="frame" x="142" y="629" width="90" height="30"/>
+                    <state key="normal" title="清空搜索记录">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-Xy-RN8">
+                    <rect key="frame" x="154" y="172" width="68" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="02n-nw-2zN">
+                    <rect key="frame" x="40" y="64" width="271" height="88"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="lhz-fW-oDI"/>
+                    </constraints>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="02n-nw-2zN" firstAttribute="leading" secondItem="yXc-tT-YeG" secondAttribute="trailing" constant="8" id="1ux-2N-kKb"/>
+                <constraint firstItem="02n-nw-2zN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="7o3-K1-ePK"/>
+                <constraint firstAttribute="bottom" secondItem="RYq-r1-Mbg" secondAttribute="bottom" constant="8" id="7sq-Id-YXh"/>
+                <constraint firstAttribute="trailing" secondItem="OMq-Vt-qVF" secondAttribute="trailing" id="9gD-mj-hJd"/>
+                <constraint firstItem="RYq-r1-Mbg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="AiZ-uP-VvK"/>
+                <constraint firstItem="yXc-tT-YeG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="C9L-J4-NFp"/>
+                <constraint firstItem="sOh-1g-Rqr" firstAttribute="centerY" secondItem="02n-nw-2zN" secondAttribute="centerY" id="EUv-Vp-bam"/>
+                <constraint firstItem="sOh-1g-Rqr" firstAttribute="leading" secondItem="02n-nw-2zN" secondAttribute="trailing" constant="8" id="FQb-0G-Td4"/>
+                <constraint firstAttribute="trailing" secondItem="02n-nw-2zN" secondAttribute="trailing" constant="64" id="GIZ-bw-PAb"/>
+                <constraint firstItem="sOh-1g-Rqr" firstAttribute="height" secondItem="02n-nw-2zN" secondAttribute="height" id="PVa-Me-pdo"/>
+                <constraint firstItem="RYq-r1-Mbg" firstAttribute="top" secondItem="OMq-Vt-qVF" secondAttribute="bottom" constant="8" id="TQy-5T-gbe"/>
+                <constraint firstItem="OMq-Vt-qVF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a0a-u7-aIU"/>
+                <constraint firstItem="OMq-Vt-qVF" firstAttribute="top" secondItem="rRb-Xy-RN8" secondAttribute="bottom" constant="8" id="aFU-lV-uIF"/>
+                <constraint firstAttribute="trailing" secondItem="sOh-1g-Rqr" secondAttribute="trailing" constant="8" id="hql-Y6-hFV"/>
+                <constraint firstItem="02n-nw-2zN" firstAttribute="centerY" secondItem="yXc-tT-YeG" secondAttribute="centerY" id="ndY-xM-hUf"/>
+                <constraint firstItem="rRb-Xy-RN8" firstAttribute="top" secondItem="02n-nw-2zN" secondAttribute="bottom" constant="20" id="pQv-RO-SJD"/>
+                <constraint firstItem="rRb-Xy-RN8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tsR-EG-Kij"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="GoAndBack" width="17" height="25"/>
+        <image name="Search" width="20" height="20"/>
+    </resources>
+</document>

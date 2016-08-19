@@ -88,7 +88,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     SiteInfoViewController *siteInfoVC = [[SiteInfoViewController alloc] init];
     siteInfoVC.keywords = searchBar.text;
-    [self presentViewController:siteInfoVC animated:YES completion:^{
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:siteInfoVC] animated:YES completion:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }
@@ -109,7 +109,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SiteInfoViewController *siteInfoVC = [[SiteInfoViewController alloc] init];
     siteInfoVC.site = self.searchResult[indexPath.row];
-    [self presentViewController:siteInfoVC animated:YES completion:^{
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:siteInfoVC] animated:YES completion:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }
