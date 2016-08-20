@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view from its nib.
     [self initSearchBar];
     
-    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.054522", @"longitude" : @"119.190197"}];
+    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.051522", @"longitude" : @"119.191197"}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,7 +76,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.delegate site:[tableView cellForRowAtIndexPath:indexPath].textLabel.text selectedForType:self.siteType];
+    [self.delegate site:self.sitesList[indexPath.row] selectedForType:self.siteType];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

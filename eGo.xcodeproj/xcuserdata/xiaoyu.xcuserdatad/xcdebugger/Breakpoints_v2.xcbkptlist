@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eGo/CampusBike/CampusBikeViewController.m"
-            timestampString = "493270895.333221"
+            timestampString = "493346448.309593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394">
+            startingLineNumber = "398"
+            endingLineNumber = "398">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

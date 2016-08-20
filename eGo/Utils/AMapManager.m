@@ -8,18 +8,26 @@
 
 #import "AMapManager.h"
 #import "Util.h"
+#import "MANaviRoute.h"
+#import "CommonUtility.h"
 
 #import "CampusTrafficViewController.h"
 #import "BusInfoViewController.h"
 #import "SiteInfoViewController.h"
 #import "GoHereViewController.h"
+#import "ShowRouteViewController.h"
 
-static const double kRadius = 6371004;
+static const NSString *kRoutePlanningViewControllerOriginTitle       = @"起点";
+static const NSString *kRoutePlanningViewControllerDestinationTitle = @"终点";
+static const NSInteger kRoutePlanningPaddingEdge                    = 20;
+static const double    kRadius                                      = 6371004;
 
 @interface AMapManager()<MAMapViewDelegate, AMapSearchDelegate>
 
 @property (nonatomic, strong) MAUserLocation *userLocation;
 @property (nonatomic, strong) AMapSearchAPI *search;
+@property (nonatomic, strong) AMapRoute *route;
+@property (nonatomic, strong) MANaviRoute *naviRoute;
 
 @property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, strong) NSMutableArray *overlays;
@@ -63,14 +71,16 @@ static const double kRadius = 6371004;
 }
 
 - (void)resetMapView {
-    if (self.annotations != nil) {
-        [self.mapView removeAnnotations:self.annotations];
+    if (self.mapView.annotations != nil) {
+        [self.mapView removeAnnotations:self.mapView.annotations];
         self.annotations = nil;
     }
-    if (self.overlays != nil) {
-        [self.mapView removeOverlays:self.overlays];
+    if (self.mapView.overlays != nil) {
+        [self.mapView removeOverlays:self.mapView.overlays];
         self.overlays = nil;
     }
+    [self locate];
+    self.mapView.zoomLevel = 16;
 }
 
 - (void)locate {
@@ -90,6 +100,10 @@ static const double kRadius = 6371004;
     if (self.annotations != nil) {
         [self.mapView removeAnnotations:self.annotations];
     }
+}
+
+- (MAUserLocation *)userLocation {
+    return _userLocation;
 }
 
 - (void)addBusAnnotationsWithLocations:(NSArray *)locations {
@@ -139,10 +153,56 @@ static const double kRadius = 6371004;
     [_search AMapPOIAroundSearch: request];
 }
 
+- (void)searchRouteWithOrigin:(NSDictionary *)origin andDestination:(NSDictionary *)destination {
+    [self addDefaultAnnotationsWithOrigin:origin andDestination:destination];
+    [self searchRoutePlanningWalkWithOrigin:origin andDestination:destination];
+}
+
 // 根据经纬度计算距离
 - (double)getDistanceWithLatitude:(double)latitude andLongitude:(double)longitude {
     double c = sin(latitude) * sin(self.userLocation.location.coordinate.latitude) * cos(longitude-self.userLocation.location.coordinate.longitude) + cos(latitude) * cos(self.userLocation.location.coordinate.latitude);
     return kRadius * acos(c) * M_PI / 180;
+}
+
+// 添加起点和终点标记
+- (void)addDefaultAnnotationsWithOrigin:(NSDictionary *)origin andDestination:(NSDictionary *)destination {
+    MAPointAnnotation *originAnnotation = [[MAPointAnnotation alloc] init];
+    originAnnotation.coordinate = CLLocationCoordinate2DMake([origin[@"latitude"] doubleValue], [origin[@"longitude"] doubleValue]);
+    originAnnotation.title = (NSString *)kRoutePlanningViewControllerOriginTitle;
+    originAnnotation.subtitle = origin[@"name"];
+    
+    
+    MAPointAnnotation *destinationAnnotation = [[MAPointAnnotation alloc] init];
+    destinationAnnotation.coordinate = CLLocationCoordinate2DMake([destination[@"latitude"] doubleValue], [destination[@"longitude"] doubleValue]);
+    destinationAnnotation.title = (NSString *)kRoutePlanningViewControllerDestinationTitle;
+    destinationAnnotation.subtitle = destination[@"name"];
+    
+    [self.mapView addAnnotation:originAnnotation];
+    [self.mapView addAnnotation:destinationAnnotation];
+}
+
+/* 步行路径规划搜索. */
+- (void)searchRoutePlanningWalkWithOrigin:(NSDictionary *)origin andDestination:(NSDictionary *)destination {
+    AMapWalkingRouteSearchRequest *navi = [[AMapWalkingRouteSearchRequest alloc] init];
+    
+    /* 提供备选方案*/
+    navi.multipath = 1;
+    
+    /* 出发点. */
+    navi.origin = [AMapGeoPoint locationWithLatitude:[origin[@"latitude"] doubleValue] longitude:[origin[@"longitude"] doubleValue]];
+    /* 目的地. */
+    navi.destination = [AMapGeoPoint locationWithLatitude:[destination[@"latitude"] doubleValue] longitude:[destination[@"longitude"] doubleValue]];
+    
+    [_search AMapWalkingRouteSearch:navi];
+}
+
+/* 展示当前路线方案. */
+- (void)presentCurrentCourse {
+    self.naviRoute = [MANaviRoute naviRouteForPath:self.route.paths[0] withNaviType:MANaviAnnotationTypeWalking];
+    [self.naviRoute addToMapView:self.mapView];
+    
+    /* 缩放地图使其适应polylines的展示. */
+    [_mapView setVisibleMapRect:[CommonUtility mapRectForOverlays:self.naviRoute.routePolylines] edgePadding:UIEdgeInsetsMake(kRoutePlanningPaddingEdge, kRoutePlanningPaddingEdge, kRoutePlanningPaddingEdge, kRoutePlanningPaddingEdge) animated:YES];
 }
 
 #pragma mark - MAMapViewDelegate
@@ -180,6 +240,20 @@ updatingLocation:(BOOL)updatingLocation
             UIImageView *rightCallOutView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 12.0, 16.0)];
             rightCallOutView.image = [UIImage imageNamed:@"GoHere"];
             annotationView.rightCalloutAccessoryView = rightCallOutView;
+        } else if ([[currentVC class] isEqual:[ShowRouteViewController class]]) {
+            if ([annotation isKindOfClass:[MANaviAnnotation class]]) {
+                annotationView.pinColor = MAPinAnnotationColorRed;
+            } else {
+                // 起点.
+                if ([[annotation title] isEqualToString:(NSString*)kRoutePlanningViewControllerOriginTitle]) {
+                    annotationView.image = [UIImage imageNamed:@"Origin"];
+                }
+                // 终点.
+                else if([[annotation title] isEqualToString:(NSString*)kRoutePlanningViewControllerDestinationTitle]) {
+                    annotationView.image = [UIImage imageNamed:@"Destination"];
+                }
+                
+            }
         }
         return annotationView;
     }
@@ -187,7 +261,6 @@ updatingLocation:(BOOL)updatingLocation
 }
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view {
-    NSLog(@"a");
 }
 
 // 点击气泡触发事件
@@ -214,6 +287,44 @@ updatingLocation:(BOOL)updatingLocation
         [result addObject:@{@"name" : poi.name, @"latitude" : @(poi.location.latitude), @"longitude" : @(poi.location.longitude)}];
     }
     [self addSiteAnnotationsWithLocations:result];
+}
+
+- (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay {
+    if ([overlay isKindOfClass:[LineDashPolyline class]]) {
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:((LineDashPolyline *)overlay).polyline];
+        
+        polylineRenderer.lineWidth   = 7;
+        polylineRenderer.strokeColor = [UIColor blueColor];
+        
+        return polylineRenderer;
+    }
+    if ([overlay isKindOfClass:[MANaviPolyline class]]) {
+        MANaviPolyline *naviPolyline = (MANaviPolyline *)overlay;
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:naviPolyline.polyline];
+        
+        polylineRenderer.lineWidth = 8;
+        
+        if (naviPolyline.type == MANaviAnnotationTypeWalking) {
+            polylineRenderer.strokeColor = self.naviRoute.walkingColor;
+        } else {
+            polylineRenderer.strokeColor = self.naviRoute.routeColor;
+        }
+        
+        return polylineRenderer;
+    }
+    
+    return nil;
+}
+
+/* 路径规划搜索回调. */
+- (void)onRouteSearchDone:(AMapRouteSearchBaseRequest *)request response:(AMapRouteSearchResponse *)response {
+    if (response.route == nil)
+    {
+        return;
+    }
+    
+    self.route = response.route;
+    [self presentCurrentCourse];
 }
 
 @end

@@ -8,8 +8,10 @@
 
 #import "GoHereViewController.h"
 #import "SelectSiteViewController.h"
+#import "ShowRouteViewController.h"
 
 #import "Util.h"
+#import "AMapManager.h"
 
 @interface GoHereViewController ()<SelectSiteDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -17,7 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *historyTblView;
 @property (strong, nonatomic) IBOutlet UIButton *cleanBtn;
 
-@property (nonatomic, strong) NSArray<NSDictionary *> *historyArray;
+@property (nonatomic, strong) NSArray<NSDictionary *> *historyList;
+@property (nonatomic, strong) NSDictionary *origin;
 
 @end
 
@@ -29,9 +32,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"路线查询";
+    self.origin = @{@"name" : @"我的位置", @"latitude" : @([[AMapManager manager] userLocation].location.coordinate.latitude), @"longitude" : @([[AMapManager manager] userLocation].location.coordinate.longitude)};
     
     _imgArray = @[@"Origin", @"Destination"];
-    self.historyArray = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
+    self.historyList = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,18 +61,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)searchBtnClicked:(id)sender {
+    if (((NSString *)_origin[@"name"]).length == 0) {
+        [self.view makeToast:@"起点不能为空"];
+        return;
+    } else if (((NSString *)_destination[@"name"]).length == 0) {
+        [self.view makeToast:@"终点不能为空"];
+        return;
+    }
+    
+    ShowRouteViewController *showRouteVC = [[ShowRouteViewController alloc] init];
+    showRouteVC.origin = _origin;
+    showRouteVC.destination = _destination;
+    [self showViewController:showRouteVC sender:nil];
+}
+
 #pragma mark - SelectSiteDelegate
 
-- (void)site:(NSString *)site selectedForType:(SiteType)type {
+- (void)site:(NSDictionary *)site selectedForType:(SiteType)type {
     switch (type) {
         case SiteTypeOrigin:{
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-            [self.inputTblView cellForRowAtIndexPath:indexPath].textLabel.text = site;
+            self.origin = site;
+            [self.inputTblView cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
         }
             break;
         case SiteTypeDestination:{
+            self.destination = site;
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-            [self.inputTblView cellForRowAtIndexPath:indexPath].textLabel.text = site;
+            [self.inputTblView cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
         }
             break;
         default:
@@ -109,7 +130,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (tableView == _inputTblView) ? 2 : _historyArray.count;
+    return (tableView == _inputTblView) ? 2 : _historyList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -120,7 +141,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }
         cell.imageView.image = [UIImage imageNamed:_imgArray[indexPath.row]];
-        cell.textLabel.text = (indexPath.row == 0) ? @"我的位置" : ((indexPath.row == 1) ? self.destination[@"name"] : @"");
+        cell.textLabel.text = (indexPath.row == 0) ? _origin[@"name"] : ((indexPath.row == 1) ? _destination[@"name"] : @"");
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (tableView == _historyTblView) {
@@ -130,7 +151,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }
         cell.imageView.image = [Util setImage:[UIImage imageNamed:@"History"] withWidth:12.0 andHeight:12.0];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", _historyArray[indexPath.row][@"origin"], _historyArray[indexPath.row][@"destination"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", _historyList[indexPath.row][@"origin"], _historyList[indexPath.row][@"destination"]];
         return cell;
     }
     return nil;

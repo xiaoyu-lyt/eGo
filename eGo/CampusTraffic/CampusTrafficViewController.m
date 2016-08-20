@@ -7,7 +7,7 @@
 //
 
 #import "CampusTrafficViewController.h"
-#import "CampusGuideViewController.h"
+#import "SearchViewController.h"
 
 #import "Util.h"
 #import "AMapManager.h"
@@ -78,7 +78,7 @@
 #pragma mark - UISearchBarDelegate
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    [self showViewController:[[CampusGuideViewController alloc] init] sender:nil];
+    [self showViewController:[[SearchViewController alloc] init] sender:nil];
     return NO;
 }
 

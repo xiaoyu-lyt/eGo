@@ -21,8 +21,10 @@
 - (void)resetMapView;
 - (void)locate;
 - (void)removeAnnotations;
+- (MAUserLocation *)userLocation;
 - (void)addBusAnnotationsWithLocations:(NSArray *)locations;
 - (void)addSiteAnnotationsWithLocations:(NSArray *)locations;
 - (void)searchWithPOIKeywords:(NSString *)keywords;
+- (void)searchRouteWithOrigin:(NSDictionary *)origin andDestination:(NSDictionary *)destination;
 
 @end

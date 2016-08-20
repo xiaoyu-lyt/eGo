@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"车辆列表";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tabTitles = @[@"求载", @"载人"];
+    self.tabTitles = @[@"我是乘客", @"我是车主"];
     
     DLSlideTabView *slideTabView = [[DLSlideTabView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     slideTabView.delegate = self;

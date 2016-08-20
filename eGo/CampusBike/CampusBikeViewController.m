@@ -22,9 +22,11 @@
 @property (strong, nonatomic) IBOutlet UITableView *historyTV;
 @property (strong, nonatomic) IBOutlet UIButton *cleanBtn;
 
-@property (nonatomic, strong) NSArray *bannerImgArray;
+@property (nonatomic, strong) NSArray *bannerImgList;
 @property (nonatomic, strong) DLPageView *adBannerView;
-@property (nonatomic, strong) NSArray<NSDictionary *> *historyArray;
+@property (nonatomic, strong) NSDictionary *origin;
+@property (nonatomic, strong) NSDictionary *destination;
+@property (nonatomic, strong) NSArray<NSDictionary *> *historyList;
 
 @end
 
@@ -37,11 +39,11 @@
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
     
-    self.bannerImgArray = @[@"Background", @"DefaultImage"];
+    self.bannerImgList = @[@"Background", @"DefaultImage"];
     [self addAdBannerView];
     
     _imgArray = @[@"Origin", @"Destination"];
-    self.historyArray = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
+    self.historyList = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
     
 }
 
@@ -94,27 +96,29 @@
 
 #pragma mark - DLPageViewDatasource
 - (NSInteger)numberOfPagesInPageView:(DLPageView *)pageView {
-    return _bannerImgArray.count;
+    return _bannerImgList.count;
 }
 
 - (UIView *)pageView:(DLPageView *)pageView viewForPageAtIndexPath:(NSIndexPath *)indexPath {
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, _adBannerView.frame.size.width, _adBannerView.frame.size.height)];
-    imgView.image = [UIImage imageNamed:_bannerImgArray[indexPath.row]];
+    imgView.image = [UIImage imageNamed:_bannerImgList[indexPath.row]];
     return imgView;
 }
 
 #pragma mark - SelectSiteDelegate
 
-- (void)site:(NSString *)site selectedForType:(SiteType)type {
+- (void)site:(NSDictionary *)site selectedForType:(SiteType)type {
     switch (type) {
         case SiteTypeOrigin:{
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site;
+            self.origin = site;
+            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
         }
             break;
         case SiteTypeDestination:{
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site;
+            self.destination = site;
+            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
         }
             break;
         default:
@@ -129,7 +133,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (tableView == _inputTV) ? 2 : _historyArray.count;
+    return (tableView == _inputTV) ? 2 : _historyList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -154,7 +158,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }
         cell.imageView.image = [Util setImage:[UIImage imageNamed:@"History"] withWidth:12.0 andHeight:12.0];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", _historyArray[indexPath.row][@"origin"], _historyArray[indexPath.row][@"destination"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@→%@", _historyList[indexPath.row][@"origin"], _historyList[indexPath.row][@"destination"]];
         return cell;
     }
     return nil;

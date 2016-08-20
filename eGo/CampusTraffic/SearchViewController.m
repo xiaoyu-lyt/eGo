@@ -32,17 +32,29 @@
     [super viewWillAppear:animated];
     self.searchResultTV.delegate = self;
     self.searchResultTV.dataSource = self;
+    
+    // 页面即将显示时隐藏TabBarController
+    [UIView animateWithDuration:0.5 animations:^{
+        self.tabBarController.tabBar.center = CGPointMake(self.tabBarController.tabBar.center.x, self.tabBarController.tabBar.center.y + 48);
+    }];
+    [self.searchBar becomeFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.searchResultTV.delegate = nil;
     self.searchResultTV.dataSource = nil;
+    
+    // 页面即将退出时显示TabBarController
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tabBarController.tabBar.center = CGPointMake(self.tabBarController.tabBar.center.x, self.tabBarController.tabBar.center.y - 48);
+    }];
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.054522", @"longitude" : @"119.190197"}, @{@"name" : @"行政北楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"行政南楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"数计学院", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"风雨操场", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}];
+    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.051522", @"longitude" : @"119.191197"}, @{@"name" : @"行政北楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"行政南楼", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"数计学院", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"风雨操场", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -57,7 +69,6 @@
 - (void)initSearchBar {
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
-    [self.searchBar becomeFirstResponder];
     self.navigationItem.titleView = self.searchBar;
     self.coverView = [[UIView alloc] initWithFrame:self.view.frame];
     self.coverView.hidden = YES;

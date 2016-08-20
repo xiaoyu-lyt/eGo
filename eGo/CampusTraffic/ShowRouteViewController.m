@@ -1,42 +1,34 @@
 //
-//  SiteInfoViewController.m
+//  ShowRouteViewController.m
 //  eGo
 //
-//  Created by 萧宇 on 8/17/16.
+//  Created by 萧宇 on 8/20/16.
 //  Copyright © 2016 萧宇. All rights reserved.
 //
 
-#import "SiteInfoViewController.h"
-#import "GoHereViewController.h"
+#import "ShowRouteViewController.h"
 
 #import "AMapManager.h"
 
-@interface SiteInfoViewController ()
+@interface ShowRouteViewController ()
 
 @end
 
-@implementation SiteInfoViewController
+@implementation ShowRouteViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.navigationController.navigationBarHidden = YES;
     
     AMapManager *manager = [AMapManager manager];
     manager.mapView.frame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     [self.view insertSubview:manager.mapView atIndex:0];
-    
-    if (self.keywords.length == 0) {
-        [self showSites:@[self.site]];
-        [UIView animateWithDuration:0.3 animations:^{
-            manager.mapView.centerCoordinate = CLLocationCoordinate2DMake([_site[@"latitude"] doubleValue], [_site[@"longitude"] doubleValue]);
-        }];
-    } else {
-        [[AMapManager manager] searchWithPOIKeywords:self.keywords];
-    }
+    [manager searchRouteWithOrigin:_origin andDestination:_destination];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -51,11 +43,7 @@
 }
 
 - (IBAction)closeBtnClicked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)showSites:(NSArray *)sites {
-    [[AMapManager manager] addSiteAnnotationsWithLocations:sites];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

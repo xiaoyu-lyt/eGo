@@ -22,6 +22,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOh-1g-Rqr">
                     <rect key="frame" x="319" y="64" width="48" height="88"/>
                     <state key="normal" image="Search"/>
+                    <connections>
+                        <action selector="searchBtnClicked:" destination="-1" eventType="touchUpInside" id="smO-ZD-LEc"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoAndBack" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-tT-YeG">
                     <rect key="frame" x="16" y="100" width="16" height="16"/>
@@ -75,6 +78,7 @@
                 <constraint firstItem="rRb-Xy-RN8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tsR-EG-Kij"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="372.5" y="342.5"/>
         </view>
     </objects>
     <resources>

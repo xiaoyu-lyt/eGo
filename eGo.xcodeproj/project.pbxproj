@@ -18,6 +18,13 @@
 		B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD8271D4B877A00D0CD20 /* FeedbackViewController.xib */; };
 		B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD82B1D4B878800D0CD20 /* AboutUsViewController.m */; };
 		B80CD82E1D4B878800D0CD20 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */; };
+		B81EC5971D67DF3C00655712 /* ShowRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC5951D67DF3C00655712 /* ShowRouteViewController.m */; };
+		B81EC5981D67DF3C00655712 /* ShowRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81EC5961D67DF3C00655712 /* ShowRouteViewController.xib */; };
+		B81EC5A41D67E9B100655712 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC59B1D67E9B100655712 /* CommonUtility.m */; };
+		B81EC5A51D67E9B100655712 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC59D1D67E9B100655712 /* LineDashPolyline.m */; };
+		B81EC5A61D67E9B100655712 /* MANaviAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC59F1D67E9B100655712 /* MANaviAnnotation.m */; };
+		B81EC5A71D67E9B100655712 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC5A11D67E9B100655712 /* MANaviPolyline.m */; };
+		B81EC5A81D67E9B100655712 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC5A31D67E9B100655712 /* MANaviRoute.m */; };
 		B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */; };
 		B830651A1D56139C00A97ED3 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */; };
 		B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */; };
@@ -96,6 +103,19 @@
 		B80CD82A1D4B878800D0CD20 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		B80CD82B1D4B878800D0CD20 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		B80CD82C1D4B878800D0CD20 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
+		B81EC5941D67DF3C00655712 /* ShowRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowRouteViewController.h; sourceTree = "<group>"; };
+		B81EC5951D67DF3C00655712 /* ShowRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowRouteViewController.m; sourceTree = "<group>"; };
+		B81EC5961D67DF3C00655712 /* ShowRouteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowRouteViewController.xib; sourceTree = "<group>"; };
+		B81EC59A1D67E9B100655712 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		B81EC59B1D67E9B100655712 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		B81EC59C1D67E9B100655712 /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
+		B81EC59D1D67E9B100655712 /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
+		B81EC59E1D67E9B100655712 /* MANaviAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviAnnotation.h; sourceTree = "<group>"; };
+		B81EC59F1D67E9B100655712 /* MANaviAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviAnnotation.m; sourceTree = "<group>"; };
+		B81EC5A01D67E9B100655712 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
+		B81EC5A11D67E9B100655712 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
+		B81EC5A21D67E9B100655712 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
+		B81EC5A31D67E9B100655712 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
 		B83065161D56139C00A97ED3 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
 		B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
 		B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
@@ -219,6 +239,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B81EC5991D67E9B100655712 /* AMPModels */ = {
+			isa = PBXGroup;
+			children = (
+				B81EC59A1D67E9B100655712 /* CommonUtility.h */,
+				B81EC59B1D67E9B100655712 /* CommonUtility.m */,
+				B81EC59C1D67E9B100655712 /* LineDashPolyline.h */,
+				B81EC59D1D67E9B100655712 /* LineDashPolyline.m */,
+				B81EC59E1D67E9B100655712 /* MANaviAnnotation.h */,
+				B81EC59F1D67E9B100655712 /* MANaviAnnotation.m */,
+				B81EC5A01D67E9B100655712 /* MANaviPolyline.h */,
+				B81EC5A11D67E9B100655712 /* MANaviPolyline.m */,
+				B81EC5A21D67E9B100655712 /* MANaviRoute.h */,
+				B81EC5A31D67E9B100655712 /* MANaviRoute.m */,
+			);
+			path = AMPModels;
+			sourceTree = "<group>";
+		};
 		B89DB5B91D4CA6F300D17E5E /* TVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +296,7 @@
 		B8D6FDBA1D4707FA00E0863D /* eGo */ = {
 			isa = PBXGroup;
 			children = (
+				B81EC5991D67E9B100655712 /* AMPModels */,
 				B8D6FDE01D470ACA00E0863D /* CampusBike */,
 				B8D6FDE11D470ACA00E0863D /* CampusTraffic */,
 				B8D6FDE21D470ACA00E0863D /* ChatCenter */,
@@ -329,6 +367,9 @@
 				B87725421D66A4E40066A52F /* GoHereViewController.h */,
 				B87725431D66A4E40066A52F /* GoHereViewController.m */,
 				B87725441D66A4E40066A52F /* GoHereViewController.xib */,
+				B81EC5941D67DF3C00655712 /* ShowRouteViewController.h */,
+				B81EC5951D67DF3C00655712 /* ShowRouteViewController.m */,
+				B81EC5961D67DF3C00655712 /* ShowRouteViewController.xib */,
 			);
 			path = CampusTraffic;
 			sourceTree = "<group>";
@@ -517,6 +558,7 @@
 				B8EB66321D483C2B002AC1F4 /* ChatCenterViewController.xib in Resources */,
 				B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */,
 				B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */,
+				B81EC5981D67DF3C00655712 /* ShowRouteViewController.xib in Resources */,
 				B80CD81F1D4B875C00D0CD20 /* FriendsViewController.xib in Resources */,
 				B80CD8241D4B876F00D0CD20 /* HistoryViewController.xib in Resources */,
 			);
@@ -583,6 +625,7 @@
 				B80CD81E1D4B875C00D0CD20 /* FriendsViewController.m in Sources */,
 				B8D6FDF81D470ACA00E0863D /* User.m in Sources */,
 				B80CD8191D4B803300D0CD20 /* PersonalViewController.m in Sources */,
+				B81EC5A41D67E9B100655712 /* CommonUtility.m in Sources */,
 				B80CD8281D4B877A00D0CD20 /* FeedbackViewController.m in Sources */,
 				B86436131D6150EC00BC4E1E /* BusInfoViewController.m in Sources */,
 				B8EA649F1D55CCBF004BDDB3 /* DetailViewController.m in Sources */,
@@ -596,6 +639,8 @@
 				B8BBF72B1D51EF2A0089D89C /* ChatTableViewCell.m in Sources */,
 				B8A6547B1D63E726000F9C24 /* SiteInfoViewController.m in Sources */,
 				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
+				B81EC5971D67DF3C00655712 /* ShowRouteViewController.m in Sources */,
+				B81EC5A61D67E9B100655712 /* MANaviAnnotation.m in Sources */,
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
 				B86436181D616F6B00BC4E1E /* SearchViewController.m in Sources */,
 				B894537E1D655E6300047708 /* TabTwoViewController.m in Sources */,
@@ -605,9 +650,12 @@
 				B8ABA4E81D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m in Sources */,
 				B87F8CB01D587832006D875E /* DLPageView.m in Sources */,
 				B89453791D655E5B00047708 /* TabOneViewController.m in Sources */,
+				B81EC5A71D67E9B100655712 /* MANaviPolyline.m in Sources */,
 				B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */,
+				B81EC5A51D67E9B100655712 /* LineDashPolyline.m in Sources */,
 				B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */,
 				B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */,
+				B81EC5A81D67E9B100655712 /* MANaviRoute.m in Sources */,
 				B89453711D65556F00047708 /* AvailableBikeViewController.m in Sources */,
 				B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */,
 				B8D6FDBD1D4707FA00E0863D /* main.m in Sources */,

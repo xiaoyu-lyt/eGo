@@ -13,11 +13,7 @@ typedef enum : NSUInteger {
     SiteTypeDestination,
 } SiteType;
 
-@protocol SelectSiteDelegate <NSObject>
-
-- (void)site:(NSString *)site selectedForType:(SiteType)type;
-
-@end
+@protocol SelectSiteDelegate;
 
 @interface SelectSiteViewController : UIViewController
 
@@ -25,5 +21,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *site;
 
 @property (nonatomic) id<SelectSiteDelegate> delegate;
+
+@end
+
+@protocol SelectSiteDelegate <NSObject>
+
+- (void)site:(NSDictionary *)site selectedForType:(SiteType)type;
 
 @end

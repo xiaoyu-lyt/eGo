@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.availableBikeList = @[@{@"name" : @"三区→西三"}];
+    self.availableBikeList = @[@{@"name" : @"三区→西三", @"time" : @"7:45"}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,9 +61,10 @@
     static NSString *CellIdentifier = @"AvailableBikeTVCell1";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = self.availableBikeList[indexPath.row][@"name"];
+    cell.detailTextLabel.text = self.availableBikeList[indexPath.row][@"time"];
     return cell;
 }
 
