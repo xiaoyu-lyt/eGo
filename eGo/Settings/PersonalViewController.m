@@ -7,6 +7,7 @@
 //
 
 #import "PersonalViewController.h"
+#import "ModifyUserInfoViewController.h"
 
 #import "User.h"
 #import "Util.h"
@@ -16,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *userInfoTV;
 
 @property (nonatomic) BOOL isChanged;
-@property (nonatomic, strong) NSArray *userInfoArray;
+@property (nonatomic, strong) NSArray<NSArray *> *userInfoArray;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) UIVisualEffectView *blurEffectView;
 
@@ -30,11 +31,7 @@
     self.title = @"个人信息";
     
     self.isChanged = NO;
-    self.userInfoArray = @[@"头像", @"昵称", @"性别", @"手机", @"邮箱", @"学号", @"姓名", @"学校", @"学院", @"专业"];
-    
-    UIBarButtonItem *saveBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(saveUserInfo:)];
-    saveBarBtn.enabled = NO;
-    self.navigationItem.rightBarButtonItem = saveBarBtn;
+    self.userInfoArray = @[@[@"头像"], @[@"昵称", @"手机", @"邮箱", @"密码"], @[@"学号", @"姓名", @"性别", @"学校", @"学院", @"专业"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,17 +53,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)saveUserInfo:(UIBarButtonItem *)btn {
-    [self.view makeToast:@"save"];
-}
-
 - (UIImageView *)getUserPhotoImgView {
     static UIImageView *userPhotoImgView = nil;
     if (userPhotoImgView == nil) {
-        userPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 84.0, 16, 48.0, 48.0)];
+        userPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 96.0, 12, 56.0, 56.0)];
         userPhotoImgView.image = [UIImage imageNamed:@"DefaultImage"];
         userPhotoImgView.layer.masksToBounds = YES;
-        userPhotoImgView.layer.cornerRadius = 24.0;
+        userPhotoImgView.layer.cornerRadius = userPhotoImgView.frame.size.width / 2;
     }
     return userPhotoImgView;
 }
@@ -74,22 +67,29 @@
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.userInfoArray.count;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.userInfoArray[section].count;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 80;
+    if (indexPath.section == 0) {
+        return 80.0;
     }
-    return 50;
+    return 50.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 0.0;
+    }
+    return 20.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
+    return 1.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,39 +98,54 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = self.userInfoArray[indexPath.row];
+    cell.textLabel.text = self.userInfoArray[indexPath.section][indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    switch (indexPath.row) {
-        case 0:
+    switch (indexPath.section) {
+        case 0:{
             [cell.contentView addSubview:[self getUserPhotoImgView]];
+        }
             break;
         case 1:
-            cell.detailTextLabel.text = [User sharedUser].nickname;
+            switch (indexPath.row) {
+                case 0:
+                    cell.detailTextLabel.text = [User sharedUser].nickname;
+                    break;
+                case 1:
+                    cell.detailTextLabel.text = [User sharedUser].tel;
+                    break;
+                case 2:
+                    cell.detailTextLabel.text = [User sharedUser].email;
+                    break;
+                case 3:
+                    cell.detailTextLabel.text = @"****";
+                    break;
+                default:
+                    break;
+            }
             break;
         case 2:
-            cell.detailTextLabel.text = ([[[User sharedUser].user objectForKey:@"gender"] integerValue] == 0) ? @"男" : @"女";
-            break;
-        case 3:
-            cell.detailTextLabel.text = [User sharedUser].tel;
-            break;
-        case 4:
-            cell.detailTextLabel.text = [User sharedUser].email;
-            break;
-        case 5:
-            cell.detailTextLabel.text = [User sharedUser].stuId;
-            break;
-        case 6:
-            cell.detailTextLabel.text = [User sharedUser].name;
-            break;
-        case 7:
-            cell.detailTextLabel.text = [User sharedUser].school;
-            break;
-        case 8:
-            cell.detailTextLabel.text = [User sharedUser].college;
-            break;
-        case 9:
-            cell.detailTextLabel.text = [User sharedUser].major;
-            break;
+            switch (indexPath.row) {
+                case 0:
+                    cell.detailTextLabel.text = [User sharedUser].stuId;
+                    break;
+                case 1:
+                    cell.detailTextLabel.text = [User sharedUser].name;
+                    break;
+                case 2:
+                    cell.detailTextLabel.text = ([[[User sharedUser].user objectForKey:@"gender"] integerValue] == 0) ? @"男" : @"女";
+                    break;
+                case 3:
+                    cell.detailTextLabel.text = [User sharedUser].school;
+                    break;
+                case 4:
+                    cell.detailTextLabel.text = [User sharedUser].college;
+                    break;
+                case 5:
+                    cell.detailTextLabel.text = [User sharedUser].major;
+                    break;
+                default:
+                    break;
+            }
         default:
             break;
     }
@@ -139,7 +154,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
+    switch (indexPath.section) {
         case 0:
             [self alertSheetMessage:nil withTitles:@[@"拍摄新照片", @"从相册选择"] andHandlers:@[^{
                 NSLog(@"Take new photo");
@@ -147,13 +162,31 @@
                 NSLog(@"Choose photo");
             }]];
             break;
-        case 1:
+        case 1:{
+            ModifyUserInfoViewController *modifyUerInfoVC = [[ModifyUserInfoViewController alloc] init];
+            switch (indexPath.row) {
+                case 0:
+                    modifyUerInfoVC.userInfoType = UserInfoTypeNickname;
+                    modifyUerInfoVC.userInfo = [User sharedUser].nickname;
+                    break;
+                case 1:
+                    modifyUerInfoVC.userInfoType = UserInfoTypeTel;
+                    modifyUerInfoVC.userInfo = [User sharedUser].tel;
+                    break;
+                case 2:
+                    modifyUerInfoVC.userInfoType = UserInfoTypeEmail;
+                    modifyUerInfoVC.userInfo = [User sharedUser].email;
+                    break;
+                case 3:
+                    modifyUerInfoVC.userInfoType = UserInfoTypePassword;
+                    break;
+                default:
+                    break;
+            }
+            [self showViewController:modifyUerInfoVC sender:nil];
+        }
             break;
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9: {
+        case 2:{
             if ([[User sharedUser].user objectForKey:@"stuId"] != nil) {
                 return;
             }

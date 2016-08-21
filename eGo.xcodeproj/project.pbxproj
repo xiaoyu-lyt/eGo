@@ -27,6 +27,8 @@
 		B81EC5A81D67E9B100655712 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC5A31D67E9B100655712 /* MANaviRoute.m */; };
 		B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */; };
 		B830651A1D56139C00A97ED3 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */; };
+		B830BE201D693D310078BD9E /* ModifyUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B830BE1E1D693D310078BD9E /* ModifyUserInfoViewController.m */; };
+		B830BE211D693D310078BD9E /* ModifyUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B830BE1F1D693D310078BD9E /* ModifyUserInfoViewController.xib */; };
 		B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */; };
 		B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */; };
 		B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842EA361D4B57DB005C1ADC /* AdViewController.m */; };
@@ -119,6 +121,9 @@
 		B83065161D56139C00A97ED3 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
 		B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
 		B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		B830BE1D1D693D310078BD9E /* ModifyUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyUserInfoViewController.h; sourceTree = "<group>"; };
+		B830BE1E1D693D310078BD9E /* ModifyUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyUserInfoViewController.m; sourceTree = "<group>"; };
+		B830BE1F1D693D310078BD9E /* ModifyUserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyUserInfoViewController.xib; sourceTree = "<group>"; };
 		B83728EE1D5ADDFC00FE77E8 /* SelectSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSiteViewController.h; sourceTree = "<group>"; };
 		B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSiteViewController.m; sourceTree = "<group>"; };
 		B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSiteViewController.xib; sourceTree = "<group>"; };
@@ -432,6 +437,9 @@
 				B80CD8161D4B803300D0CD20 /* PersonalViewController.h */,
 				B80CD8171D4B803300D0CD20 /* PersonalViewController.m */,
 				B80CD8181D4B803300D0CD20 /* PersonalViewController.xib */,
+				B830BE1D1D693D310078BD9E /* ModifyUserInfoViewController.h */,
+				B830BE1E1D693D310078BD9E /* ModifyUserInfoViewController.m */,
+				B830BE1F1D693D310078BD9E /* ModifyUserInfoViewController.xib */,
 				B80CD81B1D4B875C00D0CD20 /* FriendsViewController.h */,
 				B80CD81C1D4B875C00D0CD20 /* FriendsViewController.m */,
 				B80CD81D1D4B875C00D0CD20 /* FriendsViewController.xib */,
@@ -556,6 +564,7 @@
 				B830651A1D56139C00A97ED3 /* CommentsTableViewCell.xib in Resources */,
 				B86436191D616F6B00BC4E1E /* SearchViewController.xib in Resources */,
 				B8EB66321D483C2B002AC1F4 /* ChatCenterViewController.xib in Resources */,
+				B830BE211D693D310078BD9E /* ModifyUserInfoViewController.xib in Resources */,
 				B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */,
 				B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */,
 				B81EC5981D67DF3C00655712 /* ShowRouteViewController.xib in Resources */,
@@ -650,6 +659,7 @@
 				B8ABA4E81D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m in Sources */,
 				B87F8CB01D587832006D875E /* DLPageView.m in Sources */,
 				B89453791D655E5B00047708 /* TabOneViewController.m in Sources */,
+				B830BE201D693D310078BD9E /* ModifyUserInfoViewController.m in Sources */,
 				B81EC5A71D67E9B100655712 /* MANaviPolyline.m in Sources */,
 				B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */,
 				B81EC5A51D67E9B100655712 /* LineDashPolyline.m in Sources */,

@@ -17,25 +17,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GIj-J8-dHo">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="631"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Cp-bB-kYY">
-                    <rect key="frame" x="0.0" y="631" width="375" height="36"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="Inl-GR-Tn8"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="4Cp-bB-kYY" secondAttribute="bottom" id="1VJ-ha-Wmw"/>
-                <constraint firstAttribute="trailing" secondItem="4Cp-bB-kYY" secondAttribute="trailing" id="7Gf-lo-LC4"/>
+                <constraint firstAttribute="bottom" secondItem="GIj-J8-dHo" secondAttribute="bottom" id="5t8-QN-Qhn"/>
                 <constraint firstAttribute="trailing" secondItem="GIj-J8-dHo" secondAttribute="trailing" id="SLN-SF-JBB"/>
-                <constraint firstItem="4Cp-bB-kYY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="W5d-JX-YpF"/>
-                <constraint firstItem="4Cp-bB-kYY" firstAttribute="top" secondItem="GIj-J8-dHo" secondAttribute="bottom" id="ePW-xi-P0n"/>
                 <constraint firstItem="GIj-J8-dHo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h0q-Md-saW"/>
                 <constraint firstItem="GIj-J8-dHo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yBR-m2-uGF"/>
             </constraints>
