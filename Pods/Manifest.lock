@@ -14,21 +14,26 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AMap3DMap (4.1.0):
-    - AMapFoundation (~> 1.1)
-  - AMapFoundation (1.1.0)
+  - AMap3DMap (4.2.0):
+    - AMapFoundation (~> 1.2)
+  - AMapFoundation (1.2.0)
   - AMapSearch (4.2.0):
     - AMapFoundation (~> 1.0)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
   - AFNetworking
   - AMap3DMap
   - AMapSearch
+  - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AMap3DMap: 048e1ef05ce87a486d6bf4f09a4e2285356b3a16
-  AMapFoundation: 15db20567e6512422a086a01b42a88b145bc2500
+  AMap3DMap: 35a5e1ce80796ecf996b2c7b847b4ac94e97e448
+  AMapFoundation: 8acc2bf4eed79aab4d21002ddb8b24a6f3f3621c
   AMapSearch: 788020fca7ed18819e8bc2bfca716a6775a05ada
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
 COCOAPODS: 0.39.0
