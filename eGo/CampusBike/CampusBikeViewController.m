@@ -18,8 +18,8 @@
 
 @interface CampusBikeViewController ()<DLPageViewDelegate, DLPageViewDatasource, SelectSiteDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UITableView *inputTV;
-@property (strong, nonatomic) IBOutlet UITableView *historyTV;
+@property (strong, nonatomic) IBOutlet UITableView *inputTblView;
+@property (strong, nonatomic) IBOutlet UITableView *historyTblView;
 @property (strong, nonatomic) IBOutlet UIButton *cleanBtn;
 
 @property (nonatomic, strong) NSArray *bannerImgList;
@@ -50,19 +50,19 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.inputTV.delegate = self;
-    self.inputTV.dataSource = self;
-    self.historyTV.delegate = self;
-    self.historyTV.dataSource = self;
+    self.inputTblView.delegate = self;
+    self.inputTblView.dataSource = self;
+    self.historyTblView.delegate = self;
+    self.historyTblView.dataSource = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-//    self.inputTV.delegate = nil;
-//    self.inputTV.dataSource = nil;
-    self.historyTV.delegate = nil;
-    self.historyTV.dataSource = nil;
+//    self.inputTblView.delegate = nil;
+//    self.inputTblView.dataSource = nil;
+    self.historyTblView.delegate = nil;
+    self.historyTblView.dataSource = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,16 +80,16 @@
 }
 
 - (IBAction)searchBtnClicked:(id)sender {
-    if ([_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].textLabel.text.length == 0) {
+    if ([_inputTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].textLabel.text.length == 0) {
         [self.view makeToast:@"起点不能为空"];
         return;
-    } else if ([_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text.length == 0) {
+    } else if ([_inputTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text.length == 0) {
         [self.view makeToast:@"终点不能为空"];
         return;
     }
     AvailableBikeViewController *availableBikeVC = [[AvailableBikeViewController alloc] init];
-    availableBikeVC.origin = [_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].textLabel.text;
-    availableBikeVC.destination = [_inputTV cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text;
+    availableBikeVC.origin = [_inputTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].textLabel.text;
+    availableBikeVC.destination = [_inputTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].textLabel.text;
     [self showViewController:availableBikeVC sender:nil];
 //    [self presentViewController:availableBikeVC animated:YES completion:nil];
 }
@@ -112,13 +112,13 @@
         case SiteTypeOrigin:{
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
             self.origin = site;
-            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
+            [self.inputTblView cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
         }
             break;
         case SiteTypeDestination:{
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
             self.destination = site;
-            [self.inputTV cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
+            [self.inputTblView cellForRowAtIndexPath:indexPath].textLabel.text = site[@"name"];
         }
             break;
         default:
@@ -133,7 +133,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (tableView == _inputTV) ? 2 : _historyList.count;
+    return (tableView == _inputTblView) ? 2 : _historyList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -141,8 +141,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == _inputTV) {
-        static NSString *CellIdentifier = @"InputTCCell";
+    if (tableView == _inputTblView) {
+        static NSString *CellIdentifier = @"inputTblViewCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
@@ -151,8 +151,8 @@
         cell.textLabel.text = (indexPath.row == 0) ? @"我的位置" : @"";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    } else if (tableView == _historyTV) {
-        static NSString *CellIdentifier = @"HistoryTVCell";
+    } else if (tableView == _historyTblView) {
+        static NSString *CellIdentifier = @"historyTblViewCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
@@ -169,7 +169,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (tableView == _inputTV) {
+    if (tableView == _inputTblView) {
         SelectSiteViewController *selectSiteVC = [[SelectSiteViewController alloc] init];
         selectSiteVC.site = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
         switch (indexPath.row) {

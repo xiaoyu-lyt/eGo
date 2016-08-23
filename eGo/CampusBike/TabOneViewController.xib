@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabOneViewController">
             <connections>
-                <outlet property="availableBikeTblView" destination="BA9-qR-wgc" id="TAo-9c-YDk"/>
+                <outlet property="availableBikeTblView" destination="BA9-qR-wgc" id="ZBJ-93-sSI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

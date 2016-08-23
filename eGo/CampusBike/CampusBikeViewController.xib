@@ -9,8 +9,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CampusBikeViewController">
             <connections>
                 <outlet property="cleanBtn" destination="lrJ-Yw-EO5" id="4WQ-AM-bGA"/>
-                <outlet property="historyTV" destination="Qa8-Ov-d2B" id="CS0-PK-Ri9"/>
-                <outlet property="inputTV" destination="1x5-57-fsh" id="z06-rR-1pm"/>
+                <outlet property="historyTblView" destination="Qa8-Ov-d2B" id="Pjt-KJ-ZYp"/>
+                <outlet property="inputTblView" destination="1x5-57-fsh" id="hHw-EK-LXj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

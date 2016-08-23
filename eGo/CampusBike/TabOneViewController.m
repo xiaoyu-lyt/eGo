@@ -8,6 +8,8 @@
 
 #import "TabOneViewController.h"
 
+#import "Util.h"
+
 @interface TabOneViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *availableBikeTblView;
@@ -28,6 +30,8 @@
     [super viewWillAppear:animated];
     self.availableBikeTblView.delegate = self;
     self.availableBikeTblView.dataSource = self;
+    
+    [self.availableBikeTblView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -45,6 +49,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 1.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self alertConfirmMessage:@"是否联系发布者" withTitle1:@"取消" style1:UIAlertActionStyleCancel handler1:^{
+        NSLog(@"取消");
+    } andTitle2:@"联系" style2:UIAlertActionStyleDefault handler2:^{
+        NSLog(@"联系");
+    }];
 }
 
 #pragma mark - UITableViewDatasource

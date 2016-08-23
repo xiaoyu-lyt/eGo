@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabTwoViewController">
             <connections>
-                <outlet property="availableBikeTblView" destination="ii7-mR-518" id="7oa-Yz-i9h"/>
+                <outlet property="availableBikeTblView" destination="ii7-mR-518" id="bfy-jS-mep"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

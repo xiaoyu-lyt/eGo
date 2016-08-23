@@ -9,6 +9,7 @@
 #import "AvailableBikeViewController.h"
 #import "TabOneViewController.h"
 #import "TabTwoViewController.h"
+#import "AddBikeInfoViewController.h"
 
 #import "DLSlideTabView.h"
 
@@ -32,11 +33,21 @@
     slideTabView.delegate = self;
     slideTabView.datasource = self;
     [self.view addSubview:slideTabView];
+    
+    UIBarButtonItem *addBarBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBikeInfo:)];
+    self.navigationItem.rightBarButtonItem = addBarBtn;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addBikeInfo:(UIBarButtonItem *)btn {
+    AddBikeInfoViewController *addBikeInfoVC = [[AddBikeInfoViewController alloc] init];
+    addBikeInfoVC.origin = _origin;
+    addBikeInfoVC.destination = _destination;
+    [self showViewController:addBikeInfoVC sender:nil];
 }
 
 #pragma mark - DLSlideTabViewDatasource

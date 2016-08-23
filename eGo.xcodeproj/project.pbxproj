@@ -74,6 +74,8 @@
 		B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE061D470BC900E0863D /* MessageCenterViewController.m */; };
 		B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */; };
 		B8D6FE0D1D473E0400E0863D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */; };
+		B8DCE86C1D6C750500A97291 /* AddBikeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE86A1D6C750500A97291 /* AddBikeInfoViewController.m */; };
+		B8DCE86D1D6C750500A97291 /* AddBikeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE86B1D6C750500A97291 /* AddBikeInfoViewController.xib */; };
 		B8EA649F1D55CCBF004BDDB3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EA649D1D55CCBF004BDDB3 /* DetailViewController.m */; };
 		B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EA649E1D55CCBF004BDDB3 /* DetailViewController.xib */; };
 		B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB66201D483BF3002AC1F4 /* CampusTrafficViewController.m */; };
@@ -197,6 +199,9 @@
 		B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
 		B8D6FE0A1D473E0400E0863D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		B8DCE8691D6C750500A97291 /* AddBikeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBikeInfoViewController.h; sourceTree = "<group>"; };
+		B8DCE86A1D6C750500A97291 /* AddBikeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBikeInfoViewController.m; sourceTree = "<group>"; };
+		B8DCE86B1D6C750500A97291 /* AddBikeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBikeInfoViewController.xib; sourceTree = "<group>"; };
 		B8EA649C1D55CCBF004BDDB3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		B8EA649D1D55CCBF004BDDB3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		B8EA649E1D55CCBF004BDDB3 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -347,6 +352,9 @@
 				B894537B1D655E6300047708 /* TabTwoViewController.h */,
 				B894537C1D655E6300047708 /* TabTwoViewController.m */,
 				B894537D1D655E6300047708 /* TabTwoViewController.xib */,
+				B8DCE8691D6C750500A97291 /* AddBikeInfoViewController.h */,
+				B8DCE86A1D6C750500A97291 /* AddBikeInfoViewController.m */,
+				B8DCE86B1D6C750500A97291 /* AddBikeInfoViewController.xib */,
 			);
 			path = CampusBike;
 			sourceTree = "<group>";
@@ -543,6 +551,7 @@
 				B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */,
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
 				B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */,
+				B8DCE86D1D6C750500A97291 /* AddBikeInfoViewController.xib in Resources */,
 				B8A6547C1D63E726000F9C24 /* SiteInfoViewController.xib in Resources */,
 				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
 				B894537A1D655E5B00047708 /* TabOneViewController.xib in Resources */,
@@ -645,6 +654,7 @@
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,
 				B8D6FDFA1D470ACA00E0863D /* UIView+Toast.m in Sources */,
 				B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */,
+				B8DCE86C1D6C750500A97291 /* AddBikeInfoViewController.m in Sources */,
 				B8BBF72B1D51EF2A0089D89C /* ChatTableViewCell.m in Sources */,
 				B8A6547B1D63E726000F9C24 /* SiteInfoViewController.m in Sources */,
 				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
