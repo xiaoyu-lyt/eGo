@@ -54,11 +54,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [self alertConfirmMessage:@"是否联系发布者" withTitle1:@"取消" style1:UIAlertActionStyleCancel handler1:^{
-        NSLog(@"取消");
-    } andTitle2:@"联系" style2:UIAlertActionStyleDefault handler2:^{
-        NSLog(@"联系");
+    NSArray *titles = @[@"联系车主", @"申请"];
+    NSArray *handlers = @[^{
+        NSLog(@"联系车主");
+    }, ^{
+        NSLog(@"申请");
     }];
+    [self alertSheetMessage:@"" withTitles:titles andHandlers:handlers];
 }
 
 #pragma mark - UITableViewDatasource
