@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = [NSString stringWithFormat:@"%ld号小白", (long)_busId];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callDriver:)];
     self.telLbl.userInteractionEnabled = YES;
     [self.telLbl addGestureRecognizer:tap];

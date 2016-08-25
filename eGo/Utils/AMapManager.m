@@ -115,8 +115,8 @@ static const double    kRadius                                      = 6371004;
         
         MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
         pointAnnotation.coordinate = CLLocationCoordinate2DMake([location[@"latitude"] doubleValue], [location[@"longitude"] doubleValue]);
-        pointAnnotation.title = [NSString stringWithFormat:@"距离%.2f米", distance];
-        pointAnnotation.subtitle = [NSString stringWithFormat:@"约%.1f分钟后到达", (60 * distance / 10000)];
+        pointAnnotation.title = [NSString stringWithFormat:@"%@号小白", location[@"id"]];
+        pointAnnotation.subtitle = [NSString stringWithFormat:@"距离%.2f米", distance];
         
         [self.annotations addObject:pointAnnotation];
     }
@@ -268,7 +268,9 @@ updatingLocation:(BOOL)updatingLocation
     NSLog(@"You tapped the %lu annotation view", (unsigned long)[self.annotations indexOfObject:view.annotation]);
     UIViewController *currentVC = [Util getViewController:self.mapView];
     if ([[currentVC class] isEqual:[CampusTrafficViewController class]] && ![view.annotation.title isEqualToString:@"当前位置"]) {
-        [currentVC showViewController:[[BusInfoViewController alloc] init] sender:nil];
+        BusInfoViewController *busInfoVC = [[BusInfoViewController alloc] init];
+        busInfoVC.busId = [view.annotation.title integerValue];
+        [currentVC showViewController:busInfoVC sender:nil];
     } else if ([[currentVC class] isEqual:[SiteInfoViewController class]]) {
         GoHereViewController *goHereVC = [[GoHereViewController alloc] init];
         goHereVC.destination = @{@"name" : view.annotation.title, @"latitude" : @(view.annotation.coordinate.latitude), @"longitude" : @(view.annotation.coordinate.longitude)};

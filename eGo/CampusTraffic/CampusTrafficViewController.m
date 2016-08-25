@@ -10,6 +10,7 @@
 #import "SearchViewController.h"
 
 #import "Util.h"
+#import "AFNetworking.h"
 #import "AMapManager.h"
 
 @interface CampusTrafficViewController ()<UISearchBarDelegate>
@@ -56,11 +57,15 @@
 }
 
 - (void)getBusesLocation {
-    static float latitude = 26.059522, longitude = 119.194197;
-    latitude += 0.0001;
-    longitude += 0.0001;
-    self.busesLocationArray = @[@{@"latitude" : [NSString stringWithFormat:@"%f", latitude], @"longitude" : [NSString stringWithFormat:@"%f", longitude]}];
-    [[AMapManager manager] addBusAnnotationsWithLocations:self.busesLocationArray];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingPathComponent:@"bus.html"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+        self.busesLocationArray = responseObject;
+        
+        [[AMapManager manager] addBusAnnotationsWithLocations:self.busesLocationArray];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
 }
 
 #pragma mark - ButtonClicked

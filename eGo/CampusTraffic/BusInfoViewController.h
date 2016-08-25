@@ -10,4 +10,6 @@
 
 @interface BusInfoViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger busId;
+
 @end
