@@ -7,6 +7,7 @@
 //
 
 #import "FriendsViewController.h"
+#import "ChatViewController.h"
 
 #import "Util.h"
 #import "AFNetworking.h"
@@ -91,6 +92,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ChatViewController *chatVC = [[ChatViewController alloc] init];
+    chatVC.name = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    [self showViewController:chatVC sender:nil];
 }
 
 /*

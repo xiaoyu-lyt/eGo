@@ -56,7 +56,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 64;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -71,9 +71,9 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MessageTableViewCell" owner:nil options:nil] lastObject];
     }
     
-    cell.imageView.image = [Util setImage:[UIImage imageNamed:self.messageArray[indexPath.section][indexPath.row][@"photo_name"]] withWidth:56.0 andHeight:56.0];
+    cell.imageView.image = [Util setImage:[UIImage imageNamed:self.messageArray[indexPath.section][indexPath.row][@"photo_name"]] withWidth:44.0 andHeight:44.0];
     cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 28.0;
+    cell.imageView.layer.cornerRadius = 22.0;
     cell.nameLbl.text = self.messageArray[indexPath.section][indexPath.row][@"name"];
     cell.messageLbl.text = self.messageArray[indexPath.section][indexPath.row][@"message"];
     cell.timeLbl.text = self.messageArray[indexPath.section][indexPath.row][@"time"];

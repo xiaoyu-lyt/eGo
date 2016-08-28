@@ -147,7 +147,7 @@
                 <outlet property="shareBtn" destination="9xr-tj-u2j" id="ZS5-iT-w8c"/>
                 <outlet property="timeLbl" destination="46i-9a-97M" id="7hR-AQ-eHL"/>
             </connections>
-            <point key="canvasLocation" x="210" y="311.5"/>
+            <point key="canvasLocation" x="295" y="312.5"/>
         </tableViewCell>
     </objects>
     <resources>

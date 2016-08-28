@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6FACFE8DADE7FD725B2F4327 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04835C0A60CBC13D9718790B /* libPods.a */; };
+		B8088A671D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8088A651D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m */; };
+		B8088A681D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8088A661D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib */; };
+		B8088A6D1D6F2C1900DC19D9 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8088A6B1D6F2C1900DC19D9 /* ChatViewController.m */; };
+		B8088A6E1D6F2C1900DC19D9 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8088A6C1D6F2C1900DC19D9 /* ChatViewController.xib */; };
 		B80CD8191D4B803300D0CD20 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD8171D4B803300D0CD20 /* PersonalViewController.m */; };
 		B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B80CD8181D4B803300D0CD20 /* PersonalViewController.xib */; };
 		B80CD81E1D4B875C00D0CD20 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80CD81C1D4B875C00D0CD20 /* FriendsViewController.m */; };
@@ -32,6 +36,8 @@
 		B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B83728EF1D5ADDFC00FE77E8 /* SelectSiteViewController.m */; };
 		B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */; };
 		B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842EA361D4B57DB005C1ADC /* AdViewController.m */; };
+		B862FC0D1D73193900AE14C9 /* ChatSenderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B862FC0B1D73193900AE14C9 /* ChatSenderTableViewCell.m */; };
+		B862FC0E1D73193900AE14C9 /* ChatSenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B862FC0C1D73193900AE14C9 /* ChatSenderTableViewCell.xib */; };
 		B864360E1D61411300BC4E1E /* CampusGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864360C1D61411300BC4E1E /* CampusGuideViewController.m */; };
 		B864360F1D61411300BC4E1E /* CampusGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864360D1D61411300BC4E1E /* CampusGuideViewController.xib */; };
 		B86436131D6150EC00BC4E1E /* BusInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B86436111D6150EC00BC4E1E /* BusInfoViewController.m */; };
@@ -92,6 +98,12 @@
 		04835C0A60CBC13D9718790B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0839DC2511F2C8863D72672C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3821272BD1DAF6BEB32184AF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B8088A641D6F2AB200DC19D9 /* ChatReceiverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatReceiverTableViewCell.h; sourceTree = "<group>"; };
+		B8088A651D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatReceiverTableViewCell.m; sourceTree = "<group>"; };
+		B8088A661D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatReceiverTableViewCell.xib; sourceTree = "<group>"; };
+		B8088A6A1D6F2C1900DC19D9 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		B8088A6B1D6F2C1900DC19D9 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		B8088A6C1D6F2C1900DC19D9 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		B80CD8161D4B803300D0CD20 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
 		B80CD8171D4B803300D0CD20 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
 		B80CD8181D4B803300D0CD20 /* PersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalViewController.xib; sourceTree = "<group>"; };
@@ -131,6 +143,9 @@
 		B83728F01D5ADDFC00FE77E8 /* SelectSiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSiteViewController.xib; sourceTree = "<group>"; };
 		B842EA351D4B57DB005C1ADC /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
 		B842EA361D4B57DB005C1ADC /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
+		B862FC0A1D73193900AE14C9 /* ChatSenderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSenderTableViewCell.h; sourceTree = "<group>"; };
+		B862FC0B1D73193900AE14C9 /* ChatSenderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSenderTableViewCell.m; sourceTree = "<group>"; };
+		B862FC0C1D73193900AE14C9 /* ChatSenderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatSenderTableViewCell.xib; sourceTree = "<group>"; };
 		B864360B1D61411300BC4E1E /* CampusGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusGuideViewController.h; sourceTree = "<group>"; };
 		B864360C1D61411300BC4E1E /* CampusGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusGuideViewController.m; sourceTree = "<group>"; };
 		B864360D1D61411300BC4E1E /* CampusGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CampusGuideViewController.xib; sourceTree = "<group>"; };
@@ -249,6 +264,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B8088A691D6F2BFB00DC19D9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B8088A6A1D6F2C1900DC19D9 /* ChatViewController.h */,
+				B8088A6B1D6F2C1900DC19D9 /* ChatViewController.m */,
+				B8088A6C1D6F2C1900DC19D9 /* ChatViewController.xib */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		B81EC5991D67E9B100655712 /* AMPModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +306,12 @@
 				B8ABA4E51D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.h */,
 				B8ABA4E61D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m */,
 				B8ABA4E71D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib */,
+				B8088A641D6F2AB200DC19D9 /* ChatReceiverTableViewCell.h */,
+				B8088A651D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m */,
+				B8088A661D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib */,
+				B862FC0A1D73193900AE14C9 /* ChatSenderTableViewCell.h */,
+				B862FC0B1D73193900AE14C9 /* ChatSenderTableViewCell.m */,
+				B862FC0C1D73193900AE14C9 /* ChatSenderTableViewCell.xib */,
 			);
 			path = TVCell;
 			sourceTree = "<group>";
@@ -309,6 +340,7 @@
 				B81EC5991D67E9B100655712 /* AMPModels */,
 				B8D6FDE01D470ACA00E0863D /* CampusBike */,
 				B8D6FDE11D470ACA00E0863D /* CampusTraffic */,
+				B8088A691D6F2BFB00DC19D9 /* Chat */,
 				B8D6FDE21D470ACA00E0863D /* ChatCenter */,
 				B8D6FDE31D470ACA00E0863D /* Common */,
 				B8D6FDE41D470ACA00E0863D /* MessageCenter */,
@@ -553,7 +585,9 @@
 				B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */,
 				B8DCE86D1D6C750500A97291 /* AddBikeInfoViewController.xib in Resources */,
 				B8A6547C1D63E726000F9C24 /* SiteInfoViewController.xib in Resources */,
+				B8088A6E1D6F2C1900DC19D9 /* ChatViewController.xib in Resources */,
 				B8B660EF1D4F6C01007CE65A /* MessageTableViewCell.xib in Resources */,
+				B8088A681D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib in Resources */,
 				B894537A1D655E5B00047708 /* TabOneViewController.xib in Resources */,
 				B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */,
 				B86436141D6150EC00BC4E1E /* BusInfoViewController.xib in Resources */,
@@ -564,6 +598,7 @@
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
 				B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */,
 				B894537F1D655E6300047708 /* TabTwoViewController.xib in Resources */,
+				B862FC0E1D73193900AE14C9 /* ChatSenderTableViewCell.xib in Resources */,
 				B8D6FE041D470B1800E0863D /* LoginViewController.xib in Resources */,
 				B89453721D65556F00047708 /* AvailableBikeViewController.xib in Resources */,
 				B864360F1D61411300BC4E1E /* CampusGuideViewController.xib in Resources */,
@@ -651,6 +686,7 @@
 				B8EB662C1D483C20002AC1F4 /* SettingsViewController.m in Sources */,
 				B8D6FDFF1D470B0600E0863D /* BaseViewController.m in Sources */,
 				B8D6FDFB1D470ACA00E0863D /* UIViewController+Utils.m in Sources */,
+				B8088A671D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m in Sources */,
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,
 				B8D6FDFA1D470ACA00E0863D /* UIView+Toast.m in Sources */,
 				B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */,
@@ -676,7 +712,9 @@
 				B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */,
 				B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */,
 				B81EC5A81D67E9B100655712 /* MANaviRoute.m in Sources */,
+				B8088A6D1D6F2C1900DC19D9 /* ChatViewController.m in Sources */,
 				B89453711D65556F00047708 /* AvailableBikeViewController.m in Sources */,
+				B862FC0D1D73193900AE14C9 /* ChatSenderTableViewCell.m in Sources */,
 				B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */,
 				B8D6FDBD1D4707FA00E0863D /* main.m in Sources */,
 				B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */,
