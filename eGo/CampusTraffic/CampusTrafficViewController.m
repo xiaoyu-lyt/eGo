@@ -59,7 +59,6 @@
 - (void)getBusesLocation {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[kApiUrl stringByAppendingPathComponent:@"bus.html"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject);
         self.busesLocationArray = responseObject;
         
         [[AMapManager manager] addBusAnnotationsWithLocations:self.busesLocationArray];

@@ -2,22 +2,20 @@
 //  MessageCenterViewController.m
 //  eGo
 //
-//  Created by 萧宇 on 7/26/16.
+//  Created by 萧宇 on 8/29/16.
 //  Copyright © 2016 萧宇. All rights reserved.
 //
 
 #import "MessageCenterViewController.h"
-#import "MessageTableViewCell.h"
-#import "FriendsViewController.h"
+#import "MessageViewController.h"
+#import "NoticeViewController.h"
 
-#import "Util.h"
-#import "AFNetworking.h"
+#import "DLSlideTabView.h"
 
-@interface MessageCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MessageCenterViewController ()<DLSlideTabViewDelegate, DLSlideTabViewDatasource>
 
-@property (strong, nonatomic) IBOutlet UITableView *messageTV;
-
-@property (nonatomic, strong) NSArray<NSArray *> *messageArray;
+@property (nonatomic, strong) NSArray<NSString *> *tabTitles;
+@property (nonatomic, strong) UITableView *TableView;
 
 @end
 
@@ -27,14 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"消息中心";
+    self.tabTitles = @[@"消息", @"通知"];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIBarButtonItem *friendsBarBtn = [[UIBarButtonItem alloc] initWithImage:[Util setImage:[UIImage imageNamed:@"Contacts"] withWidth:18.0 andHeight:18.0] style:UIBarButtonItemStyleDone target:self action:@selector(friends:)];
-    self.navigationItem.rightBarButtonItem = friendsBarBtn;
-    
-    self.messageTV.delegate = self;
-    self.messageTV.dataSource = self;
-    
-    self.messageArray = @[@[@{@"photo_name" : @"AppLogo", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"AppLogo", @"name" : @"Jerome", @"message" : @"Hello", @"time" : @"12:23"},], @[@{@"photo_name" : @"DefaultImage", @"name" : @"Daniel", @"message" : @"Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello ", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Lam", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"Peter", @"message" : @"Hello", @"time" : @"12:23"}, @{@"photo_name" : @"DefaultImage", @"name" : @"林渊腾", @"message" : @"This is just a long test message, hello long message", @"time" : @"16/08/03"}]];
+    DLSlideTabView *slideTabView = [[DLSlideTabView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    slideTabView.delegate = self;
+    slideTabView.datasource = self;
+    [self.view addSubview:slideTabView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,47 +39,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)friends:(UIBarButtonItem *)btn {
-    [self showViewController:[[FriendsViewController alloc] init] sender:nil];
+#pragma mark - DLSlideTabViewDatasource
+
+- (NSInteger)numberOfTabsInSlideTabView:(DLSlideTabView *)slideTabView {
+    return self.tabTitles.count;
 }
 
-#pragma mark - TableView
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.messageArray.count;
+- (NSArray<NSString *> *)titleOfTabsInSlideTabView:(DLSlideTabView *)slideTabView {
+    return self.tabTitles;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.messageArray[section].count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"MessageTVCell";
-    MessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MessageTableViewCell" owner:nil options:nil] lastObject];
+- (UIView *)slideTabView:(DLSlideTabView *)slideTabView viewForTabAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0:{
+            MessageViewController *messageVC = [[MessageViewController alloc] init];
+            messageVC.view.frame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+            [self addChildViewController:messageVC];
+            return messageVC.view;
+        }
+            break;
+        case 1:{
+            NoticeViewController *noticeVC = [[NoticeViewController alloc] init];
+            noticeVC.view.frame = CGRectMake(0.0, 0.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+            [self addChildViewController:noticeVC];
+            return noticeVC.view;
+        }
+            break;
+        default:
+            return [[UIView alloc] init];
+            break;
     }
-    
-    cell.imageView.image = [Util setImage:[UIImage imageNamed:self.messageArray[indexPath.section][indexPath.row][@"photo_name"]] withWidth:44.0 andHeight:44.0];
-    cell.imageView.layer.masksToBounds = YES;
-    cell.imageView.layer.cornerRadius = 22.0;
-    cell.nameLbl.text = self.messageArray[indexPath.section][indexPath.row][@"name"];
-    cell.messageLbl.text = self.messageArray[indexPath.section][indexPath.row][@"message"];
-    cell.timeLbl.text = self.messageArray[indexPath.section][indexPath.row][@"time"];
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

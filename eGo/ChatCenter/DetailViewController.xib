@@ -29,7 +29,7 @@
                 <constraint firstAttribute="trailing" secondItem="w33-UY-xWg" secondAttribute="trailing" id="iwF-bM-5PQ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="439.5" y="341.5"/>
+            <point key="canvasLocation" x="319.5" y="310.5"/>
         </view>
     </objects>
 </document>

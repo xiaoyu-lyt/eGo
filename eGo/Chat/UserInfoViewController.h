@@ -1,5 +1,5 @@
 //
-//  MessageCenterViewController.h
+//  UserInfoViewController.h
 //  eGo
 //
 //  Created by 萧宇 on 8/29/16.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageCenterViewController : UIViewController
+@interface UserInfoViewController : UIViewController
+
+@property (nonatomic, strong) NSString *userId;
 
 @end

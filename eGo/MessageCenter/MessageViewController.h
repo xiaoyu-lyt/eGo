@@ -1,5 +1,5 @@
 //
-//  MessageCenterViewController.h
+//  MessageViewController.h
 //  eGo
 //
 //  Created by 萧宇 on 8/29/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageCenterViewController : UIViewController
+@interface MessageViewController : UIViewController
 
 @end

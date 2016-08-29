@@ -9,6 +9,9 @@
 #import "ChatViewController.h"
 #import "ChatReceiverTableViewCell.h"
 #import "ChatSenderTableViewCell.h"
+#import "UserInfoViewController.h"
+
+static const NSInteger BASIC_TAG_VALUE = 100000;
 
 @interface ChatViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -38,6 +41,7 @@
     self.messageTblView.delegate = self;
     self.messageTblView.dataSource = self;
     self.inputTxtFld.delegate = self;
+    self.inputTxtFld.returnKeyType = UIReturnKeySend;
     
     // 页面即将显示时隐藏TabBarController
     [UIView animateWithDuration:0.1 animations:^{
@@ -92,6 +96,11 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"%@", textField.text);
+    return YES;
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -139,13 +148,29 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"ChatReceiverTableViewCell" owner:nil options:nil] lastObject];
         }
     }
-    
-    cell.avatarImgView.image = [UIImage imageNamed:_messages[_messages.count - indexPath.row - 1][@"avatar"]];
+        cell.avatarImgView.image = [UIImage imageNamed:_messages[_messages.count - indexPath.row - 1][@"avatar"]];
     cell.avatarImgView.layer.masksToBounds = YES;
     cell.avatarImgView.layer.cornerRadius = cell.avatarImgView.frame.size.width / 2;
     cell.contentLbl.text = _messages[_messages.count - indexPath.row - 1][@"message"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userAvatarTapped:)];
+    cell.avatarImgView.userInteractionEnabled = YES;
+    [cell.avatarImgView addGestureRecognizer:tap];
+    cell.avatarImgView.tag = indexPath.row + BASIC_TAG_VALUE;
+
+    
     return cell;
+}
+
+#pragma mark - UIGestureRecognizer Method
+
+- (void)userAvatarTapped:(UITapGestureRecognizer *)tap {
+    NSLog(@"%@", _messages[_messages.count - (tap.view.tag - BASIC_TAG_VALUE) - 1][@"from"]);
+    
+    UserInfoViewController *userInfoVC = [[UserInfoViewController alloc] init];
+    userInfoVC.userId = _messages[_messages.count - (tap.view.tag - BASIC_TAG_VALUE) - 1][@"from"];
+    [self showViewController:userInfoVC sender:nil];
 }
 
 /*

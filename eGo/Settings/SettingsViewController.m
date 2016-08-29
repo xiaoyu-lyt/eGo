@@ -10,8 +10,9 @@
 #import "LoginViewController.h"
 #import "PersonalViewController.h"
 #import "FriendsViewController.h"
-#import "HistoryViewController.h"
 #import "MessageCenterViewController.h"
+#import "BikeViewController.h"
+#import "HistoryViewController.h"
 #import "FeedbackViewController.h"
 #import "AboutUsViewController.h"
 
@@ -172,6 +173,7 @@
                     [self showViewController:[[MessageCenterViewController alloc] init] sender:nil];
                     break;
                 case 3:
+                    [self showViewController:[[BikeViewController alloc] init] sender:nil];
                     break;
                 case 4:
                     [self showViewController:[[HistoryViewController alloc] init] sender:nil];

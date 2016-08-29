@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6FACFE8DADE7FD725B2F4327 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04835C0A60CBC13D9718790B /* libPods.a */; };
+		B802900B1D7415C30078E0C2 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80290091D7415C30078E0C2 /* UserInfoViewController.m */; };
+		B802900C1D7415C30078E0C2 /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802900A1D7415C30078E0C2 /* UserInfoViewController.xib */; };
+		B80290101D741E860078E0C2 /* UserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B802900E1D741E860078E0C2 /* UserInfoTableViewCell.m */; };
+		B80290111D741E860078E0C2 /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802900F1D741E860078E0C2 /* UserInfoTableViewCell.xib */; };
 		B8088A671D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8088A651D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m */; };
 		B8088A681D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8088A661D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib */; };
 		B8088A6D1D6F2C1900DC19D9 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8088A6B1D6F2C1900DC19D9 /* ChatViewController.m */; };
@@ -44,6 +48,14 @@
 		B86436141D6150EC00BC4E1E /* BusInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86436121D6150EC00BC4E1E /* BusInfoViewController.xib */; };
 		B86436181D616F6B00BC4E1E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B86436161D616F6B00BC4E1E /* SearchViewController.m */; };
 		B86436191D616F6B00BC4E1E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86436171D616F6B00BC4E1E /* SearchViewController.xib */; };
+		B864F85F1D745E840002EE5A /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864F85D1D745E840002EE5A /* MessageCenterViewController.m */; };
+		B864F8601D745E840002EE5A /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F85E1D745E840002EE5A /* MessageCenterViewController.xib */; };
+		B864F8641D745F200002EE5A /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864F8621D745F200002EE5A /* MessageViewController.m */; };
+		B864F8651D745F200002EE5A /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F8631D745F200002EE5A /* MessageViewController.xib */; };
+		B864F8691D745F2D0002EE5A /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864F8671D745F2D0002EE5A /* NoticeViewController.m */; };
+		B864F86A1D745F2D0002EE5A /* NoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F8681D745F2D0002EE5A /* NoticeViewController.xib */; };
+		B864F86F1D7461EA0002EE5A /* BikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864F86D1D7461EA0002EE5A /* BikeViewController.m */; };
+		B864F8701D7461EA0002EE5A /* BikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F86E1D7461EA0002EE5A /* BikeViewController.xib */; };
 		B87725451D66A4E40066A52F /* GoHereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87725431D66A4E40066A52F /* GoHereViewController.m */; };
 		B87725461D66A4E40066A52F /* GoHereViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87725441D66A4E40066A52F /* GoHereViewController.xib */; };
 		B87F8CB01D587832006D875E /* DLPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CAF1D587832006D875E /* DLPageView.m */; };
@@ -77,8 +89,6 @@
 		B8D6FDFF1D470B0600E0863D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FDFE1D470B0600E0863D /* BaseViewController.m */; };
 		B8D6FE031D470B1800E0863D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE011D470B1800E0863D /* LoginViewController.m */; };
 		B8D6FE041D470B1800E0863D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FE021D470B1800E0863D /* LoginViewController.xib */; };
-		B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE061D470BC900E0863D /* MessageCenterViewController.m */; };
-		B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */; };
 		B8D6FE0D1D473E0400E0863D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */; };
 		B8DCE86C1D6C750500A97291 /* AddBikeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE86A1D6C750500A97291 /* AddBikeInfoViewController.m */; };
 		B8DCE86D1D6C750500A97291 /* AddBikeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE86B1D6C750500A97291 /* AddBikeInfoViewController.xib */; };
@@ -98,6 +108,12 @@
 		04835C0A60CBC13D9718790B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0839DC2511F2C8863D72672C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3821272BD1DAF6BEB32184AF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B80290081D7415C30078E0C2 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		B80290091D7415C30078E0C2 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		B802900A1D7415C30078E0C2 /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
+		B802900D1D741E860078E0C2 /* UserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewCell.h; sourceTree = "<group>"; };
+		B802900E1D741E860078E0C2 /* UserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewCell.m; sourceTree = "<group>"; };
+		B802900F1D741E860078E0C2 /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
 		B8088A641D6F2AB200DC19D9 /* ChatReceiverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatReceiverTableViewCell.h; sourceTree = "<group>"; };
 		B8088A651D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatReceiverTableViewCell.m; sourceTree = "<group>"; };
 		B8088A661D6F2AB200DC19D9 /* ChatReceiverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatReceiverTableViewCell.xib; sourceTree = "<group>"; };
@@ -155,6 +171,18 @@
 		B86436151D616F6B00BC4E1E /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		B86436161D616F6B00BC4E1E /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		B86436171D616F6B00BC4E1E /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		B864F85C1D745E840002EE5A /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
+		B864F85D1D745E840002EE5A /* MessageCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterViewController.m; sourceTree = "<group>"; };
+		B864F85E1D745E840002EE5A /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
+		B864F8611D745F200002EE5A /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		B864F8621D745F200002EE5A /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		B864F8631D745F200002EE5A /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		B864F8661D745F2D0002EE5A /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
+		B864F8671D745F2D0002EE5A /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
+		B864F8681D745F2D0002EE5A /* NoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeViewController.xib; sourceTree = "<group>"; };
+		B864F86C1D7461EA0002EE5A /* BikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeViewController.h; sourceTree = "<group>"; };
+		B864F86D1D7461EA0002EE5A /* BikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeViewController.m; sourceTree = "<group>"; };
+		B864F86E1D7461EA0002EE5A /* BikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BikeViewController.xib; sourceTree = "<group>"; };
 		B87725421D66A4E40066A52F /* GoHereViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoHereViewController.h; sourceTree = "<group>"; };
 		B87725431D66A4E40066A52F /* GoHereViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoHereViewController.m; sourceTree = "<group>"; };
 		B87725441D66A4E40066A52F /* GoHereViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoHereViewController.xib; sourceTree = "<group>"; };
@@ -209,9 +237,6 @@
 		B8D6FE001D470B1800E0863D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B8D6FE011D470B1800E0863D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B8D6FE021D470B1800E0863D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		B8D6FE051D470BC900E0863D /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
-		B8D6FE061D470BC900E0863D /* MessageCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCenterViewController.m; sourceTree = "<group>"; };
-		B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
 		B8D6FE0A1D473E0400E0863D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		B8D6FE0B1D473E0400E0863D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		B8DCE8691D6C750500A97291 /* AddBikeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBikeInfoViewController.h; sourceTree = "<group>"; };
@@ -270,6 +295,9 @@
 				B8088A6A1D6F2C1900DC19D9 /* ChatViewController.h */,
 				B8088A6B1D6F2C1900DC19D9 /* ChatViewController.m */,
 				B8088A6C1D6F2C1900DC19D9 /* ChatViewController.xib */,
+				B80290081D7415C30078E0C2 /* UserInfoViewController.h */,
+				B80290091D7415C30078E0C2 /* UserInfoViewController.m */,
+				B802900A1D7415C30078E0C2 /* UserInfoViewController.xib */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -289,6 +317,16 @@
 				B81EC5A31D67E9B100655712 /* MANaviRoute.m */,
 			);
 			path = AMPModels;
+			sourceTree = "<group>";
+		};
+		B864F86B1D74618E0002EE5A /* Bike */ = {
+			isa = PBXGroup;
+			children = (
+				B864F86C1D7461EA0002EE5A /* BikeViewController.h */,
+				B864F86D1D7461EA0002EE5A /* BikeViewController.m */,
+				B864F86E1D7461EA0002EE5A /* BikeViewController.xib */,
+			);
+			path = Bike;
 			sourceTree = "<group>";
 		};
 		B89DB5B91D4CA6F300D17E5E /* TVCell */ = {
@@ -312,6 +350,9 @@
 				B862FC0A1D73193900AE14C9 /* ChatSenderTableViewCell.h */,
 				B862FC0B1D73193900AE14C9 /* ChatSenderTableViewCell.m */,
 				B862FC0C1D73193900AE14C9 /* ChatSenderTableViewCell.xib */,
+				B802900D1D741E860078E0C2 /* UserInfoTableViewCell.h */,
+				B802900E1D741E860078E0C2 /* UserInfoTableViewCell.m */,
+				B802900F1D741E860078E0C2 /* UserInfoTableViewCell.xib */,
 			);
 			path = TVCell;
 			sourceTree = "<group>";
@@ -338,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				B81EC5991D67E9B100655712 /* AMPModels */,
+				B864F86B1D74618E0002EE5A /* Bike */,
 				B8D6FDE01D470ACA00E0863D /* CampusBike */,
 				B8D6FDE11D470ACA00E0863D /* CampusTraffic */,
 				B8088A691D6F2BFB00DC19D9 /* Chat */,
@@ -452,9 +494,15 @@
 		B8D6FDE41D470ACA00E0863D /* MessageCenter */ = {
 			isa = PBXGroup;
 			children = (
-				B8D6FE051D470BC900E0863D /* MessageCenterViewController.h */,
-				B8D6FE061D470BC900E0863D /* MessageCenterViewController.m */,
-				B8D6FE071D470BC900E0863D /* MessageCenterViewController.xib */,
+				B864F85C1D745E840002EE5A /* MessageCenterViewController.h */,
+				B864F85D1D745E840002EE5A /* MessageCenterViewController.m */,
+				B864F85E1D745E840002EE5A /* MessageCenterViewController.xib */,
+				B864F8611D745F200002EE5A /* MessageViewController.h */,
+				B864F8621D745F200002EE5A /* MessageViewController.m */,
+				B864F8631D745F200002EE5A /* MessageViewController.xib */,
+				B864F8661D745F2D0002EE5A /* NoticeViewController.h */,
+				B864F8671D745F2D0002EE5A /* NoticeViewController.m */,
+				B864F8681D745F2D0002EE5A /* NoticeViewController.xib */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";
@@ -582,6 +630,8 @@
 			files = (
 				B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */,
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
+				B864F8701D7461EA0002EE5A /* BikeViewController.xib in Resources */,
+				B802900C1D7415C30078E0C2 /* UserInfoViewController.xib in Resources */,
 				B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */,
 				B8DCE86D1D6C750500A97291 /* AddBikeInfoViewController.xib in Resources */,
 				B8A6547C1D63E726000F9C24 /* SiteInfoViewController.xib in Resources */,
@@ -592,9 +642,10 @@
 				B83728F21D5ADDFC00FE77E8 /* SelectSiteViewController.xib in Resources */,
 				B86436141D6150EC00BC4E1E /* BusInfoViewController.xib in Resources */,
 				B8EA64A01D55CCBF004BDDB3 /* DetailViewController.xib in Resources */,
-				B8D6FE091D470BC900E0863D /* MessageCenterViewController.xib in Resources */,
 				B87725461D66A4E40066A52F /* GoHereViewController.xib in Resources */,
 				B80CD8291D4B877A00D0CD20 /* FeedbackViewController.xib in Resources */,
+				B80290111D741E860078E0C2 /* UserInfoTableViewCell.xib in Resources */,
+				B864F86A1D745F2D0002EE5A /* NoticeViewController.xib in Resources */,
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
 				B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */,
 				B894537F1D655E6300047708 /* TabTwoViewController.xib in Resources */,
@@ -611,7 +662,9 @@
 				B830BE211D693D310078BD9E /* ModifyUserInfoViewController.xib in Resources */,
 				B89DB5B81D4C9DB700D17E5E /* RegisterViewController.xib in Resources */,
 				B80CD81A1D4B803300D0CD20 /* PersonalViewController.xib in Resources */,
+				B864F8651D745F200002EE5A /* MessageViewController.xib in Resources */,
 				B81EC5981D67DF3C00655712 /* ShowRouteViewController.xib in Resources */,
+				B864F8601D745E840002EE5A /* MessageCenterViewController.xib in Resources */,
 				B80CD81F1D4B875C00D0CD20 /* FriendsViewController.xib in Resources */,
 				B80CD8241D4B876F00D0CD20 /* HistoryViewController.xib in Resources */,
 			);
@@ -681,22 +734,27 @@
 				B81EC5A41D67E9B100655712 /* CommonUtility.m in Sources */,
 				B80CD8281D4B877A00D0CD20 /* FeedbackViewController.m in Sources */,
 				B86436131D6150EC00BC4E1E /* BusInfoViewController.m in Sources */,
+				B864F85F1D745E840002EE5A /* MessageCenterViewController.m in Sources */,
 				B8EA649F1D55CCBF004BDDB3 /* DetailViewController.m in Sources */,
 				B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */,
 				B8EB662C1D483C20002AC1F4 /* SettingsViewController.m in Sources */,
 				B8D6FDFF1D470B0600E0863D /* BaseViewController.m in Sources */,
+				B864F86F1D7461EA0002EE5A /* BikeViewController.m in Sources */,
 				B8D6FDFB1D470ACA00E0863D /* UIViewController+Utils.m in Sources */,
 				B8088A671D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m in Sources */,
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,
+				B80290101D741E860078E0C2 /* UserInfoTableViewCell.m in Sources */,
 				B8D6FDFA1D470ACA00E0863D /* UIView+Toast.m in Sources */,
 				B8B660EE1D4F6C01007CE65A /* MessageTableViewCell.m in Sources */,
 				B8DCE86C1D6C750500A97291 /* AddBikeInfoViewController.m in Sources */,
 				B8BBF72B1D51EF2A0089D89C /* ChatTableViewCell.m in Sources */,
+				B802900B1D7415C30078E0C2 /* UserInfoViewController.m in Sources */,
 				B8A6547B1D63E726000F9C24 /* SiteInfoViewController.m in Sources */,
 				B80CD82D1D4B878800D0CD20 /* AboutUsViewController.m in Sources */,
 				B81EC5971D67DF3C00655712 /* ShowRouteViewController.m in Sources */,
 				B81EC5A61D67E9B100655712 /* MANaviAnnotation.m in Sources */,
 				B8D6FDF91D470ACA00E0863D /* UIColor+Utils.m in Sources */,
+				B864F8641D745F200002EE5A /* MessageViewController.m in Sources */,
 				B86436181D616F6B00BC4E1E /* SearchViewController.m in Sources */,
 				B894537E1D655E6300047708 /* TabTwoViewController.m in Sources */,
 				B8F35AC01D60F1A800D2BD32 /* AMapManager.m in Sources */,
@@ -709,12 +767,12 @@
 				B81EC5A71D67E9B100655712 /* MANaviPolyline.m in Sources */,
 				B80CD8231D4B876F00D0CD20 /* HistoryViewController.m in Sources */,
 				B81EC5A51D67E9B100655712 /* LineDashPolyline.m in Sources */,
-				B8D6FE081D470BC900E0863D /* MessageCenterViewController.m in Sources */,
 				B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */,
 				B81EC5A81D67E9B100655712 /* MANaviRoute.m in Sources */,
 				B8088A6D1D6F2C1900DC19D9 /* ChatViewController.m in Sources */,
 				B89453711D65556F00047708 /* AvailableBikeViewController.m in Sources */,
 				B862FC0D1D73193900AE14C9 /* ChatSenderTableViewCell.m in Sources */,
+				B864F8691D745F2D0002EE5A /* NoticeViewController.m in Sources */,
 				B8EB66221D483BF3002AC1F4 /* CampusTrafficViewController.m in Sources */,
 				B8D6FDBD1D4707FA00E0863D /* main.m in Sources */,
 				B83728F11D5ADDFC00FE77E8 /* SelectSiteViewController.m in Sources */,
