@@ -49,7 +49,7 @@
     
     self.userPhotoImg.layer.masksToBounds = YES;
     self.userPhotoImg.layer.cornerRadius = self.userPhotoImg.frame.size.width / 2;
-    self.userPhotoImg.image = [Util getPhotoImageWithPhotoName:[User sharedUser].photoName];
+    [self.userPhotoImg sd_setImageWithURL:[NSURL URLWithString:@"http://image.tianjimedia.com/uploadImages/2012/230/36/4HGHL4K3T82I.jpg"] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
     self.genderImg.image = ([[User sharedUser].gender integerValue] == 0) ? [UIImage imageNamed:@"Male"] : [UIImage imageNamed:@"Female"];
     self.nameLbl.text = ([User sharedUser].name.length == 0) ? @"某同学" : [User sharedUser].name;
     self.signatureLbl.text = ([User sharedUser].signature.length > 15) ? [NSString stringWithFormat:@"%@...", [[User sharedUser].signature substringToIndex:15]] : [User sharedUser].signature;
@@ -72,9 +72,11 @@
 
 - (void)cleanCache {
     [self alertConfirmMessage:@"是否清楚本地缓存" withTitle1:@"取消" style1:UIAlertActionStyleCancel handler1:^{
-        
+        NSLog(@"Cancel");
     } andTitle2:@"清除" style2:UIAlertActionStyleDefault handler2:^{
-        
+        [[SDImageCache sharedImageCache] clearDisk];
+        [[SDImageCache sharedImageCache] clearMemory];
+        [self.settingsTV reloadData];
     }];
 }
 
@@ -135,7 +137,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.imageView.image = [UIImage imageNamed:@"Delete"];
-                    cell.detailTextLabel.text = @"2.03M";
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM", (float)[[SDImageCache sharedImageCache] getSize] / 1000000];
                     break;
                 case 1:
                     cell.imageView.image = [UIImage imageNamed:@"Feedback"];

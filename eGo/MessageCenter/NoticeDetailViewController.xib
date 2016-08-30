@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeDetailViewController">
             <connections>
-                <outlet property="messageListTblView" destination="jMA-xW-wbR" id="Q6h-KA-517"/>
+                <outlet property="noticeDetailWebView" destination="Orw-yc-nlo" id="hrU-kL-ZjM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,20 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jMA-xW-wbR">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Orw-yc-nlo">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="jMA-xW-wbR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FZ8-tW-oqU"/>
-                <constraint firstAttribute="bottom" secondItem="jMA-xW-wbR" secondAttribute="bottom" constant="112" id="Pd7-BM-tMb"/>
-                <constraint firstItem="jMA-xW-wbR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fDm-le-EXj"/>
-                <constraint firstAttribute="trailing" secondItem="jMA-xW-wbR" secondAttribute="trailing" id="kte-Zg-ZWt"/>
+                <constraint firstItem="Orw-yc-nlo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LaR-oC-gFz"/>
+                <constraint firstItem="Orw-yc-nlo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZqM-HI-7Zh"/>
+                <constraint firstAttribute="bottom" secondItem="Orw-yc-nlo" secondAttribute="bottom" id="l8z-e1-0CR"/>
+                <constraint firstAttribute="trailing" secondItem="Orw-yc-nlo" secondAttribute="trailing" id="uZT-wv-WgS"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="275.5" y="422.5"/>
         </view>
     </objects>
 </document>

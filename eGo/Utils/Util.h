@@ -11,6 +11,7 @@
 #import "UIView+Toast.h"
 #import "UIColor+Utils.h"
 #import "UIImageView+Utils.h"
+#import "UIImageView+WebCache.h"
 #import "UIViewController+Utils.h"
 
 // API路由前缀，用于拼接完整的API路由

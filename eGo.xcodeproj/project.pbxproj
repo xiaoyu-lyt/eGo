@@ -33,6 +33,9 @@
 		B81EC5A61D67E9B100655712 /* MANaviAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC59F1D67E9B100655712 /* MANaviAnnotation.m */; };
 		B81EC5A71D67E9B100655712 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC5A11D67E9B100655712 /* MANaviPolyline.m */; };
 		B81EC5A81D67E9B100655712 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = B81EC5A31D67E9B100655712 /* MANaviRoute.m */; };
+		B829CAC91D758AE30075EE4D /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B829CAC71D758AE30075EE4D /* NoticeDetailViewController.m */; };
+		B829CACA1D758AE30075EE4D /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B829CAC81D758AE30075EE4D /* NoticeDetailViewController.xib */; };
+		B829CACC1D759FBF0075EE4D /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = B829CACB1D759FBF0075EE4D /* loading.gif */; };
 		B83065191D56139C00A97ED3 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */; };
 		B830651A1D56139C00A97ED3 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */; };
 		B830BE201D693D310078BD9E /* ModifyUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B830BE1E1D693D310078BD9E /* ModifyUserInfoViewController.m */; };
@@ -148,6 +151,10 @@
 		B81EC5A11D67E9B100655712 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
 		B81EC5A21D67E9B100655712 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
 		B81EC5A31D67E9B100655712 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
+		B829CAC61D758AE30075EE4D /* NoticeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
+		B829CAC71D758AE30075EE4D /* NoticeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
+		B829CAC81D758AE30075EE4D /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
+		B829CACB1D759FBF0075EE4D /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		B83065161D56139C00A97ED3 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
 		B83065171D56139C00A97ED3 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
 		B83065181D56139C00A97ED3 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
@@ -401,6 +408,7 @@
 				B8D6FDBE1D4707FA00E0863D /* AppDelegate.h */,
 				B8D6FDBF1D4707FA00E0863D /* AppDelegate.m */,
 				B8D6FDC71D4707FA00E0863D /* Assets.xcassets */,
+				B829CACB1D759FBF0075EE4D /* loading.gif */,
 				B8D6FDC91D4707FA00E0863D /* LaunchScreen.storyboard */,
 				B8D6FDCC1D4707FA00E0863D /* Info.plist */,
 				B8D6FDBC1D4707FA00E0863D /* main.m */,
@@ -503,6 +511,9 @@
 				B864F8661D745F2D0002EE5A /* NoticeViewController.h */,
 				B864F8671D745F2D0002EE5A /* NoticeViewController.m */,
 				B864F8681D745F2D0002EE5A /* NoticeViewController.xib */,
+				B829CAC61D758AE30075EE4D /* NoticeDetailViewController.h */,
+				B829CAC71D758AE30075EE4D /* NoticeDetailViewController.m */,
+				B829CAC81D758AE30075EE4D /* NoticeDetailViewController.xib */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";
@@ -647,6 +658,7 @@
 				B80290111D741E860078E0C2 /* UserInfoTableViewCell.xib in Resources */,
 				B864F86A1D745F2D0002EE5A /* NoticeViewController.xib in Resources */,
 				B8EB662D1D483C20002AC1F4 /* SettingsViewController.xib in Resources */,
+				B829CACA1D758AE30075EE4D /* NoticeDetailViewController.xib in Resources */,
 				B8D6FDC81D4707FA00E0863D /* Assets.xcassets in Resources */,
 				B894537F1D655E6300047708 /* TabTwoViewController.xib in Resources */,
 				B862FC0E1D73193900AE14C9 /* ChatSenderTableViewCell.xib in Resources */,
@@ -665,6 +677,7 @@
 				B864F8651D745F200002EE5A /* MessageViewController.xib in Resources */,
 				B81EC5981D67DF3C00655712 /* ShowRouteViewController.xib in Resources */,
 				B864F8601D745E840002EE5A /* MessageCenterViewController.xib in Resources */,
+				B829CACC1D759FBF0075EE4D /* loading.gif in Resources */,
 				B80CD81F1D4B875C00D0CD20 /* FriendsViewController.xib in Resources */,
 				B80CD8241D4B876F00D0CD20 /* HistoryViewController.xib in Resources */,
 			);
@@ -760,6 +773,7 @@
 				B8F35AC01D60F1A800D2BD32 /* AMapManager.m in Sources */,
 				B89453751D6557A100047708 /* DLSlideTabView.m in Sources */,
 				B8EB66351D48B32A002AC1F4 /* UIImageView+Utils.m in Sources */,
+				B829CAC91D758AE30075EE4D /* NoticeDetailViewController.m in Sources */,
 				B8ABA4E81D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.m in Sources */,
 				B87F8CB01D587832006D875E /* DLPageView.m in Sources */,
 				B89453791D655E5B00047708 /* TabOneViewController.m in Sources */,
