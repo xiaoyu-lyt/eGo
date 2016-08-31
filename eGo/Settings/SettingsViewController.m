@@ -61,8 +61,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.settingsTV.delegate = nil;
-    self.settingsTV.dataSource = nil;
+//    self.settingsTV.delegate = nil;
+//    self.settingsTV.dataSource = nil;
 }
 
 - (void)didReceiveMemoryWarning {
