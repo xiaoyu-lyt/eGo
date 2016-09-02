@@ -23,6 +23,8 @@ static NSString* const kApiUrl = @"http://localhost/coding/API/eGoServer/index.p
 + (BOOL)removeFileByFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;
 + (UIImage *)getPhotoImageWithPhotoName:(NSString *)photoName;
 + (UIImage *)setImage:(UIImage *)image withWidth:(float)width andHeight:(float)height;
-+ (UIViewController*)getViewController:(UIView *)view;
++ (UIViewController *)getViewController:(UIView *)view;
++ (void)setNavigationBarTransparentWithViewController:(UIViewController *)vc;
++ (void)resetNavigationBarWithViewController:(UIViewController *)vc andTitleColor:(UIColor *)color;
 
 @end

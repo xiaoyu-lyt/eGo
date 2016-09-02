@@ -40,11 +40,7 @@
     self.bikeInfoTblView.dataSource = self;
     
     // 将NavigationBar设置为透明
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    [Util setNavigationBarTransparentWithViewController:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -54,10 +50,7 @@
     self.bikeInfoTblView.dataSource = nil;
     
     // 将NavigationBar改回默认状态
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    NSDictionary *attributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    [Util resetNavigationBarWithViewController:self andTitleColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {

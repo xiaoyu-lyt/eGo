@@ -102,4 +102,19 @@
     return nil;
 }
 
++ (void)setNavigationBarTransparentWithViewController:(UIViewController *)vc {
+    vc.navigationController.navigationBar.translucent = YES;
+    [vc.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    vc.navigationController.navigationBar.shadowImage = [UIImage new];
+    vc.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    vc.navigationController.view.backgroundColor = [UIColor clearColor];
+}
+
++ (void)resetNavigationBarWithViewController:(UIViewController *)vc andTitleColor:(UIColor *)color {
+    [vc.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [vc.navigationController.navigationBar setShadowImage:nil];
+    NSDictionary *attributes = @{NSForegroundColorAttributeName : color};
+    [vc.navigationController.navigationBar setTitleTextAttributes:attributes];
+}
+
 @end
