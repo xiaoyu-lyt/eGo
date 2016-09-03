@@ -77,7 +77,7 @@ typedef enum : NSUInteger {
             break;
     }
     return YES;
-}
+} 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *str = [NSString stringWithFormat:@"%@%@", [textField.text substringToIndex:range.location], string];

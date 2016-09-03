@@ -57,8 +57,6 @@
 		B864F8651D745F200002EE5A /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F8631D745F200002EE5A /* MessageViewController.xib */; };
 		B864F8691D745F2D0002EE5A /* NoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864F8671D745F2D0002EE5A /* NoticeViewController.m */; };
 		B864F86A1D745F2D0002EE5A /* NoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F8681D745F2D0002EE5A /* NoticeViewController.xib */; };
-		B864F86F1D7461EA0002EE5A /* BikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B864F86D1D7461EA0002EE5A /* BikeViewController.m */; };
-		B864F8701D7461EA0002EE5A /* BikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B864F86E1D7461EA0002EE5A /* BikeViewController.xib */; };
 		B87725451D66A4E40066A52F /* GoHereViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87725431D66A4E40066A52F /* GoHereViewController.m */; };
 		B87725461D66A4E40066A52F /* GoHereViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87725441D66A4E40066A52F /* GoHereViewController.xib */; };
 		B87F8CB01D587832006D875E /* DLPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87F8CAF1D587832006D875E /* DLPageView.m */; };
@@ -191,9 +189,6 @@
 		B864F8661D745F2D0002EE5A /* NoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeViewController.h; sourceTree = "<group>"; };
 		B864F8671D745F2D0002EE5A /* NoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeViewController.m; sourceTree = "<group>"; };
 		B864F8681D745F2D0002EE5A /* NoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoticeViewController.xib; sourceTree = "<group>"; };
-		B864F86C1D7461EA0002EE5A /* BikeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeViewController.h; sourceTree = "<group>"; };
-		B864F86D1D7461EA0002EE5A /* BikeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeViewController.m; sourceTree = "<group>"; };
-		B864F86E1D7461EA0002EE5A /* BikeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BikeViewController.xib; sourceTree = "<group>"; };
 		B87725421D66A4E40066A52F /* GoHereViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoHereViewController.h; sourceTree = "<group>"; };
 		B87725431D66A4E40066A52F /* GoHereViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoHereViewController.m; sourceTree = "<group>"; };
 		B87725441D66A4E40066A52F /* GoHereViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoHereViewController.xib; sourceTree = "<group>"; };
@@ -339,9 +334,6 @@
 		B864F86B1D74618E0002EE5A /* Bike */ = {
 			isa = PBXGroup;
 			children = (
-				B864F86C1D7461EA0002EE5A /* BikeViewController.h */,
-				B864F86D1D7461EA0002EE5A /* BikeViewController.m */,
-				B864F86E1D7461EA0002EE5A /* BikeViewController.xib */,
 				B8DFDED21D77CA9400E58C0B /* MyBikeViewController.h */,
 				B8DFDED31D77CA9400E58C0B /* MyBikeViewController.m */,
 				B8DFDED41D77CA9400E58C0B /* MyBikeViewController.xib */,
@@ -657,7 +649,6 @@
 			files = (
 				B87F8CB51D58788B006D875E /* CampusBikeViewController.xib in Resources */,
 				B8D6FDCB1D4707FA00E0863D /* LaunchScreen.storyboard in Resources */,
-				B864F8701D7461EA0002EE5A /* BikeViewController.xib in Resources */,
 				B802900C1D7415C30078E0C2 /* UserInfoViewController.xib in Resources */,
 				B8ABA4E91D5BFFEF0064CEB1 /* AvailableBikeTableViewCell.xib in Resources */,
 				B8DCE86D1D6C750500A97291 /* AddBikeInfoViewController.xib in Resources */,
@@ -770,7 +761,6 @@
 				B842EA371D4B57DB005C1ADC /* AdViewController.m in Sources */,
 				B8EB662C1D483C20002AC1F4 /* SettingsViewController.m in Sources */,
 				B8D6FDFF1D470B0600E0863D /* BaseViewController.m in Sources */,
-				B864F86F1D7461EA0002EE5A /* BikeViewController.m in Sources */,
 				B8D6FDFB1D470ACA00E0863D /* UIViewController+Utils.m in Sources */,
 				B8088A671D6F2AB200DC19D9 /* ChatReceiverTableViewCell.m in Sources */,
 				B8D6FDC01D4707FA00E0863D /* AppDelegate.m in Sources */,

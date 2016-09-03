@@ -8,6 +8,8 @@
 
 #import "AboutUsViewController.h"
 
+#import "Util.h"
+
 @interface AboutUsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *aboutUsTblView;
@@ -48,7 +50,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.view makeToast:@"功能暂未开放"];
 }
 
 #pragma mark - UITableViewDatasource
