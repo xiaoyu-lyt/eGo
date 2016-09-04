@@ -8,13 +8,21 @@
 
 #import "FeedbackViewController.h"
 
+typedef enum : NSUInteger {
+    RowSelectedNone,
+    RowSelectedSender,
+    RowSelectedTitle,
+    RowSelectedContent,
+} RowSelected;
+
 @interface FeedbackViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *inputTblView;
 @property (strong, nonatomic) IBOutlet UITextView *contentTxtView;
 @property (strong, nonatomic) IBOutlet UITextField *inputTxtFld;
 
-@property (nonatomic, strong) NSArray *inputInfo;
+@property (nonatomic, strong) NSMutableDictionary *inputInfo;
+@property (nonatomic, assign) RowSelected rowSelected;
 
 @end
 
@@ -24,11 +32,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"意见反馈";
-    self.inputInfo = @[@"发件人", @"主题", @"内容"];
+    self.rowSelected = RowSelectedNone;
+    self.inputInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"sender" : @"", @"title" : @"", @"content" : @""}];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIBarButtonItem *sendBarBtn = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(sendBarBtnClicked:)];
     self.navigationItem.rightBarButtonItem = sendBarBtn;
+    
+    [_inputTxtFld addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,18 +57,38 @@
     NSLog(@"send");
 }
 
+- (void)textFieldDidChanged:(UITextField *)textField {
+    switch (_rowSelected) {
+        case RowSelectedSender:
+            self.inputInfo[@"sender"] = textField.text;
+            break;
+        case RowSelectedTitle:
+            self.inputInfo[@"title"] = textField.text;
+            break;
+        case RowSelectedContent:
+            break;
+        default:
+            break;
+    }
+    [_inputTblView reloadData];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.inputTxtFld.text = @"";
     switch (indexPath.row) {
         case 0:
             [self.inputTxtFld becomeFirstResponder];
+            self.rowSelected = RowSelectedSender;
             break;
         case 1:
             [self.inputTxtFld becomeFirstResponder];
+            self.rowSelected = RowSelectedTitle;
             break;
         case 2:
             [self.contentTxtView becomeFirstResponder];
+            self.rowSelected = RowSelectedContent;
             break;
         default:
             break;
@@ -80,7 +111,21 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = _inputInfo[indexPath.row];
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"发件人";
+            cell.detailTextLabel.text = _inputInfo[@"sender"];
+            break;
+        case 1:
+            cell.textLabel.text = @"主题";
+            cell.detailTextLabel.text = _inputInfo[@"title"];
+            break;
+        case 2:
+            cell.textLabel.text = @"内容";
+            break;
+        default:
+            break;
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

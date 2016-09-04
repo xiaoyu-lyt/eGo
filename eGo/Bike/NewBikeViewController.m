@@ -9,10 +9,10 @@
 #import "NewBikeViewController.h"
 
 typedef enum : NSUInteger {
-    SelectedRowNone,
-    SelectedRowBrand,
-    SelectedRowLicence,
-} SelectedRow;
+    RowSelectedNone,
+    RowSelectedBrand,
+    RowSelectedLicence,
+} RowSelected;
 
 @interface NewBikeViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -21,7 +21,7 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) IBOutlet UITextField *inputTxtFld;
 
 @property (nonatomic, strong) NSMutableDictionary *bikeInfo;
-@property (nonatomic, assign) SelectedRow selectedRow;
+@property (nonatomic, assign) RowSelected rowSelected;
 
 @end
 
@@ -31,7 +31,7 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"添加电动车";
-    self.selectedRow = SelectedRowNone;
+    self.rowSelected = RowSelectedNone;
     self.bikeInfo = [NSMutableDictionary dictionaryWithDictionary:@{@"brand" : @"aaa", @"licence" : @"bbb"}];
     self.inputTxtFld.returnKeyType = UIReturnKeyDone;
 }
@@ -66,11 +66,11 @@ typedef enum : NSUInteger {
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     NSLog(@"a");
-    switch (_selectedRow) {
-        case SelectedRowBrand:
+    switch (_rowSelected) {
+        case RowSelectedBrand:
             textField.text = _bikeInfo[@"brand"];
             break;
-        case SelectedRowLicence:
+        case RowSelectedLicence:
             textField.text = _bikeInfo[@"licence"];
             break;
         default:
@@ -81,11 +81,11 @@ typedef enum : NSUInteger {
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *str = [NSString stringWithFormat:@"%@%@", [textField.text substringToIndex:range.location], string];
-    switch (_selectedRow) {
-        case SelectedRowBrand:
+    switch (_rowSelected) {
+        case RowSelectedBrand:
             self.bikeInfo[@"brand"] = str;
             break;
-        case SelectedRowLicence:
+        case RowSelectedLicence:
             self.bikeInfo[@"licence"] = str;
             break;
         default:
@@ -100,12 +100,12 @@ typedef enum : NSUInteger {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            self.selectedRow = SelectedRowBrand;
+            self.rowSelected = RowSelectedBrand;
             [_inputTxtFld resignFirstResponder];
             [_inputTxtFld becomeFirstResponder];
             break;
         case 1:
-            self.selectedRow = SelectedRowLicence;
+            self.rowSelected = RowSelectedLicence;
             [_inputTxtFld resignFirstResponder];
             [_inputTxtFld becomeFirstResponder];
         default:
