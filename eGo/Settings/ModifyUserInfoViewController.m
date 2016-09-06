@@ -10,8 +10,6 @@
 
 #import "Util.h"
 
-static const NSInteger BASIC_TAG_VALUE = 100000;
-
 @interface ModifyUserInfoViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, assign) NSNumber *isEdited;   // 当前信息是否改动

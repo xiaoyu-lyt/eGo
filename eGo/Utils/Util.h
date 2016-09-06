@@ -17,6 +17,9 @@
 // API路由前缀，用于拼接完整的API路由
 static NSString* const kApiUrl = @"http://localhost/coding/API/eGoServer/index.php/api/";
 
+// 设置tag时在此基础上计算
+static const NSInteger BASIC_TAG_VALUE = 100000;
+
 @interface Util : NSObject
 
 + (NSString *)getFilePathWithFileName:(NSString *)fileName andSubDirectory:(NSString *)subDirectory;

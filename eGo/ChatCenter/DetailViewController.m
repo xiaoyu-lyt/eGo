@@ -16,7 +16,8 @@
 
 @interface DetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UITableView *detailTV;
+@property (strong, nonatomic) IBOutlet UITableView *detailTblView;
+@property (strong, nonatomic) IBOutlet UITextField *inputTxtFld;
 
 @property (nonatomic, strong) NSArray<NSDictionary *> *commentsArray;
 @property (nonatomic, strong) NSArray<NSString *> *cellList;
@@ -29,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"详情";
-    self.cellList = @[@"DetailTVCell", @"CommentsTVCell"];
+    self.cellList = @[@"detailTblViewCell", @"CommentsTVCell"];
     
     self.commentsArray = @[@{@"content" : @"啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊", @"superFloor" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}];
 }
@@ -37,15 +38,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.detailTV.delegate = self;
-    self.detailTV.dataSource = self;
+    self.detailTblView.delegate = self;
+    self.detailTblView.dataSource = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.detailTV.delegate = nil;
-    self.detailTV.dataSource = nil;
+    self.detailTblView.delegate = nil;
+    self.detailTblView.dataSource = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +99,12 @@
             cell.timeLbl.text = self.chatInfo[@"time"];
             cell.placeLbl.text = self.chatInfo[@"place"];
             cell.contentLbl.text = self.chatInfo[@"content"];
+            [cell.likeBtn setTitle:self.chatInfo[@"likeNum"] forState:UIControlStateNormal];
+            [cell.likeBtn addTarget:self action:@selector(likeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.commentBtn setTitle:self.chatInfo[@"commentNum"] forState:UIControlStateNormal];
+            [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.shareBtn setTitle:@"分享" forState:UIControlStateNormal];
+            [cell.shareBtn addTarget:self action:@selector(shareBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -110,6 +117,11 @@
             }
             NSString *superFloor = [NSString stringWithFormat:@"%@", self.commentsArray[indexPath.row][@"superFloor"]];
             cell.contentLbl.text = ([superFloor isEqual:@"(null)"]) ? self.commentsArray[indexPath.row][@"content"] : [NSString stringWithFormat:@"@%@L：%@", superFloor, self.commentsArray[indexPath.row][@"content"]];
+            cell.likeBtn.tag = BASIC_TAG_VALUE + indexPath.row;
+            [cell.likeBtn setTitle:self.commentsArray[indexPath.row][@"likeNum"] forState:UIControlStateNormal];
+            [cell.likeBtn addTarget:self action:@selector(likeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            cell.commentBtn.tag = BASIC_TAG_VALUE + indexPath.row;;
+            [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         }
             break;
@@ -117,42 +129,26 @@
             return nil;
             break;
     }
-//    ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellList[indexPath.section]];
-//    if (cell == nil) {
-//        //        cell = ;
-//        cell = (indexPath.section == 0) ? [[[NSBundle mainBundle] loadNibNamed:@"ChatTableViewCell" owner:nil options:nil] lastObject] : [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:self.cellList[indexPath.section]];
-//    }
-//    switch (indexPath.section) {
-//        case 0:
-//            cell.avatarImgView.image = [UIImage imageNamed:self.chatInfo[@"avatar"]];
-//            cell.nameLbl.text = self.chatInfo[@"name"];
-//            cell.genderImgView.image = [UIImage imageNamed:([self.chatInfo[@"gender"] integerValue] == 1) ? @"Male" : @"Female"];
-//            cell.timeLbl.text = self.chatInfo[@"time"];
-//            cell.placeLbl.text = self.chatInfo[@"place"];
-//            cell.contentLbl.text = self.chatInfo[@"content"];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            break;
-//        case 1:
-//            cell.textLabel.text = @"1";
-//            break;
-//        default:
-//            break;
-//    }
-//    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Button Clicked
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)likeBtnClicked:(UIButton *)btn {
+    NSLog(@"Like button clicked");
+    NSLog(@"%ld", btn.tag);
 }
-*/
+
+- (void)commentBtnClicked:(UIButton *)btn {
+    NSLog(@"Comment button clicked");
+}
+
+- (void)shareBtnClicked:(UIButton *)btn {
+    NSLog(@"Share button clicked");
+    [self.view makeToast:@"更多功能敬请期待"];
+}
 
 @end

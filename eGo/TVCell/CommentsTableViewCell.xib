@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="Zn8-Hl-2dJ">
@@ -36,19 +36,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOG-4M-oSM">
-                        <rect key="frame" x="64" y="40" width="28" height="14"/>
+                        <rect key="frame" x="64" y="39" width="28" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUJ-aX-iAf">
-                        <rect key="frame" x="96" y="40" width="11" height="14"/>
+                        <rect key="frame" x="96" y="39" width="11" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUE-3m-NiY">
-                        <rect key="frame" x="111" y="40" width="31" height="14"/>
+                        <rect key="frame" x="111" y="39" width="31" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -59,16 +59,18 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhQ-lM-Yfp">
-                        <rect key="frame" x="256" y="93" width="24" height="25"/>
-                        <state key="normal" image="Like"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-4P-IY1">
                         <rect key="frame" x="288" y="93" width="24" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="JtA-2n-tN8"/>
                         </constraints>
                         <state key="normal" image="Comment"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhQ-lM-Yfp">
+                        <rect key="frame" x="260" y="93" width="20" height="25"/>
+                        <state key="normal" title="1" image="Like">
+                            <color key="titleColor" red="0.047058823530000002" green="0.39607843139999999" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
@@ -78,7 +80,6 @@
                     <constraint firstAttribute="trailingMargin" secondItem="gL5-1H-a3y" secondAttribute="trailing" id="3gM-jG-amQ"/>
                     <constraint firstItem="gL5-1H-a3y" firstAttribute="leading" secondItem="Zn8-Hl-2dJ" secondAttribute="trailing" constant="8" id="BhQ-RX-ip5"/>
                     <constraint firstItem="GOG-4M-oSM" firstAttribute="leading" secondItem="Zn8-Hl-2dJ" secondAttribute="trailing" constant="8" id="FTV-qD-x5D"/>
-                    <constraint firstItem="IhQ-lM-Yfp" firstAttribute="width" secondItem="Hgd-4P-IY1" secondAttribute="width" id="FdB-Y9-ZHp"/>
                     <constraint firstItem="E7R-yz-csA" firstAttribute="leading" secondItem="us8-qr-M8G" secondAttribute="trailing" constant="8" id="G6Q-m4-X0E"/>
                     <constraint firstItem="Hgd-4P-IY1" firstAttribute="leading" secondItem="IhQ-lM-Yfp" secondAttribute="trailing" constant="8" id="Kqf-AW-hcZ"/>
                     <constraint firstItem="us8-qr-M8G" firstAttribute="top" secondItem="Zn8-Hl-2dJ" secondAttribute="top" id="Mwd-TY-1eT"/>
@@ -106,7 +107,7 @@
                 <outlet property="placeLbl" destination="iUE-3m-NiY" id="f8e-zh-XEc"/>
                 <outlet property="timeLbl" destination="GOG-4M-oSM" id="Uos-HB-HCC"/>
             </connections>
-            <point key="canvasLocation" x="410" y="318"/>
+            <point key="canvasLocation" x="196" y="287"/>
         </tableViewCell>
     </objects>
     <resources>
