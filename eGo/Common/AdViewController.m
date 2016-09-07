@@ -11,6 +11,8 @@
 #import "LoginViewController.h"
 
 #import "User.h"
+#import "Util.h"
+#import "AFNetworking.h"
 
 @interface AdViewController ()
 
@@ -18,6 +20,7 @@
 
 @property (nonatomic) int countTime;
 @property (nonatomic, strong) NSTimer *interAppTimer;
+@property (nonatomic, strong) NSString *imageName;
 
 @end
 
@@ -27,7 +30,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIImageView *adImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background"]];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingPathComponent:@"SystemImages/getBackgroundImage.html"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self loadImage:responseObject[@"image"]];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self loadImage:nil];
+    }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)loadImage:(NSString *)imageName {
+    UIImageView *adImgView = [[UIImageView alloc] init];
+    [adImgView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"System/%@", imageName]]] placeholderImage:[UIImage imageNamed:@"Background"] options:SDWebImageRefreshCached];
     adImgView.frame = [UIScreen mainScreen].bounds;
     [self.view addSubview:adImgView];
     
@@ -43,11 +65,6 @@
     self.interAppTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(interCountDown:) userInfo:nil repeats:YES];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:self.interAppTimer forMode:NSRunLoopCommonModes];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)interCountDown:(NSTimer *)countDownTimer {

@@ -183,19 +183,23 @@
     }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:[kApiUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"User/register.html"]] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:[kApiUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"register.html"]] parameters:@{@"tel" : self.accountText.text, @"password" : self.passwordText.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.view hideToastActivity];
-        if ([responseObject[@"status"] integerValue] == 200) {
-            [[User sharedUser].user setObject:responseObject[@"data"][@"token"] forKey:@"token"];
-            [self.view makeToast:@"注册成功"];
-            [NSThread sleepForTimeInterval:2];
-            [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:nil];
-        } else {
-            [self.view makeToast:responseObject[@"errorMsg"]];
-        }
+        [[User sharedUser].user setObject:responseObject[@"token"] forKey:@"token"];
+        [[User sharedUser].user setObject:self.accountText.text forKey:@"tel"];
+        [self.view makeToast:@"注册成功"];
+        [NSThread sleepForTimeInterval:2];
+        [self presentViewController:[[BaseViewController alloc] init] animated:YES completion:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.view hideToastActivity];
-        NSLog(@"Faild:%@", [error localizedDescription]);
+        switch (((NSHTTPURLResponse *)task.response).statusCode) {
+            case 400:
+                [self.view makeToast:@"该手机号已注册"];
+                break;
+            default:
+                [self.view makeToast:@"系统错误，请稍后再试"];
+                break;
+        }
     }];
 }
 
@@ -215,27 +219,23 @@
     [self.view makeToastActivity:CSToastPositionCenter];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[kApiUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"User/getVerifyCode/tel/%@.html", self.accountText.text]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[kApiUrl stringByAppendingPathComponent:[NSString stringWithFormat:@"verify-code/%@.html", self.accountText.text]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.view hideToastActivity];
-        if ([responseObject[@"status"] integerValue] == 200) {
-            [self.view makeToast:responseObject[@"data"]];
-            self.verifyCode = responseObject[@"data"];
-            
-            // 开启重试倒计时
-            self.countTime = 10;
-            self.getVeriftCodeBtn.enabled = NO;
-            self.getVeriftCodeBtn.backgroundColor = [UIColor grayColor];
-            [self.getVeriftCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", self.countTime] forState:UIControlStateNormal];
-            
-            NSTimer *countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(retryCountdown:) userInfo:nil repeats:YES];
-            NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-            [runLoop addTimer:countDownTimer forMode:NSRunLoopCommonModes];
-        } else {
-            [self.view makeToast:responseObject[@"errorMsg"]];
-        }
+        [self.view makeToast:responseObject[@"verifyCode"]];
+        self.verifyCode = responseObject[@"verifyCode"];
+        
+        // 开启重试倒计时
+        self.countTime = 30;
+        self.getVeriftCodeBtn.enabled = NO;
+        self.getVeriftCodeBtn.backgroundColor = [UIColor grayColor];
+        [self.getVeriftCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", self.countTime] forState:UIControlStateNormal];
+        
+        NSTimer *countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(retryCountdown:) userInfo:nil repeats:YES];
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addTimer:countDownTimer forMode:NSRunLoopCommonModes];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.view hideToastActivity];
-        NSLog(@"Faild:%@", [error localizedDescription]);
+        [self.view makeToast:@"系统错误，请稍后再试"];
     }];
 
 }

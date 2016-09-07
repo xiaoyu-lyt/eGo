@@ -186,6 +186,7 @@
                 [self.view makeToast:@"该账号未注册"];
                 break;
             default:
+                [self.view makeToast:@"系统错误，请稍后再试"];
                 break;
         }
     }];

@@ -8,6 +8,12 @@
 
 #import "BusInfoViewController.h"
 
+#import "Util.h"
+#import "AMapManager.h"
+#import "AFNetworking.h"
+
+static const double kRadius = 6371004;
+
 @interface BusInfoViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *routeLbl;
@@ -28,6 +34,15 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callDriver:)];
     self.telLbl.userInteractionEnabled = YES;
     [self.telLbl addGestureRecognizer:tap];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"bus/%ld.html", (long)_busId]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.distanceLbl.text = [NSString stringWithFormat:@"%f", [self getDistanceWithLatitude:[responseObject[@"latitude"] doubleValue] andLongitude:[responseObject[@"longitude"] doubleValue]]];
+        self.velocityLbl.text = @"10.05";
+        self.telLbl.text = responseObject[@"drivertel"];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,22 +50,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+// 根据经纬度计算距离
+- (double)getDistanceWithLatitude:(double)latitude andLongitude:(double)longitude {
+    double c = sin(latitude) * sin([AMapManager manager].userLocation.location.coordinate.latitude) * cos(longitude-[AMapManager manager].userLocation.location.coordinate.longitude) + cos(latitude) * cos([AMapManager manager].userLocation.location.coordinate.latitude);
+    return kRadius * acos(c) * M_PI / 180;
+}
+
 - (void)callDriver:(UIGestureRecognizer *)tap {
-    NSLog(@"%@", ((UILabel *)(tap.view)).text);
 //    UIWebView *callWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
 //    [callWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", ((UILabel *)(tap.view)).text]]]];
 //    [self.view addSubview:callWebView];
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", ((UILabel *)(tap.view)).text]]];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
