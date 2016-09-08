@@ -22,7 +22,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *historyTblView;
 @property (strong, nonatomic) IBOutlet UIButton *cleanBtn;
 
-@property (nonatomic, strong) NSArray *bannerImgList;
+@property (nonatomic, strong) NSMutableArray *bannerImgList;
 @property (nonatomic, strong) DLPageView *adBannerView;
 @property (nonatomic, strong) NSDictionary *origin;
 @property (nonatomic, strong) NSDictionary *destination;
@@ -38,9 +38,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setNavigationBarButton];
-    
-    self.bannerImgList = @[@"Background", @"DefaultImage"];
     [self addAdBannerView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     _imgArray = @[@"Origin", @"Destination"];
     self.historyList = @[@{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}, @{@"origin" : @"三区", @"destination" : @"数计院楼"}];
@@ -71,12 +70,22 @@
 }
 
 - (void)addAdBannerView {
-    self.adBannerView = [[DLPageView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width * 2 / 5)];
-    self.adBannerView.delegate = self;
-    self.adBannerView.datasource = self;
-    // 消除因NavigationController引起的顶部空白
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.view addSubview:_adBannerView];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingString:@"image/banner-images"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.bannerImgList = [NSMutableArray arrayWithCapacity:3];
+        for (NSString *banner in [responseObject allValues]) {
+            [self.bannerImgList addObject:banner];
+        }
+        
+        self.adBannerView = [[DLPageView alloc] initWithFrame:CGRectMake(0.0, 64.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width * 2 / 5)];
+        self.adBannerView.delegate = self;
+        self.adBannerView.datasource = self;
+        // 消除因NavigationController引起的顶部空白
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        [self.view addSubview:_adBannerView];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
 }
 
 - (IBAction)searchBtnClicked:(id)sender {
@@ -101,7 +110,7 @@
 
 - (UIView *)pageView:(DLPageView *)pageView viewForPageAtIndexPath:(NSIndexPath *)indexPath {
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, _adBannerView.frame.size.width, _adBannerView.frame.size.height)];
-    imgView.image = [UIImage imageNamed:_bannerImgList[indexPath.row]];
+    [imgView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"System/%@", _bannerImgList[indexPath.row]]]] placeholderImage:[UIImage imageNamed:@"Background"] options:SDWebImageRefreshCached];
     return imgView;
 }
 
@@ -185,15 +194,5 @@
         [self showViewController:selectSiteVC sender:nil];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

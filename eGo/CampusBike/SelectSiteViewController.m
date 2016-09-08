@@ -8,9 +8,12 @@
 
 #import "SelectSiteViewController.h"
 
+#import "Util.h"
+#import "AFNetworking.h"
+
 @interface SelectSiteViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *sitesTV;
+@property (strong, nonatomic) IBOutlet UITableView *sitesTblView;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *sitesList;
@@ -22,23 +25,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self initSearchBar];
-    
-    self.sitesList = @[@{@"name" : @"福州大学", @"latitude" : @"26.059522", @"longitude" : @"119.194197"}, @{@"name" : @"福州大学图书馆", @"latitude" : @"26.051522", @"longitude" : @"119.191197"}];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingString:@"building"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.sitesList = responseObject;
+        [_sitesTblView reloadData];
+        [self initSearchBar];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.sitesTV.delegate = self;
-    self.sitesTV.dataSource = self;
+    self.sitesTblView.delegate = self;
+    self.sitesTblView.dataSource = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    self.sitesTV.delegate = nil;
-    self.sitesTV.dataSource = nil;
+    self.sitesTblView.delegate = nil;
+    self.sitesTblView.dataSource = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,7 +99,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"SitesTVCell";
+    static NSString *CellIdentifier = @"sitesTblViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];

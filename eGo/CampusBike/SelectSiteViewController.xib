@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectSiteViewController">
             <connections>
-                <outlet property="sitesTV" destination="qPI-V7-luB" id="wxp-aD-poa"/>
+                <outlet property="sitesTblView" destination="qPI-V7-luB" id="pVx-7c-drj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

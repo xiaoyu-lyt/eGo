@@ -51,7 +51,7 @@
                     <rect key="frame" x="8" y="130" width="359" height="215"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NB-YI-vGJ">
-                            <rect key="frame" x="0.0" y="0.0" width="119" height="119"/>
+                            <rect key="frame" x="0.0" y="0.0" width="118.5" height="118.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQO-g5-QFL">
                                     <rect key="frame" x="8" y="8" width="24" height="15"/>
@@ -60,8 +60,8 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="256" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi0-ZL-hfb">
-                                    <rect key="frame" x="23" y="34" width="73" height="51"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="44"/>
+                                    <rect key="frame" x="33" y="41" width="53" height="37"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -84,7 +84,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Qt-Uk-iZh">
-                            <rect key="frame" x="121" y="0.0" width="118" height="119"/>
+                            <rect key="frame" x="120.5" y="0.0" width="118" height="118.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="速度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAb-ib-m5j">
                                     <rect key="frame" x="8" y="8" width="22" height="14"/>
@@ -99,8 +99,8 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ziu-Uu-aIo">
-                                    <rect key="frame" x="32" y="33" width="54" height="53"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                    <rect key="frame" x="39" y="40" width="40" height="38"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -116,7 +116,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK5-CG-ZNl">
-                            <rect key="frame" x="241" y="0.0" width="118" height="119"/>
+                            <rect key="frame" x="240.5" y="0.0" width="118.5" height="118.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="约" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPz-qa-XeN">
                                     <rect key="frame" x="8" y="8" width="12" height="15"/>
@@ -131,8 +131,8 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kd-Ib-GHN">
-                                    <rect key="frame" x="28" y="33" width="63" height="53"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                    <rect key="frame" x="37" y="40" width="46" height="38"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -148,7 +148,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4u-bj-WOK">
-                            <rect key="frame" x="0.0" y="169" width="359" height="46"/>
+                            <rect key="frame" x="0.0" y="168.5" width="359" height="46.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预约热线：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Jo-1dW">
                                     <rect key="frame" x="8" y="13" width="85" height="21"/>
@@ -172,7 +172,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cn-cA-eWd">
-                            <rect key="frame" x="0.0" y="121" width="359" height="46"/>
+                            <rect key="frame" x="0.0" y="120.5" width="359" height="46"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下一站点：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjp-5M-2C0">
                                     <rect key="frame" x="8" y="13" width="85" height="21"/>

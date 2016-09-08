@@ -37,7 +37,7 @@ static const double kRadius = 6371004;
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"bus/%ld.html", (long)_busId]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        self.distanceLbl.text = [NSString stringWithFormat:@"%f", [self getDistanceWithLatitude:[responseObject[@"latitude"] doubleValue] andLongitude:[responseObject[@"longitude"] doubleValue]]];
+        self.distanceLbl.text = [NSString stringWithFormat:@"%.2f", [self getDistanceWithLatitude:[responseObject[@"latitude"] doubleValue] andLongitude:[responseObject[@"longitude"] doubleValue]]];
         self.velocityLbl.text = @"10.05";
         self.telLbl.text = responseObject[@"drivertel"];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

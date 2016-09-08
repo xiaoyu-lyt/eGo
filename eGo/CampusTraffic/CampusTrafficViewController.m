@@ -39,7 +39,7 @@
     [self.view insertSubview:manager.mapView atIndex:0];
     
     // 注册循环，每隔5秒获取一次小白位置
-    self.addAnimatedAnnotationTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(getBusesLocation) userInfo:nil repeats:YES];
+    self.addAnimatedAnnotationTimer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(getBusesLocation) userInfo:nil repeats:YES];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:self.addAnimatedAnnotationTimer forMode:NSRunLoopCommonModes];
     [self getBusesLocation];
