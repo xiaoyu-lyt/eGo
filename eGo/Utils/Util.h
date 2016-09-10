@@ -17,7 +17,7 @@
 // API路由前缀，用于拼接完整的API路由
 static const NSString *kApiUrl = @"http://localhost/coding/API/eGoServer/index.php/api/";
 // Image路由前缀，用于拼接完整的Image路由
-static const NSString *kImageUrl = @"http://localhost/images/";
+static const NSString *kImageUrl = @"http://localhost/coding/API/eGoServer/Public/images/";
 
 // 设置tag时在此基础上计算
 static const NSInteger BASIC_TAG_VALUE = 100000;

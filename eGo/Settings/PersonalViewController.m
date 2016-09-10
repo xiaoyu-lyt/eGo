@@ -57,7 +57,7 @@
     static UIImageView *userPhotoImgView = nil;
     if (userPhotoImgView == nil) {
         userPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 96.0, 12, 56.0, 56.0)];
-        userPhotoImgView.image = [UIImage imageNamed:@"DefaultImage"];
+        [userPhotoImgView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
         userPhotoImgView.layer.masksToBounds = YES;
         userPhotoImgView.layer.cornerRadius = userPhotoImgView.frame.size.width / 2;
     }

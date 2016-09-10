@@ -20,7 +20,7 @@
 @property (nonatomic, strong, readonly) NSString *gender;
 @property (nonatomic, strong, readonly) NSString *email;
 @property (nonatomic, strong, readonly) NSString *signature;
-@property (nonatomic, strong, readonly) NSString *photoName;
+@property (nonatomic, strong, readonly) NSString *avatar;
 @property (nonatomic, strong, readonly) NSString *school;
 @property (nonatomic, strong, readonly) NSString *college;
 @property (nonatomic, strong, readonly) NSString *major;

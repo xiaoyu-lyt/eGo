@@ -12,6 +12,8 @@
 #import "ChatCenterViewController.h"
 #import "SettingsViewController.h"
 
+#import "User.h"
+
 @interface BaseViewController ()
 
 @property (nonatomic, strong) UITabBarController *tabBarController;
@@ -23,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[User sharedUser] updateUserInfo];
     
     // 初始化TabBar中的各个ViewController
     CampusTrafficViewController *campusTrafficVC = [[CampusTrafficViewController alloc] init];

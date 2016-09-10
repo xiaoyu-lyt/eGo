@@ -37,20 +37,19 @@
 
 - (void)updateUserInfo {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:[kApiUrl stringByAppendingString:@"User/getUserInfo.html"] parameters:@{@"token" : [[User sharedUser].user objectForKey:@"token"], @"tel" : [[User sharedUser].user objectForKey:@"tel"]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject[@"data"]);
-        [self setUserInfo:responseObject[@"data"][@"stu_id"] forKey:@"stuId"];
-        [self setUserInfo:responseObject[@"data"][@"name"] forKey:@"name"];
-        [self setUserInfo:responseObject[@"data"][@"nickname"] forKey:@"nickname"];
-        [self setUserInfo:responseObject[@"data"][@"gender"] forKey:@"gender"];
-        [self setUserInfo:responseObject[@"data"][@"email"] forKey:@"email"];
-        [self setUserInfo:responseObject[@"data"][@"signature"] forKey:@"signature"];
-        [self setUserInfo:responseObject[@"data"][@"photo_name"] forKey:@"photoName"];
-        [self setUserInfo:responseObject[@"data"][@"school"] forKey:@"school"];
-        [self setUserInfo:responseObject[@"data"][@"college"] forKey:@"college"];
-        [self setUserInfo:responseObject[@"data"][@"major"] forKey:@"major"];
+    [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"user/%@/%@.html", [_user objectForKey:@"token"], [_user objectForKey:@"tel"]]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self setUserInfo:responseObject[@"stu_num"] forKey:@"stuId"];
+        [self setUserInfo:responseObject[@"name"] forKey:@"name"];
+        [self setUserInfo:responseObject[@"nickname"] forKey:@"nickname"];
+        [self setUserInfo:responseObject[@"gender"] forKey:@"gender"];
+        [self setUserInfo:responseObject[@"email"] forKey:@"email"];
+        [self setUserInfo:responseObject[@"signature"] forKey:@"signature"];
+        [self setUserInfo:responseObject[@"avatar"] forKey:@"avatar"];
+        [self setUserInfo:responseObject[@"school"] forKey:@"school"];
+        [self setUserInfo:responseObject[@"college"] forKey:@"college"];
+        [self setUserInfo:responseObject[@"major"] forKey:@"major"];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Faild:%@", [error localizedDescription]);
+        NSLog(@"");
     }];
 }
 
@@ -98,8 +97,8 @@
     return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"signature"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"signature"]];
 }
 
-- (NSString *)photoName {
-    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"photoName"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"photoName"]];
+- (NSString *)avatar {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"avatar"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"avatar"]];
 }
 
 - (NSString *)school {

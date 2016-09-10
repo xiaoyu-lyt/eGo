@@ -17,10 +17,11 @@
 
 // 设置NavigationBarButton
 - (void)setNavigationBarButton {
-    UIImage *userPhotoImage = [Util getPhotoImageWithPhotoName:[NSString stringWithFormat:@"%@.jpg", [[User sharedUser].user objectForKey:@"photoName"]]];
-    userPhotoImage = [Util setImage:userPhotoImage withWidth:32 andHeight:32];
-    UIImageView *userPhotoImageView = [[UIImageView alloc] initWithImage:userPhotoImage];
-    userPhotoImageView.layer.cornerRadius = userPhotoImage.size.width / 2;
+//    UIImage *userPhotoImage = [Util getPhotoImageWithPhotoName:[NSString stringWithFormat:@"%@.jpg", [[User sharedUser].user objectForKey:@"photoName"]]];
+//    userPhotoImage = [Util setImage:userPhotoImage withWidth:32 andHeight:32];
+    UIImageView *userPhotoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0)];
+    [userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
+    userPhotoImageView.layer.cornerRadius = 16.0;
     [userPhotoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(enterPersonalSetting)]];
     UIBarButtonItem *userPhoto = [[UIBarButtonItem alloc] initWithCustomView:userPhotoImageView];
     self.navigationItem.leftBarButtonItem = userPhoto;
