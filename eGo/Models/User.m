@@ -38,7 +38,7 @@
 - (void)updateUserInfo {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"user/%@/%@.html", [_user objectForKey:@"token"], [_user objectForKey:@"tel"]]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self setUserInfo:responseObject[@"stu_num"] forKey:@"stuId"];
+        [self setUserInfo:responseObject[@"stu_num"] forKey:@"stuNum"];
         [self setUserInfo:responseObject[@"name"] forKey:@"name"];
         [self setUserInfo:responseObject[@"nickname"] forKey:@"nickname"];
         [self setUserInfo:responseObject[@"gender"] forKey:@"gender"];
@@ -53,8 +53,17 @@
     }];
 }
 
-- (void)saveData {
-    
+- (NSDictionary *)saveData {
+    __block NSDictionary *result;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager PUT:[kApiUrl stringByAppendingString:@"user.html"] parameters:@{@"token" : self.token, @"nickname" : self.nickname, @"tel" : self.tel, @"email" : self.email} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success");
+        result = [NSDictionary dictionaryWithDictionary:responseObject];
+        NSLog(@"%@", result);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%ld", (long)((NSHTTPURLResponse *)task.response).statusCode);
+    }];
+    return result;
 }
 
 - (void)setUserInfo:(NSObject *)infoObject forKey:(NSString *)key {
@@ -73,8 +82,8 @@
     return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"token"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"token"]];
 }
 
-- (NSString *)stuId {
-    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"stuId"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"stuId"]];
+- (NSString *)stuNum {
+    return ([[NSString stringWithFormat:@"%@", [self.user objectForKey:@"stuNum"]] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@", [self.user objectForKey:@"stuNum"]];
 }
 
 - (NSString *)name {

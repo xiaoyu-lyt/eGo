@@ -8,6 +8,7 @@
 
 #import "ModifyUserInfoViewController.h"
 
+#import "User.h"
 #import "Util.h"
 
 @interface ModifyUserInfoViewController ()<UITextFieldDelegate>
@@ -193,7 +194,16 @@
 }
 
 - (void)saveUserInfoBrnClicked:(UIBarButtonItem *)btn {
-    [self.view makeToast:@"save"];
+    switch (_userInfoType) {
+        case UserInfoTypeNickname:
+            [[User sharedUser].user setObject:_inputTxtFld1.text forKey:@"nickname"];
+            break;
+            
+        default:
+            break;
+    }
+    NSLog(@"%@", [[User sharedUser] saveData]);
+    NSLog(@"a");
 }
 
 - (void)getVerifyCodeBtnClicked:(UIButton *)btn {
@@ -361,15 +371,5 @@
     }
     return YES;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

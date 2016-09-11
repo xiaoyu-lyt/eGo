@@ -14,7 +14,7 @@
 
 @interface PersonalViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UITableView *userInfoTV;
+@property (strong, nonatomic) IBOutlet UITableView *userInfoTblView;
 
 @property (nonatomic) BOOL isChanged;
 @property (nonatomic, strong) NSArray<NSArray *> *userInfoArray;
@@ -32,20 +32,14 @@
     
     self.isChanged = NO;
     self.userInfoArray = @[@[@"头像"], @[@"昵称", @"手机", @"邮箱", @"密码"], @[@"学号", @"姓名", @"性别", @"学校", @"学院", @"专业"]];
+    
+    self.userInfoTblView.delegate = self;
+    self.userInfoTblView.dataSource = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    self.userInfoTV.delegate = self;
-    self.userInfoTV.dataSource = self;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    self.userInfoTV.delegate = nil;
-    self.userInfoTV.dataSource = nil;
+    [_userInfoTblView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,7 +87,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"UserInfoTVCell";
+    static NSString *CellIdentifier = @"userInfoTblViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
@@ -126,7 +120,7 @@
         case 2:
             switch (indexPath.row) {
                 case 0:
-                    cell.detailTextLabel.text = [User sharedUser].stuId;
+                    cell.detailTextLabel.text = [User sharedUser].stuNum;
                     break;
                 case 1:
                     cell.detailTextLabel.text = [User sharedUser].name;

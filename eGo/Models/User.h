@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong, readonly) NSString *tel;
 @property (nonatomic, strong, readonly) NSString *token;
-@property (nonatomic, strong, readonly) NSString *stuId;
+@property (nonatomic, strong, readonly) NSString *stuNum;
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) NSString *nickname;
 @property (nonatomic, strong, readonly) NSString *gender;
@@ -29,6 +29,6 @@
 
 - (BOOL)isLoggedIn;
 - (void)updateUserInfo;
-- (void)saveData;
+- (NSDictionary *)saveData;
 
 @end

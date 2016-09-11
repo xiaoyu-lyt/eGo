@@ -26,7 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *genderImg;
 @property (strong, nonatomic) IBOutlet UILabel *nameLbl;
 @property (strong, nonatomic) IBOutlet UILabel *signatureLbl;
-@property (strong, nonatomic) IBOutlet UITableView *settingsTV;
+@property (strong, nonatomic) IBOutlet UITableView *settingsTblView;
 
 @property (nonatomic, strong) NSArray<NSArray *> *operations;
 
@@ -54,15 +54,8 @@
     self.nameLbl.text = ([User sharedUser].name.length == 0) ? @"某同学" : [User sharedUser].name;
     self.signatureLbl.text = ([User sharedUser].signature.length > 15) ? [NSString stringWithFormat:@"%@...", [[User sharedUser].signature substringToIndex:15]] : [User sharedUser].signature;
     
-    self.settingsTV.delegate = self;
-    self.settingsTV.dataSource = self;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-//    self.settingsTV.delegate = nil;
-//    self.settingsTV.dataSource = nil;
+    self.settingsTblView.delegate = self;
+    self.settingsTblView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,12 +64,12 @@
 }
 
 - (void)cleanCache {
-    [self alertConfirmMessage:@"是否清楚本地缓存" withTitle1:@"取消" style1:UIAlertActionStyleCancel handler1:^{
+    [self alertConfirmMessage:@"是否清除本地缓存" withTitle1:@"取消" style1:UIAlertActionStyleCancel handler1:^{
         NSLog(@"Cancel");
     } andTitle2:@"清除" style2:UIAlertActionStyleDefault handler2:^{
         [[SDImageCache sharedImageCache] clearDisk];
         [[SDImageCache sharedImageCache] clearMemory];
-        [self.settingsTV reloadData];
+        [self.settingsTblView reloadData];
     }];
 }
 
@@ -104,7 +97,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"SettingsTVCell";
+    static NSString *CellIdentifier = @"settingsTblViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
@@ -212,15 +205,5 @@
     cell.detailTextLabel.text = @"";
     cell.textLabel.textColor = [UIColor blackColor];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
