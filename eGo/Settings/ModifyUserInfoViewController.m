@@ -10,10 +10,13 @@
 
 #import "User.h"
 #import "Util.h"
+#import "AFNetworking.h"
 
 @interface ModifyUserInfoViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, assign) NSNumber *isEdited;   // 当前信息是否改动
+@property (nonatomic) int countTime;
+
 
 @end
 
@@ -23,6 +26,8 @@
     UITextField *_inputTxtFld3;     // 对应第三个TextField
     UIButton *_getVerifyCodeBtn;    // 获取验证码Button
     UIBarButtonItem *_saveBarBtn;   // 保存修改Button
+    
+    NSString *_verifyCode;
 }
 
 - (void)viewDidLoad {
@@ -194,29 +199,112 @@
 }
 
 - (void)saveUserInfoBrnClicked:(UIBarButtonItem *)btn {
+    void(^completionHandler)(NSNumber *result) = ^(NSNumber *result) {
+        [self.view hideToastActivity];
+        if ([result isEqual:@YES]) {
+            [self.view makeToast:@"更新成功" duration:1 position:CSToastPositionCenter title:nil image:nil style:[CSToastManager sharedStyle] completion:^(BOOL didTap) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } else {
+            [self.view makeToast:@"更新失败，请重试"];
+        }
+    };
+    
+    [self.view makeToastActivity:CSToastPositionCenter];
     switch (_userInfoType) {
         case UserInfoTypeNickname:
             [[User sharedUser].user setObject:_inputTxtFld1.text forKey:@"nickname"];
             break;
-            
+        case UserInfoTypeTel:
+            if (![_inputTxtFld2.text isEqualToString:_verifyCode]) {
+                [self.view hideToastActivity];
+                [self.view makeToast:@"验证码错误"];
+                return;
+            }
+            [[User sharedUser].user setObject:_inputTxtFld1.text forKey:@"tel"];
+            break;
+        case UserInfoTypeEmail:
+            if (![_inputTxtFld2.text isEqualToString:_verifyCode]) {
+                [self.view hideToastActivity];
+                [self.view makeToast:@"验证码错误"];
+            }
+            [[User sharedUser].user setObject:_inputTxtFld1.text forKey:@"email"];
+            break;
+        case UserInfoTypePassword:{
+            if (![_inputTxtFld2.text isEqualToString:_inputTxtFld3.text]) {
+                [self.view hideToastActivity];
+                [self.view makeToast:@"两次输入的密码不一致，请重试"];
+                return;
+            }
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager PUT:[kApiUrl stringByAppendingString:@"user.html"] parameters:@{@"token" : [User sharedUser].token, @"oldPassword" : _inputTxtFld1.text, @"newPassword" : _inputTxtFld2.text} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSLog(@"success");
+                completionHandler(@YES);
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"");
+                NSLog(@"%ld", (long)((NSHTTPURLResponse *)task.response).statusCode);
+                completionHandler(@NO);
+            }];
+            return;
+        }
+            break;
         default:
             break;
     }
-    NSLog(@"%@", [[User sharedUser] saveData]);
-    NSLog(@"a");
+    [[User sharedUser] saveData:completionHandler];
 }
 
 - (void)getVerifyCodeBtnClicked:(UIButton *)btn {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     switch (_userInfoType) {
-        case UserInfoTypeTel:
+        case UserInfoTypeTel:{
+            [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"verify-code/%@.html", [User sharedUser].tel]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSLog(@"%@", responseObject);
+                _verifyCode = responseObject[@"verifyCode"];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"");
+            }];
             NSLog(@"Tel verify code");
+        }
             break;
-        case UserInfoTypeEmail:
+        case UserInfoTypeEmail:{
+            [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"verify-code/%@/%@.html", [User sharedUser].email, @"email"]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSLog(@"%@", responseObject);
+                _verifyCode = responseObject[@"verifyCode"];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"");
+            }];
             NSLog(@"Email verify code");
+        }
             break;
         default:
             break;
     }
+    
+    // 开启重试倒计时
+    self.countTime = 30;
+    _getVerifyCodeBtn.enabled = NO;
+    _getVerifyCodeBtn.backgroundColor = [UIColor colorWithRGBValue:0xcccccc];
+    [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", self.countTime] forState:UIControlStateNormal];
+    [_getVerifyCodeBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    
+    NSTimer *countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(retryCountdown:) userInfo:nil repeats:YES];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:countDownTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)retryCountdown:(NSTimer *)countDownTimer {
+    if (self.countTime == 0) {
+        _getVerifyCodeBtn.enabled = YES;
+        [_getVerifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [_getVerifyCodeBtn setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+        _getVerifyCodeBtn.backgroundColor = [UIColor whiteColor];
+        [countDownTimer invalidate];
+        return;
+    }
+    
+    [self.view hideToastActivity];
+    [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", --self.countTime] forState:UIControlStateNormal];
 }
 
 #pragma mark - KVO method

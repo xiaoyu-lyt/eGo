@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface User : NSObject
 
@@ -29,6 +30,6 @@
 
 - (BOOL)isLoggedIn;
 - (void)updateUserInfo;
-- (NSDictionary *)saveData;
+- (void)saveData:(void(^)(id))completionHandler;
 
 @end

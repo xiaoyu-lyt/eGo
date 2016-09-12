@@ -53,17 +53,18 @@
     }];
 }
 
-- (NSDictionary *)saveData {
-    __block NSDictionary *result;
+- (void)saveData:(void(^)(id))completionHandler {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager PUT:[kApiUrl stringByAppendingString:@"user.html"] parameters:@{@"token" : self.token, @"nickname" : self.nickname, @"tel" : self.tel, @"email" : self.email} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"success");
-        result = [NSDictionary dictionaryWithDictionary:responseObject];
-        NSLog(@"%@", result);
+        if (completionHandler) {
+            completionHandler(@YES);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%ld", (long)((NSHTTPURLResponse *)task.response).statusCode);
+        if (completionHandler) {
+            completionHandler(@NO);
+        }
     }];
-    return result;
 }
 
 - (void)setUserInfo:(NSObject *)infoObject forKey:(NSString *)key {

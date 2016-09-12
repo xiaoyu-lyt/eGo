@@ -23,7 +23,7 @@
 @property (nonatomic, strong) UIImageView *passwordImg;
 @property (nonatomic, strong) UITextField *vorifyCodeText;
 @property (nonatomic, strong) UIImageView *vorifyCodeImg;
-@property (nonatomic, strong) UIButton *getVeriftCodeBtn;
+@property (nonatomic, strong) UIButton *getVerifyCodeBtn;
 @property (nonatomic, strong) UIButton *registerBtn;
 
 @property (nonatomic) int countTime;
@@ -116,14 +116,14 @@
         // 添加delegate
         self.vorifyCodeText.delegate = self;
         // 获取验证码Button
-        self.getVeriftCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.getVeriftCodeBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 158.0, TOP_Y + 220.0, 100.0, 30.0);
-        [self.getVeriftCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        self.getVeriftCodeBtn.backgroundColor = [UIColor colorWithRGBValue:0x12b4ed];
-        self.getVeriftCodeBtn.clipsToBounds = YES;
-        self.getVeriftCodeBtn.layer.cornerRadius = 6.4f;
-        [self.getVeriftCodeBtn addTarget:self action:@selector(getVeriftCodeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.getVeriftCodeBtn];
+        self.getVerifyCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.getVerifyCodeBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 158.0, TOP_Y + 220.0, 100.0, 30.0);
+        [self.getVerifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        self.getVerifyCodeBtn.backgroundColor = [UIColor colorWithRGBValue:0x12b4ed];
+        self.getVerifyCodeBtn.clipsToBounds = YES;
+        self.getVerifyCodeBtn.layer.cornerRadius = 6.4f;
+        [self.getVerifyCodeBtn addTarget:self action:@selector(getVerifyCodeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.getVerifyCodeBtn];
         
         // 注册Button
         self.registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -204,7 +204,7 @@
 }
 
 // 获取验证码
-- (void)getVeriftCodeBtnClicked {
+- (void)getVerifyCodeBtnClicked {
     [self.view endEditing:YES];
     
     // 检验输入数据
@@ -226,9 +226,9 @@
         
         // 开启重试倒计时
         self.countTime = 30;
-        self.getVeriftCodeBtn.enabled = NO;
-        self.getVeriftCodeBtn.backgroundColor = [UIColor grayColor];
-        [self.getVeriftCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", self.countTime] forState:UIControlStateNormal];
+        self.getVerifyCodeBtn.enabled = NO;
+        self.getVerifyCodeBtn.backgroundColor = [UIColor grayColor];
+        [self.getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", self.countTime] forState:UIControlStateNormal];
         
         NSTimer *countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(retryCountdown:) userInfo:nil repeats:YES];
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
@@ -242,15 +242,15 @@
 
 - (void)retryCountdown:(NSTimer *)countDownTimer {
     if (self.countTime == 0) {
-        self.getVeriftCodeBtn.enabled = YES;
-        [self.getVeriftCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        self.getVeriftCodeBtn.backgroundColor = [UIColor colorWithRGBValue:0x12b4ed];
+        self.getVerifyCodeBtn.enabled = YES;
+        [self.getVerifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        self.getVerifyCodeBtn.backgroundColor = [UIColor colorWithRGBValue:0x12b4ed];
         [countDownTimer invalidate];
         return;
     }
     
     [self.view hideToastActivity];
-    [self.getVeriftCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", --self.countTime] forState:UIControlStateNormal];
+    [self.getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"%ds后再试", --self.countTime] forState:UIControlStateNormal];
 }
 
 #pragma mark - TextFieldDelegate
