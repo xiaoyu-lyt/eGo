@@ -12,7 +12,7 @@
 #import "User.h"
 #import "Util.h"
 
-@interface PersonalViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface PersonalViewController ()<UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *userInfoTblView;
 
@@ -56,6 +56,14 @@
         userPhotoImgView.layer.cornerRadius = userPhotoImgView.frame.size.width / 2;
     }
     return userPhotoImgView;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - TableView
@@ -149,12 +157,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.section) {
-        case 0:
+        case 0:{
+            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+            imagePicker.delegate = self;
+            imagePicker.allowsEditing = YES;
+            
             [self alertSheetMessage:nil withTitles:@[@"拍摄新照片", @"从相册选择"] andHandlers:@[^{
-                NSLog(@"Take new photo");
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:imagePicker animated:YES completion:nil];
             }, ^{
-                NSLog(@"Choose photo");
+                imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [self presentViewController:imagePicker animated:YES completion:nil];
             }]];
+        }
             break;
         case 1:{
             ModifyUserInfoViewController *modifyUerInfoVC = [[ModifyUserInfoViewController alloc] init];
