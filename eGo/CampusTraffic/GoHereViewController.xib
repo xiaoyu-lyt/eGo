@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoHereViewController">
@@ -20,44 +21,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOh-1g-Rqr">
-                    <rect key="frame" x="319" y="64" width="48" height="88"/>
                     <state key="normal" image="Search"/>
                     <connections>
                         <action selector="searchBtnClicked:" destination="-1" eventType="touchUpInside" id="smO-ZD-LEc"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoAndBack" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-tT-YeG">
-                    <rect key="frame" x="16" y="100" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="dtI-Ef-A0g"/>
                         <constraint firstAttribute="width" secondItem="yXc-tT-YeG" secondAttribute="height" multiplier="1:1" id="pbP-wq-sbi"/>
                     </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OMq-Vt-qVF">
-                    <rect key="frame" x="0.0" y="201" width="375" height="420"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYq-r1-Mbg">
-                    <rect key="frame" x="142" y="629" width="90" height="30"/>
                     <state key="normal" title="清空搜索记录">
-                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRb-Xy-RN8">
-                    <rect key="frame" x="154" y="172" width="68" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="02n-nw-2zN">
-                    <rect key="frame" x="40" y="64" width="271" height="88"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="88" id="lhz-fW-oDI"/>
                     </constraints>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="02n-nw-2zN" firstAttribute="leading" secondItem="yXc-tT-YeG" secondAttribute="trailing" constant="8" id="1ux-2N-kKb"/>
                 <constraint firstItem="02n-nw-2zN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="7o3-K1-ePK"/>
@@ -77,12 +72,11 @@
                 <constraint firstItem="rRb-Xy-RN8" firstAttribute="top" secondItem="02n-nw-2zN" secondAttribute="bottom" constant="20" id="pQv-RO-SJD"/>
                 <constraint firstItem="rRb-Xy-RN8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tsR-EG-Kij"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="537.5" y="352.5"/>
         </view>
     </objects>
     <resources>
-        <image name="GoAndBack" width="17" height="25"/>
+        <image name="GoAndBack" width="16" height="25"/>
         <image name="Search" width="20" height="20"/>
     </resources>
 </document>

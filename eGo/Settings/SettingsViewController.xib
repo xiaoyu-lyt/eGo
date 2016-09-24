@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
@@ -22,36 +23,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ap-GW-xWW">
-                    <rect key="frame" x="0.0" y="64" width="375" height="156"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXB-5n-gIl">
-                            <rect key="frame" x="156" y="94" width="64" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="signature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC0-zv-msh">
-                            <rect key="frame" x="157" y="131" width="61" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Male" translatesAutoresizingMaskIntoConstraints="NO" id="yYJ-Qe-8fz">
-                            <rect key="frame" x="220" y="94" width="8" height="11"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="yYJ-Qe-8fz" secondAttribute="height" multiplier="4:5" id="KaE-vs-uII"/>
                                 <constraint firstAttribute="width" constant="8" id="WvD-Fl-tB3"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="jO3-J0-in8">
-                            <rect key="frame" x="148" y="6" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="jO3-J0-in8" secondAttribute="height" multiplier="1:1" id="9cS-Sy-TIX"/>
                                 <constraint firstAttribute="width" constant="80" id="h4U-36-L6y"/>
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="0.92829802849999998" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.92829805612564087" green="0.92829805612564087" blue="0.92829805612564087" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="wXB-5n-gIl" firstAttribute="centerX" secondItem="9ap-GW-xWW" secondAttribute="centerX" id="0WG-ck-bdO"/>
                         <constraint firstItem="gC0-zv-msh" firstAttribute="top" secondItem="wXB-5n-gIl" secondAttribute="bottom" constant="8" id="0ak-Nv-ojo"/>
@@ -65,11 +61,10 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-iY-UGj">
-                    <rect key="frame" x="0.0" y="228" width="375" height="395"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="9ap-GW-xWW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="4cC-PE-RI8"/>
                 <constraint firstAttribute="trailing" secondItem="nWb-iY-UGj" secondAttribute="trailing" id="5p4-4N-X29"/>
@@ -80,12 +75,11 @@
                 <constraint firstItem="nWb-iY-UGj" firstAttribute="top" secondItem="9ap-GW-xWW" secondAttribute="bottom" constant="8" id="jIy-tP-c2F"/>
                 <constraint firstItem="9ap-GW-xWW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="rwK-CG-0Is"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="282.5" y="290.5"/>
         </view>
     </objects>
     <resources>
-        <image name="Background" width="214" height="320"/>
-        <image name="Male" width="16" height="20"/>
+        <image name="Background" width="213" height="320"/>
+        <image name="Male" width="16" height="19"/>
     </resources>
 </document>

@@ -21,6 +21,7 @@
 //    userPhotoImage = [Util setImage:userPhotoImage withWidth:32 andHeight:32];
     UIImageView *userPhotoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0)];
     [userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
+    userPhotoImageView.layer.masksToBounds = YES;
     userPhotoImageView.layer.cornerRadius = 16.0;
     [userPhotoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(enterPersonalSetting)]];
     UIBarButtonItem *userPhoto = [[UIBarButtonItem alloc] initWithCustomView:userPhotoImageView];

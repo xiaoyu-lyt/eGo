@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CampusTrafficViewController">
@@ -17,7 +18,6 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <searchBar alpha="0.75" contentMode="redraw" placeholder="校园导游" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-bK-9T1">
-                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                     <textInputTraits key="textInputTraits"/>
                     <scopeButtonTitles>
                         <string>Title</string>
@@ -25,28 +25,25 @@
                     </scopeButtonTitles>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGY-hK-Nhv">
-                    <rect key="frame" x="328" y="593" width="39" height="22"/>
                     <state key="normal" image="ZoomLevelUp"/>
                     <connections>
-                        <action selector="zoomLevelUpBtnClicked:" destination="-1" eventType="touchUpInside" id="a6g-eE-9VT"/>
+                        <action selector="zoomLevelUpBtnClicked:" destination="-1" eventType="touchUpInside" id="PpH-0u-Gcw"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTo-fH-RGu">
-                    <rect key="frame" x="12" y="581" width="30" height="30"/>
                     <state key="normal" image="Locate"/>
                     <connections>
                         <action selector="locateBtnClicked:" destination="-1" eventType="touchUpInside" id="0RS-zl-1QQ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-Im-aTc">
-                    <rect key="frame" x="294" y="593" width="34" height="22"/>
                     <state key="normal" image="ZoomLevelDown"/>
                     <connections>
                         <action selector="zoomLevelDownBtnClicked:" destination="-1" eventType="touchUpInside" id="FTm-X3-ttE"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="uTo-fH-RGu" secondAttribute="bottom" constant="56" id="5gQ-D4-frB"/>
                 <constraint firstItem="VGY-hK-Nhv" firstAttribute="leading" secondItem="yJi-Im-aTc" secondAttribute="trailing" id="9Cc-6c-hWB"/>
@@ -58,13 +55,12 @@
                 <constraint firstAttribute="trailing" secondItem="VGY-hK-Nhv" secondAttribute="trailing" constant="8" id="krt-KH-Ko9"/>
                 <constraint firstItem="e9P-bK-9T1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="wU9-ey-RzW"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="211.5" y="30.5"/>
         </view>
     </objects>
     <resources>
         <image name="Locate" width="30" height="30"/>
-        <image name="ZoomLevelDown" width="34" height="17"/>
-        <image name="ZoomLevelUp" width="39" height="17"/>
+        <image name="ZoomLevelDown" width="33" height="16"/>
+        <image name="ZoomLevelUp" width="38" height="16"/>
     </resources>
 </document>

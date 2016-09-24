@@ -31,5 +31,6 @@ static const NSInteger BASIC_TAG_VALUE = 100000;
 + (UIViewController *)getViewController:(UIView *)view;
 + (void)setNavigationBarTransparentWithViewController:(UIViewController *)vc;
 + (void)resetNavigationBarWithViewController:(UIViewController *)vc andTitleColor:(UIColor *)color;
++ (BOOL)isEmailAddress:(NSString *)email;
 
 @end

@@ -117,4 +117,11 @@
     [vc.navigationController.navigationBar setTitleTextAttributes:attributes];
 }
 
++ (BOOL)isEmailAddress:(NSString *)email {
+    NSString *re = @"^([A-Za-z0-9\\.\\-_]{1,})@((?:[A-Za-z0-9]+(?:[\\-|\\.][A-Za-z0-9]+)*)+\\.[A-Za-z]{2,6})$";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", re];
+    
+    return [emailTest evaluateWithObject:email];
+}
+
 @end

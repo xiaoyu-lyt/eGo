@@ -8,6 +8,8 @@
 
 #import "FeedbackViewController.h"
 
+#import "Util.h"
+
 typedef enum : NSUInteger {
     RowSelectedNone,
     RowSelectedSender,
@@ -54,7 +56,21 @@ typedef enum : NSUInteger {
 }
 
 - (void)sendBarBtnClicked:(UIBarButtonItem *)btn {
-    NSLog(@"send");
+    _inputInfo[@"content"] = _contentTxtView.text;
+    if ([NSString stringWithString:_inputInfo[@"sender"]].length == 0) {
+        [self.view makeToast:@"发件人不能为空"];
+        return;
+    } else if ([NSString stringWithString:_inputInfo[@"title"]].length == 0) {
+        [self.view makeToast:@"标题不能为空"];
+        return;
+    }else if ([NSString stringWithString:_inputInfo[@"content"]].length == 0) {
+        [self.view makeToast:@"内容不能为空"];
+        return;
+    } else if (![Util isEmailAddress:_inputInfo[@"sender"]]) {
+        [self.view makeToast:@"请输入正确的邮箱地址"];
+        return;
+    }
+    [self.view makeToast:@"已反馈"];
 }
 
 - (void)textFieldDidChanged:(UITextField *)textField {
