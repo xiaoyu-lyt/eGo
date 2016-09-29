@@ -37,7 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setNavigationBarButton];
     [self addAdBannerView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -48,6 +47,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setNavigationBarButton];
     
     self.inputTblView.delegate = self;
     self.inputTblView.dataSource = self;

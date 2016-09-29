@@ -11,6 +11,7 @@
 
 #import "User.h"
 #import "Util.h"
+#import "AFNetworking.h"
 
 @interface PersonalViewController ()<UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -60,6 +61,16 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [picker dismissViewControllerAnimated:YES completion:nil];
+    NSData *imageData = UIImageJPEGRepresentation(info[UIImagePickerControllerEditedImage], 0.9);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager PUT:[kApiUrl stringByAppendingPathComponent:@"user-avatar"] parameters:@{@"token" : [User sharedUser].token, @"jwchId" : [User sharedUser].stuNum, @"image" : imageData, @"filename" : [NSString stringWithFormat:@"%@_%d", [User sharedUser].stuNum, (int)[[NSDate date] timeIntervalSince1970]]} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+        [[User sharedUser] updateUserInfo];
+        [[_userInfoTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].contentView.subviews[0] sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [NSString stringWithFormat:@"%@_%d", [User sharedUser].stuNum, (int)[[NSDate date] timeIntervalSince1970]]]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
+        [self.view makeToast:@"设置成功"];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Faild:%@", [error localizedDescription]);
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

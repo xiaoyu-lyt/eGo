@@ -37,7 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setNavigationBarButton];
     
     self.operations = @[@[@"个人信息", @"好友列表", @"消息中心", @"车辆管理", @"出行记录"], @[@"清空缓存", @"意见反馈", @"关于eGo"], @[@"注销"]];
     [self.userPhotoImg tapToShow];
@@ -46,6 +45,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setNavigationBarButton];
     
     self.userPhotoImg.layer.masksToBounds = YES;
     self.userPhotoImg.layer.cornerRadius = self.userPhotoImg.frame.size.width / 2;

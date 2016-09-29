@@ -27,13 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setNavigationBarButton];
     
     self.chatArray = @[@{@"id" : @"1", @"avatar" : @"DefaultImage", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"2", @"avatar" : @"Bike", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"3", @"avatar" : @"Settings", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"4", @"avatar" : @"User", @"name" : @"Daniel", @"gender" : @"0", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"5", @"avatar" : @"DefaultImage", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"Hello OC", @"likeNum" : @"123", @"commentNum" : @"456"}];
     
     self.chatTV.delegate = self;
     self.chatTV.dataSource = self;
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setNavigationBarButton];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
