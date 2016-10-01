@@ -93,7 +93,9 @@
             if (cell == nil) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier1 owner:nil options:nil] lastObject];
             }
-            cell.avatarImgView.image = [UIImage imageNamed:self.chatInfo[@"avatar"]];
+            [cell.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
+            cell.avatarImgView.layer.masksToBounds = YES;
+            cell.avatarImgView.layer.cornerRadius = 24;
             cell.nameLbl.text = self.chatInfo[@"name"];
             cell.genderImgView.image = [UIImage imageNamed:([self.chatInfo[@"gender"] integerValue] == 1) ? @"Male" : @"Female"];
             cell.timeLbl.text = self.chatInfo[@"time"];

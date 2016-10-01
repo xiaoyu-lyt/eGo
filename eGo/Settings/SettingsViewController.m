@@ -47,9 +47,9 @@
     [super viewWillAppear:animated];
     [self setNavigationBarButton];
     
+    [self.userPhotoImg sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
     self.userPhotoImg.layer.masksToBounds = YES;
     self.userPhotoImg.layer.cornerRadius = self.userPhotoImg.frame.size.width / 2;
-    [self.userPhotoImg sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
     self.genderImg.image = ([[User sharedUser].gender integerValue] == 0) ? [UIImage imageNamed:@"Male"] : [UIImage imageNamed:@"Female"];
     self.nameLbl.text = ([User sharedUser].name.length == 0) ? @"某同学" : [User sharedUser].name;
     self.signatureLbl.text = ([User sharedUser].signature.length > 15) ? [NSString stringWithFormat:@"%@...", [[User sharedUser].signature substringToIndex:15]] : [User sharedUser].signature;

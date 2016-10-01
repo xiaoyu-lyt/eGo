@@ -28,20 +28,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.chatArray = @[@{@"id" : @"1", @"avatar" : @"DefaultImage", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"2", @"avatar" : @"Bike", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"3", @"avatar" : @"Settings", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"4", @"avatar" : @"User", @"name" : @"Daniel", @"gender" : @"0", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.This is a long text for test.", @"likeNum" : @"123", @"commentNum" : @"456"}, @{@"id" : @"5", @"avatar" : @"DefaultImage", @"name" : @"Daniel", @"gender" : @"1", @"time" : @"12:34", @"place" : @"FZU", @"content" : @"Hello OC", @"likeNum" : @"123", @"commentNum" : @"456"}];
+    self.chatArray = @[];
     
     self.chatTV.delegate = self;
     self.chatTV.dataSource = self;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setNavigationBarButton];
+    
+    [self getData];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)getData {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingString:@"chat-center.html"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+        self.chatArray = responseObject;
+        [_chatTV reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
 }
 
 #pragma mark - TableView
@@ -73,11 +86,11 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:nil options:nil] lastObject];
     }
     
+    [cell.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
     cell.avatarImgView.layer.masksToBounds = YES;
-    cell.avatarImgView.layer.cornerRadius = cell.imageView.frame.size.width / 2;
-    cell.avatarImgView.image = [UIImage imageNamed:self.chatArray[indexPath.section][@"avatar"]];
+    cell.avatarImgView.layer.cornerRadius = 24;
     cell.nameLbl.text = self.chatArray[indexPath.section][@"name"];
-    cell.genderImgView.image = [UIImage imageNamed:([self.chatArray[indexPath.section][@"gender"] integerValue] == 1) ? @"Male" : @"Female"];
+    cell.genderImgView.image = [UIImage imageNamed:([self.chatArray[indexPath.section][@"gender"] integerValue] == 0) ? @"Male" : @"Female"];
     cell.timeLbl.text = self.chatArray[indexPath.section][@"time"];
     cell.placeLbl.text = self.chatArray[indexPath.section][@"place"];
     cell.contentLbl.text = self.chatArray[indexPath.section][@"content"];
