@@ -49,7 +49,6 @@
 - (void)getData {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[kApiUrl stringByAppendingString:@"chat-center.html"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject);
         self.chatArray = responseObject;
         [_chatTV reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

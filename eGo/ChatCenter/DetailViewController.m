@@ -32,11 +32,13 @@
     self.title = @"详情";
     self.cellList = @[@"detailTblViewCell", @"CommentsTVCell"];
     
-    self.commentsArray = @[@{@"content" : @"啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊", @"superFloor" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}, @{@"content" : @"1"}];
+    self.commentsArray = @[];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self getData];
     
     self.detailTblView.delegate = self;
     self.detailTblView.dataSource = self;
@@ -53,6 +55,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)getData {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[kApiUrl stringByAppendingString:[NSString stringWithFormat:@"chat-center/comments/%@.html", _chatInfo[@"id"]]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.commentsArray = responseObject;
+        [_detailTblView reloadData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
+}
+
+#pragma mark - UITableViewDatasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -97,7 +111,7 @@
             cell.avatarImgView.layer.masksToBounds = YES;
             cell.avatarImgView.layer.cornerRadius = 24;
             cell.nameLbl.text = self.chatInfo[@"name"];
-            cell.genderImgView.image = [UIImage imageNamed:([self.chatInfo[@"gender"] integerValue] == 1) ? @"Male" : @"Female"];
+            cell.genderImgView.image = [UIImage imageNamed:([self.chatInfo[@"gender"] integerValue] == 0) ? @"Male" : @"Female"];
             cell.timeLbl.text = self.chatInfo[@"time"];
             cell.placeLbl.text = self.chatInfo[@"place"];
             cell.contentLbl.text = self.chatInfo[@"content"];
@@ -117,13 +131,16 @@
             if (cell == nil) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:CellIdentifier2 owner:nil options:nil] lastObject];
             }
-            NSString *superFloor = [NSString stringWithFormat:@"%@", self.commentsArray[indexPath.row][@"superFloor"]];
-            cell.contentLbl.text = ([superFloor isEqual:@"(null)"]) ? self.commentsArray[indexPath.row][@"content"] : [NSString stringWithFormat:@"@%@L：%@", superFloor, self.commentsArray[indexPath.row][@"content"]];
-            cell.likeBtn.tag = BASIC_TAG_VALUE + indexPath.row;
-            [cell.likeBtn setTitle:self.commentsArray[indexPath.row][@"likeNum"] forState:UIControlStateNormal];
-            [cell.likeBtn addTarget:self action:@selector(likeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-            cell.commentBtn.tag = BASIC_TAG_VALUE + indexPath.row;;
-            [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.avatarImgView sd_setImageWithURL:[NSURL URLWithString:[kImageUrl stringByAppendingString:[NSString stringWithFormat:@"User/%@.png", [User sharedUser].avatar]]] placeholderImage:[UIImage imageNamed:@"loading.gif"]];
+            cell.avatarImgView.layer.masksToBounds = YES;
+            cell.avatarImgView.layer.cornerRadius = 20;
+            NSInteger floor = [[NSString stringWithFormat:@"%@", self.commentsArray[indexPath.row][@"floor"]] integerValue];
+            cell.floorLbl.text = [NSString stringWithFormat:@"%ldL", (long)floor];
+            cell.nameLbl.text = self.commentsArray[indexPath.row][@"name"];
+            cell.timeLbl.text = self.commentsArray[indexPath.row][@"time"];
+            cell.placeLbl.text = self.commentsArray[indexPath.row][@"place"];
+            NSInteger superFloor = [[NSString stringWithFormat:@"%@", self.commentsArray[indexPath.row][@"super_floor"]] integerValue];
+            cell.contentLbl.text = (superFloor == 0) ? self.commentsArray[indexPath.row][@"content"] : [NSString stringWithFormat:@"@%ldL：%@", (long)superFloor, self.commentsArray[indexPath.row][@"content"]];
             return cell;
         }
             break;
