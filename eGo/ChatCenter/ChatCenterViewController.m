@@ -56,6 +56,15 @@
     }];
 }
 
+- (BOOL)isLiked:(NSArray *)likedList {
+    for (NSDictionary *dict in likedList) {
+        if ([[User sharedUser].stuNum isEqualToString:dict[@"user_id"]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -93,9 +102,12 @@
     cell.timeLbl.text = self.chatArray[indexPath.section][@"time"];
     cell.placeLbl.text = self.chatArray[indexPath.section][@"place"];
     cell.contentLbl.text = self.chatArray[indexPath.section][@"content"];
-    [cell.likeBtn setTitle:self.chatArray[indexPath.section][@"likeNum"] forState:UIControlStateNormal];
+    NSArray *likedList = self.chatArray[indexPath.section][@"likedList"];
+    [cell.likeBtn setImage:[UIImage imageNamed:([self isLiked:likedList]) ? @"Liked" : @"Like"] forState:UIControlStateNormal];
+    [cell.likeBtn setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)likedList.count] forState:UIControlStateNormal];
     [cell.likeBtn addTarget:self action:@selector(likeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.commentBtn setTitle:self.chatArray[indexPath.section][@"commentNum"] forState:UIControlStateNormal];
+    NSArray *commentsList = self.chatArray[indexPath.section][@"commentsList"];
+    [cell.commentBtn setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)commentsList.count] forState:UIControlStateNormal];
     [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [cell.shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [cell.shareBtn addTarget:self action:@selector(shareBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
