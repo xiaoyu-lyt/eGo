@@ -52,7 +52,7 @@
         self.chatArray = responseObject;
         [_chatTV reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"");
+        NSLog(@"%ld", (long)((NSHTTPURLResponse *)task.response).statusCode);
     }];
 }
 
