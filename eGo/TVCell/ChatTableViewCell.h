@@ -20,4 +20,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *commentBtn;
 @property (strong, nonatomic) IBOutlet UIButton *shareBtn;
 
+@property (assign, nonatomic) NSInteger index;
+
 @end

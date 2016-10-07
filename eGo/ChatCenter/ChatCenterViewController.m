@@ -106,11 +106,14 @@
     [cell.likeBtn setImage:[UIImage imageNamed:([self isLiked:likedList]) ? @"Liked" : @"Like"] forState:UIControlStateNormal];
     [cell.likeBtn setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)likedList.count] forState:UIControlStateNormal];
     [cell.likeBtn addTarget:self action:@selector(likeBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    cell.likeBtn.tag = BASIC_TAG_VALUE + indexPath.section;
     NSArray *commentsList = self.chatArray[indexPath.section][@"commentsList"];
     [cell.commentBtn setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)commentsList.count] forState:UIControlStateNormal];
     [cell.commentBtn addTarget:self action:@selector(commentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    cell.commentBtn.tag = BASIC_TAG_VALUE + indexPath.section;
     [cell.shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [cell.shareBtn addTarget:self action:@selector(shareBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    cell.shareBtn.tag = BASIC_TAG_VALUE + indexPath.section;
     
     return cell;
 }
@@ -126,7 +129,14 @@
 #pragma mark - Button Clicked
 
 - (void)likeBtnClicked:(UIButton *)btn {
-    NSLog(@"Like button clicked");
+    NSInteger section = btn.tag - BASIC_TAG_VALUE;
+    NSString *url = [kApiUrl stringByAppendingString:([self isLiked:_chatArray[section][@"likedList"]]) ? @"chat-center/unlike.html" : @"chat-center/like.html"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:url parameters:@{@"token" : [User sharedUser].token, @"chatId" : _chatArray[section][@"id"]} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self getData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
 }
 
 - (void)commentBtnClicked:(UIButton *)btn {
